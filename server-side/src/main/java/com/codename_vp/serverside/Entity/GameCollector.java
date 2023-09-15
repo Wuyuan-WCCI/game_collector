@@ -20,6 +20,7 @@ public class GameCollector {
     private String platform;
     private String price;
     private String imgUrl;
+    private String slug;
 
     public GameCollector(String name, String description, String platform, String price, String imgUrl) {
 
@@ -102,6 +103,14 @@ public class GameCollector {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public GameCollector() {

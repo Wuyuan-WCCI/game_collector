@@ -19,4 +19,9 @@ public class RawgApiService {
         return restTemplate.getForEntity(url, String.class);
     }
 
+    public ResponseEntity<String> searchGame(String query) {
+        String url = apiUrl + "/games?key=" + apiKey + "&search=" + query;
+        return restTemplate.getForEntity(url, String.class);
+    }
+
 }
