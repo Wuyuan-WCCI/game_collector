@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codename_vp.serverside.Entity.Game;
 import com.codename_vp.serverside.Service.RawgApiService;
 
 @RestController
@@ -23,14 +22,14 @@ public class RawgApiController {
     }
 
     @GetMapping("/game-detail/{game_id}")
-    public ResponseEntity<String> getGameDetail(@PathVariable String game_id) {
+    public ResponseEntity<String> getGameDetailById(@PathVariable Long game_id) {
 
-        return rawgService.getGameDetail(game_id);
+        return rawgService.getGameDetailById(game_id);
     }
 
     @GetMapping("/rawg/search")
-    public ResponseEntity<String> searchGame(@RequestParam String query) {
-        return rawgService.searchGame(query);
+    public ResponseEntity<String> searchGameByName(@RequestParam String query) {
+        return rawgService.searchGameByName(query);
     }
 
 }
