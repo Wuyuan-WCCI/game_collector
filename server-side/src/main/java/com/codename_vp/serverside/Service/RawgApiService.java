@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.WishList;
+import com.codename_vp.serverside.Repository.OwnedListRepo;
+import com.codename_vp.serverside.Repository.WishListRepo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,7 +23,13 @@ public class RawgApiService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public ResponseEntity<String> getGameDetailById(Long game_id) {
+    @Autowired
+    private WishListRepo wishListRepo;
+
+    @Autowired
+    OwnedListService ownedListService;
+
+    public ResponseEntity<String> getGameDetailById(int game_id) {
 
         String url = apiUrl + "/games/" + game_id + "?key=" + apiKey;
         return restTemplate.getForEntity(url, String.class);
@@ -32,22 +40,24 @@ public class RawgApiService {
         return restTemplate.getForEntity(url, String.class);
     }
 
-    public OwnedList addToOwnedList(Long game_id) {
-        ResponseEntity<String> response = getGameDetailById(game_id);
+    public OwnedList addToOwnedList(int gameId) {
+        ResponseEntity<String> response = getGameDetailById(gameId);
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
 
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
-                OwnedList ownedList = new OwnedList();
-                ownedList.setId(jsonNode.get("id").asLong());
-                ownedList.setName(jsonNode.get("name").asText());
-                ownedList.setSlug(jsonNode.get("slug").asText());
-                ownedList.setDescription(jsonNode.get("description").asText());
-                ownedList.setReleased(jsonNode.get("released").asText());
-                ownedList.setImgUrl(jsonNode.get("background_image").asText());
-                return ownedList;
+                OwnedList gameToAdd = new OwnedList();
+                gameToAdd.setId(jsonNode.get("id").asInt());
+                gameToAdd.setName(jsonNode.get("name").asText());
+                gameToAdd.setSlug(jsonNode.get("slug").asText());
+                gameToAdd.setStatus("Owned");
+                // ownedList.setDescription(jsonNode.get("description").asText());
+                gameToAdd.setReleased(jsonNode.get("released").asText());
+                gameToAdd.setImgUrl(jsonNode.get("background_image").asText());
+                this.ownedListService.addToOwnedList(gameToAdd);
+                return gameToAdd;
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -58,8 +68,8 @@ public class RawgApiService {
         }
     }
 
-    public WishList addToWishList(Long game_id) {
-        ResponseEntity<String> response = getGameDetailById(game_id);
+    public WishList addToWishList(int gameId) {
+        ResponseEntity<String> response = getGameDetailById(gameId);
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
 
@@ -67,12 +77,14 @@ public class RawgApiService {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
                 WishList wishList = new WishList();
-                wishList.setId(jsonNode.get("id").asLong());
+                wishList.setId(jsonNode.get("id").asInt());
                 wishList.setName(jsonNode.get("name").asText());
                 wishList.setSlug(jsonNode.get("slug").asText());
-                wishList.setDescription(jsonNode.get("description").asText());
+                wishList.setStatus("Wished");
                 wishList.setReleased(jsonNode.get("released").asText());
                 wishList.setImgUrl(jsonNode.get("background_image").asText());
+
+                this.wishListRepo.save(wishList);
                 return wishList;
 
             } catch (IOException e) {

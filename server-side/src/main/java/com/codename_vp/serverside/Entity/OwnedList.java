@@ -16,6 +16,10 @@ public class OwnedList extends GameCollector {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public OwnedList() {
 
     }

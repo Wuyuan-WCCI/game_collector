@@ -29,7 +29,7 @@ public class OwnedListController {
     }
 
     @DeleteMapping("owned-list/delete/{id}")
-    public void removeFromOwnedList(@PathVariable Long id) {
+    public void removeFromOwnedList(@PathVariable int id) {
         this.ownedListService.removeFromOwnedList(id);
     }
 

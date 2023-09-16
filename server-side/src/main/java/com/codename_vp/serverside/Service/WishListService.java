@@ -23,7 +23,7 @@ public class WishListService {
     }
 
     @Transactional
-    public void removeFromWishList(Long id) {
+    public void removeFromWishList(int id) {
         this.wishListRepo.deleteById(id);
     }
 
@@ -32,7 +32,7 @@ public class WishListService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found"));
     }
 
-    public WishList getGameById(Long id) {
+    public WishList getGameById(int id) {
         return this.wishListRepo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game ID not found"));
     }

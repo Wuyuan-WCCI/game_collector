@@ -7,6 +7,10 @@ public class WishList extends GameCollector {
 
     private String status;
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public WishList(String name, String description, String platform, String price, String imgUrl) {
         super(name, description, platform, price, imgUrl);
         this.status = "Wished";

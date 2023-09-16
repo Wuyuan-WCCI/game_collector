@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.codename_vp.serverside.Entity.WishList;
 
-public interface WishListRepo extends JpaRepository<WishList, Long> {
+public interface WishListRepo extends JpaRepository<WishList, Integer> {
 
     Optional<WishList> findByName(String name);
 

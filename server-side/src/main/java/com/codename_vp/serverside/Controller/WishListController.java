@@ -30,7 +30,7 @@ public class WishListController {
     }
 
     @DeleteMapping("Wish-list/delete/{id}")
-    public void removeFromWishList(@PathVariable Long id) {
+    public void removeFromWishList(@PathVariable int id) {
         this.wishListService.removeFromWishList(id);
     }
 

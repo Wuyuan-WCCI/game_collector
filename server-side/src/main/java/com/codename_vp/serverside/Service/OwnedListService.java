@@ -23,7 +23,7 @@ public class OwnedListService {
     }
 
     @Transactional
-    public void removeFromOwnedList(Long id) {
+    public void removeFromOwnedList(int id) {
         this.ownedListRepo.deleteById(id);
     }
 
@@ -32,7 +32,7 @@ public class OwnedListService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found"));
     }
 
-    public OwnedList getGameById(Long id) {
+    public OwnedList getGameById(int id) {
         return this.ownedListRepo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game ID not found"));
     }

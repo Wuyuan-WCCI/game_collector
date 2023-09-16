@@ -8,16 +8,15 @@ import jakarta.persistence.OneToMany;
 
 @MappedSuperclass
 public class GameCollector {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String name;
+    private String slug;
     private String description;
     private String price;
     private String imgUrl;
-    private String slug;
+
     private String released;
 
     private String platform;
@@ -31,15 +30,15 @@ public class GameCollector {
 
     }
 
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public GameCollector id(Long id) {
+    public GameCollector id(int id) {
         setId(id);
         return this;
     }
