@@ -16,6 +16,7 @@ public class GameCollector {
     private String imgUrl;
 
     private String released;
+    private String officialSite;
 
     private String platform;
 
@@ -113,6 +114,14 @@ public class GameCollector {
 
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public String getOfficialSite() {
+        return officialSite;
+    }
+
+    public void setOfficialSite(String officialSite) {
+        this.officialSite = officialSite;
     }
 
     public GameCollector() {

@@ -43,6 +43,12 @@ public class RawgApiService {
         return restTemplate.getForEntity(url, String.class);
     }
 
+    public ResponseEntity<String> getTop10Games() {
+        String url = apiUrl + "/games?key=" + apiKey + "&ordering=-rating&page_size=1&metacritic=800";
+
+        return restTemplate.getForEntity(url, String.class);
+    }
+
     public OwnedList addToOwnedList(int gameId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
 
@@ -61,6 +67,7 @@ public class RawgApiService {
                 gameToAdd.setName(jsonNode.get("name").asText());
                 gameToAdd.setSlug(jsonNode.get("slug").asText());
                 gameToAdd.setStatus("Owned");
+                gameToAdd.setOfficialSite(jsonNode.get("website").asText());
                 gameToAdd.setDescription(jsonNode.get("description").asText());
                 gameToAdd.setReleased(jsonNode.get("released").asText());
                 gameToAdd.setImgUrl(jsonNode.get("background_image").asText());
