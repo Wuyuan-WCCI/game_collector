@@ -29,6 +29,9 @@ public class RawgApiService {
     @Autowired
     OwnedListService ownedListService;
 
+    @Autowired
+    WishListService wishListService;
+
     public ResponseEntity<String> getGameDetailById(int game_id) {
 
         String url = apiUrl + "/games/" + game_id + "?key=" + apiKey;
@@ -42,21 +45,27 @@ public class RawgApiService {
 
     public OwnedList addToOwnedList(int gameId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
+
+        wishListService.removeFromWishList(gameId);
+
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
 
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
+
                 OwnedList gameToAdd = new OwnedList();
+
                 gameToAdd.setId(jsonNode.get("id").asInt());
                 gameToAdd.setName(jsonNode.get("name").asText());
                 gameToAdd.setSlug(jsonNode.get("slug").asText());
                 gameToAdd.setStatus("Owned");
-                // ownedList.setDescription(jsonNode.get("description").asText());
+                gameToAdd.setDescription(jsonNode.get("description").asText());
                 gameToAdd.setReleased(jsonNode.get("released").asText());
                 gameToAdd.setImgUrl(jsonNode.get("background_image").asText());
                 this.ownedListService.addToOwnedList(gameToAdd);
+                System.out.println("You add game " + gameToAdd.getName() + " to owned list ");
                 return gameToAdd;
 
             } catch (IOException e) {
@@ -80,6 +89,7 @@ public class RawgApiService {
                 wishList.setId(jsonNode.get("id").asInt());
                 wishList.setName(jsonNode.get("name").asText());
                 wishList.setSlug(jsonNode.get("slug").asText());
+                wishList.setDescription(jsonNode.get("description").asText());
                 wishList.setStatus("Wished");
                 wishList.setReleased(jsonNode.get("released").asText());
                 wishList.setImgUrl(jsonNode.get("background_image").asText());

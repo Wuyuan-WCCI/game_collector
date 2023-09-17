@@ -1,10 +1,8 @@
 package com.codename_vp.serverside.Entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
 
 @MappedSuperclass
 public class GameCollector {
@@ -13,13 +11,16 @@ public class GameCollector {
 
     private String name;
     private String slug;
-    private String description;
+
     private String price;
     private String imgUrl;
 
     private String released;
 
     private String platform;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     public GameCollector(String name, String description, String platform, String price, String imgUrl) {
 
