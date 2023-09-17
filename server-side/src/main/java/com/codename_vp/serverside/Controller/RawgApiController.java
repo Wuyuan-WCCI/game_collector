@@ -33,6 +33,11 @@ public class RawgApiController {
         return rawgService.searchGameByName(query);
     }
 
+    @GetMapping("/top_games")
+    public ResponseEntity<String> getTopGames() {
+        return rawgService.getTop10Games();
+    }
+
     @PostMapping("add-to-wish-list/{gameId}")
     public ResponseEntity<WishList> addToWishList(@PathVariable int gameId) {
         WishList wishList = rawgService.addToWishList(gameId);
