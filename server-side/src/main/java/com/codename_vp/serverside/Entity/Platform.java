@@ -1,32 +1,52 @@
 package com.codename_vp.serverside.Entity;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 
+import jakarta.transaction.Transactional;
+
 @Entity
+@Transactional
 public class Platform {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    @Column(name = "platform_id")
+    private int platformId;
+
+    private String platformName;
     private String slug;
+    private String releasedDate;
 
-    public Long getId() {
-        return id;
+    public Platform(String slug, String platformName, String releasedDate) {
+        this.slug = slug;
+        this.platformName = platformName;
+        this.releasedDate = releasedDate;
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Platform() {
+
     }
 
-    public String getName() {
-        return name;
+    public int getPlatformId() {
+        return platformId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlatformId(int platformId) {
+        this.platformId = platformId;
+    }
+
+    public String getPlatformName() {
+        return platformName;
+    }
+
+    public void setPlatformName(String platformName) {
+        this.platformName = platformName;
     }
 
     public String getSlug() {
@@ -36,4 +56,13 @@ public class Platform {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+    public String getReleasedDate() {
+        return releasedDate;
+    }
+
+    public void setReleasedDate(String releasedDate) {
+        this.releasedDate = releasedDate;
+    }
+
 }
