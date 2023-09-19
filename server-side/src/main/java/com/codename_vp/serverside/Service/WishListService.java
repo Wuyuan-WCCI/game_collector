@@ -13,6 +13,7 @@ import com.codename_vp.serverside.Repository.WishListRepo;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class WishListService {
 
     @Autowired

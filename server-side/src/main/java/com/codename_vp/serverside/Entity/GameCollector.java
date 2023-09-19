@@ -1,7 +1,11 @@
 package com.codename_vp.serverside.Entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
+
 import jakarta.persistence.Id;
+
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -18,12 +22,10 @@ public class GameCollector {
     private String released;
     private String officialSite;
 
-    private String platform;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    public GameCollector(String name, String description, String platform, String price, String imgUrl) {
+    public GameCollector(String name, String description, String price, String imgUrl) {
 
         this.name = name;
         this.description = description;
@@ -106,14 +108,6 @@ public class GameCollector {
 
     public void setReleased(String released) {
         this.released = released;
-    }
-
-    public String getPlatform() {
-        return platform;
-    }
-
-    public void setPlatform(String platform) {
-        this.platform = platform;
     }
 
     public String getOfficialSite() {

@@ -1,7 +1,9 @@
 package com.codename_vp.serverside.Service;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.codename_vp.serverside.Entity.OwnedList;
+import com.codename_vp.serverside.Entity.Platform;
 import com.codename_vp.serverside.Entity.WishList;
-import com.codename_vp.serverside.Repository.OwnedListRepo;
+import com.codename_vp.serverside.Repository.PlatformRepo;
 import com.codename_vp.serverside.Repository.WishListRepo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +28,9 @@ public class RawgApiService {
 
     @Autowired
     private WishListRepo wishListRepo;
+
+    @Autowired
+    private PlatformRepo platformRepo;
 
     @Autowired
     OwnedListService ownedListService;
@@ -61,19 +67,40 @@ public class RawgApiService {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
 
-                OwnedList gameToAdd = new OwnedList();
+                OwnedList ownedList = new OwnedList();
 
-                gameToAdd.setId(jsonNode.get("id").asInt());
-                gameToAdd.setName(jsonNode.get("name").asText());
-                gameToAdd.setSlug(jsonNode.get("slug").asText());
-                gameToAdd.setStatus("Owned");
-                gameToAdd.setOfficialSite(jsonNode.get("website").asText());
-                gameToAdd.setDescription(jsonNode.get("description").asText());
-                gameToAdd.setReleased(jsonNode.get("released").asText());
-                gameToAdd.setImgUrl(jsonNode.get("background_image").asText());
-                this.ownedListService.addToOwnedList(gameToAdd);
-                System.out.println("You add game " + gameToAdd.getName() + " to owned list ");
-                return gameToAdd;
+                ownedList.setId(jsonNode.get("id").asInt());
+                ownedList.setName(jsonNode.get("name").asText());
+                ownedList.setSlug(jsonNode.get("slug").asText());
+                ownedList.setStatus("Owned");
+                ownedList.setOfficialSite(jsonNode.get("website").asText());
+                ownedList.setDescription(jsonNode.get("description").asText());
+                ownedList.setReleased(jsonNode.get("released").asText());
+                ownedList.setImgUrl(jsonNode.get("background_image").asText());
+
+                Set<Platform> platformSet = new HashSet<>();
+                JsonNode platformsNode = jsonNode.get("platforms");
+                if (platformsNode != null && platformsNode.isArray()) {
+                    for (JsonNode platformInfo : platformsNode) {
+                        JsonNode platformNode = platformInfo.get("platform");
+
+                        if (platformNode != null) {
+                            Platform platform = new Platform();
+                            platform.setPlatformId(platformNode.get("id").asInt());
+                            platform.setPlatformName(platformNode.get("name").asText());
+                            platform.setSlug(platformNode.get("slug").asText());
+
+                            platformSet.add(platform);
+                            this.platformRepo.save(platform);
+
+                        }
+                    }
+                }
+                ownedList.setPlatforms(platformSet);
+                this.ownedListService.addToOwnedList(ownedList);
+                System.out.println("You added game " + ownedList.getName() + " to owned list ");
+
+                return ownedList;
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -101,7 +128,27 @@ public class RawgApiService {
                 wishList.setReleased(jsonNode.get("released").asText());
                 wishList.setImgUrl(jsonNode.get("background_image").asText());
 
+                // Add platforms to the wish list
+                Set<Platform> platformSet = new HashSet<>();
+                JsonNode platformsNode = jsonNode.get("platforms");
+                if (platformsNode != null && platformsNode.isArray()) {
+                    for (JsonNode platformInfo : platformsNode) {
+                        JsonNode platformNode = platformInfo.get("platform");
+
+                        if (platformNode != null) {
+                            Platform platform = new Platform();
+                            platform.setPlatformId(platformNode.get("id").asInt());
+                            platform.setPlatformName(platformNode.get("name").asText());
+                            platform.setSlug(platformNode.get("slug").asText());
+
+                            platformSet.add(platform);
+                            this.platformRepo.save(platform);
+                        }
+                    }
+                }
+                wishList.setPlatforms(platformSet);
                 this.wishListRepo.save(wishList);
+
                 return wishList;
 
             } catch (IOException e) {
