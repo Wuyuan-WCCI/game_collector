@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const WishList = () => {
     const [collection, setCollection] = useState([]);
-    const baseUrl = 'http://localhost:8080/wish-list';
+    const baseUrl = 'http://localhost:7098/wish-list';
 
     useEffect(() => {
         const fetchWishListData = async () => {

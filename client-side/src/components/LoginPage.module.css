@@ -1,0 +1,24 @@
+/* src/components/LoginPage.css */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .login-input {
+    margin: 10px;
+    padding: 8px;
+    width: 300px;
+  }
+  
+  .login-button {
+    margin: 10px;
+    padding: 10px;
+    width: 100px;
+    background-color: #fffffa;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
