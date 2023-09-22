@@ -2,6 +2,10 @@
 // import Card from '/src/components/ui/Card'
 // src/components/Homepage.js
 
+import LoginPage from "../components/LoginPage";
+
+<LoginPage />
+
 const Login = () => {
     return (
       <>

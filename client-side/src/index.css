@@ -1,0 +1,29 @@
+/* CSS Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Main Body of the Application Reset */
+
+body {
+    background-color: #000;
+    color: #fff;
+    /* background-color: #3a413d #166d3b; */
+background: linear-gradient(327deg, #198754 0%, #000000 74%);
+
+  /* Ensure the gradient covers the full viewport height */
+  height: 1000px;
+  /* 100vh; */
+
+  /* Prevent background from repeating */
+  background-repeat: no-repeat;
+
+  /* Center the background vertically and horizontally */
+  background-position: center center;
+
+  /* Make the background cover the entire viewport */
+  background-size: cover;
+
+}
+
