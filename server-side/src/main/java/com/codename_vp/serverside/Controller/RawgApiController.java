@@ -17,9 +17,9 @@ import com.codename_vp.serverside.Service.RawgApiService;
 @CrossOrigin(origins = "http://localhost:5173")
 public class RawgApiController {
 
+    @Autowired
     private final RawgApiService rawgService;
 
-    @Autowired
     public RawgApiController(RawgApiService rawgApiService) {
         this.rawgService = rawgApiService;
     }

@@ -1,12 +1,7 @@
 package com.codename_vp.serverside.Entity;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 
 import jakarta.transaction.Transactional;
