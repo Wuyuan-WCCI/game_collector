@@ -1,0 +1,94 @@
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* ###STYLING### 
+MAIN BODY  */
+
+body {
+  /* font: normal 18px 'Open Sans', sans-serif; */
+  /* background: #fafafa; */
+  /* color: #333; */
+  /* background-color: #3a413d #166d3b; */
+  background: linear-gradient(327deg, #198754 0%, #000000 74%);
+
+  /* Ensure the gradient covers the full viewport height */
+  /* height:  */
+  /* 1000px; */
+  /* 100vh; */
+
+  /* Prevent background from repeating */
+  background-repeat: no-repeat;
+
+  /* Center the background vertically and horizontally */
+  background-position: center center;
+
+  /* Make the background cover the entire viewport */
+  background-size: cover;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* ###STYLING### 
+Login Form  */
+
+.login-form {
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: #000;
+  background-color: #feffb5;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: -5px -5px 8px #87194C, -10px -10px 8px #198754
+}
+
+.login-form h1 {
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 40px 0;
+}
+
+.login-form p {
+  font-size: 20px;
+  margin: 10px 20px;
+}
+
+.login-form input {
+  font-size: 16px;
+  width: 80%;
+  padding: 15px 10px;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+.login-form button {
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 10px 20px 20px;
+  width: 40%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 0;
+}

@@ -2,13 +2,19 @@
 // import Card from '/src/components/ui/Card'
 // src/components/Homepage.js
 
+import LoginPage from "../components/LoginPage";
+
+//  <LoginPage /> 
+
 const Login = () => {
     return (
       <>
 
     {/* Form NUMBER 1 */}
+    <LoginPage />
 
-            <div className="login-form">
+    {/* Form NUMBER 2 */} 
+             <div className="login-form">
             <h1>Codename Collection</h1>
             <form action="#" method="POST">
               <p>Username or Email</p>
@@ -20,9 +26,9 @@ const Login = () => {
                 <button type="submit">Create Account</button>
               </span>
             </form>
-          </div>
+          </div>  
 
-    {/* Form NUMBER 2 */}
+    {/* Form NUMBER 3 */}
 
           {/* <Card>
           <div className={style.form}>

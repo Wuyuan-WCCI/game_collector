@@ -3,10 +3,10 @@ import WishList from "./pages/Wishlist";
 import OwnedList from "./pages/OwnedList";
 // import "./App.css";
 // import Foot from "./components/Footer/Foot";
-// import Layout from "./components/Navbar/Layout";
-// import { Route, Routes } from "react-router-dom";
-// import Login from "./pages/Login";
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Layout from "./components/Navbar/Layout";
+import { Route, Routes } from "react-router-dom";  // May need to import {Switch}
+import Login from "./pages/Login";
+
 // import Homepage from './components/Homepage';
 // import LoginPage from './components/LoginPage';
 // import SignupPage from './components/SignupPage';
@@ -14,18 +14,24 @@ import OwnedList from "./pages/OwnedList";
 function App() {
   return (
     <>
+          <Layout>
+      <Routes>
+      {/* <Switch> */}
+        {/* <Route path="/" exact component={Homepage} /> */}
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/signup" component={SignupPage} /> */}
+        <Route path="/owned-list" element={<OwnedList/>} />
+        <Route path="/wish-list" element={<WishList/>} />
+      {/* </Switch> */}
+    </Routes>
+    </Layout>
+
+    {/* <Login />
+    <br></br>
+    <div>=========================== </div>
       <WishList />
       <div>=========================== </div>
-      <OwnedList />
-      {/* <Router>
-      <Switch>
-        <Route path="/" exact component={Homepage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignupPage} />
-        <Route path="/owned-list" component={<OwnedList/>} />
-        <Route path="/wish-list" component={<WishList/>} />
-      </Switch>
-    </Router> */}
+      <OwnedList /> */}
     </>
   );
 }

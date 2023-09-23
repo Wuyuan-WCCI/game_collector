@@ -31,24 +31,29 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form>
+    <>
+    <div className="login-form">
+      <h2>Codename Collection</h2>
+      <p>Username or Email</p>
+      <form action="#" method="POST">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <p>Password</p>
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={handleLogin}>Login</button>
+        <button type="submit" onClick={handleLogin}>Login</button>
+        {/* <button type="submit" onClick={handleLogin}>Login</button> */}
       </form>
     </div>
+    </>
   );
 };
 
