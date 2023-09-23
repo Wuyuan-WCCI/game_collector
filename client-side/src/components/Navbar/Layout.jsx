@@ -1,3 +1,4 @@
+import Foot from "../Footer/Foot";
 import Nav from "./Nav";
 import style from "./Nav.module.css";
 import PropTypes from "prop-types";
@@ -11,6 +12,8 @@ const Layout = (props) => {
         {props.children}
         {/* {props} */}
       </main>
+
+      <Foot />
     </div>
   );
 };
