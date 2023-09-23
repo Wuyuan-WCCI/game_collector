@@ -55,7 +55,8 @@ Login Form  */
   color: #000;
   background-color: #feffb5;
   border-radius: 5px;
-  border: 0;
+  border: 1px solid white;
+  box-shadow: -5px -5px 8px #87194C, -10px -10px 8px #198754
 }
 
 .login-form h1 {
