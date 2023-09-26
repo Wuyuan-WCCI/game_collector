@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 
 import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.Platform;
+import com.codename_vp.serverside.Entity.User;
 import com.codename_vp.serverside.Entity.WishList;
 import com.codename_vp.serverside.Repository.OwnedListRepo;
+import com.codename_vp.serverside.Repository.UserRepo;
 import com.codename_vp.serverside.Repository.WishListRepo;
 
 @Component
@@ -22,6 +24,9 @@ public class Populator implements CommandLineRunner {
 
     @Autowired
     private OwnedListRepo ownedListRepo;
+
+    @Autowired
+    private UserRepo userRepo;
 
     public void run(String... args) throws Exception {
 
@@ -65,6 +70,13 @@ public class Populator implements CommandLineRunner {
                                 + "Platforms: " + game.getPlatforms());
             }
         }
+
+        User user1 = new User(12, "miketb12", "1234");
+        userRepo.save(user1);
+        User user2 = new User(20, "miketb22", "1234");
+        userRepo.save(user2);
+        User user3 = new User(50, "miketb52", "1234");
+        userRepo.save(user3);
 
     }
 
