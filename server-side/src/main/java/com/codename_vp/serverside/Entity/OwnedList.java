@@ -4,16 +4,24 @@ import java.util.HashSet;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class OwnedList extends Game {
 
     private String status;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_owned_list_id")
+    private User user;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "ownedList_platform", joinColumns = @JoinColumn(name = "ownedList_id"), inverseJoinColumns = @JoinColumn(name = "platform_id"))
@@ -44,5 +52,10 @@ public class OwnedList extends Game {
 
     public OwnedList() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "\nGame's Name = " + getName();
     }
 }
