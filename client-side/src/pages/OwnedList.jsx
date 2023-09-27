@@ -31,7 +31,12 @@ useEffect(() => {
       return (
         <div>
           <h1>Owned List</h1>
-          <ul>
+          <div className="container">
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+    </div>
+          {/* <ul>
             {collection.map((item) => (
               <li key={item.id}>
                 <div>
@@ -46,7 +51,7 @@ useEffect(() => {
                 </div>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       );
 

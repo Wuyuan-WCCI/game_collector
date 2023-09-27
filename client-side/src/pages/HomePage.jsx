@@ -1,7 +1,12 @@
-import React from 'react';
+// import React from 'react';
 const HomePage = () => {
   return(
-    "Welcome Home!"
+    <>
+    <br></br>
+    <br></br>
+    <br></br>
+    <h1>Welcome Home!</h1>
+    </>
   );
     
   };
