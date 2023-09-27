@@ -1,5 +1,6 @@
 // src/components/Login.js
 import React, { useState } from 'react';
+import './LoginPage.module.css';
 
 function Login() {
   const [userName, setUserName] = useState('');
@@ -26,26 +27,30 @@ function Login() {
     }
   };
 
+
   return (
-    <div>
+    <div className="login-form">
       <h2>Login</h2>
-      <div>
+      <p>Username</p>
+      
+      <form>
         <input
           type="userName"
           placeholder="UserName"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
-      </div>
-      <div>
+        <p>Password</p>
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </div>
-      <button onClick={handleLogin}>Login</button>
+      
+      <button type = "Submit" onClick={handleLogin}>Login</button>
+      <button>Create Account</button>
+      </form>
     </div>
   );
 }
