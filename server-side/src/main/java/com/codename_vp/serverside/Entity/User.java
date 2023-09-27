@@ -20,9 +20,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
-
+    @Column(name = "userName")
     private String userName;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
     private String email;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -34,7 +38,7 @@ public class User {
     private List<OwnedList> ownedLists = new ArrayList<>();
 
     // Constructors
-    public User(String userName, String email, String password) {
+    public User(String userName, String password, String email) {
 
         this.userName = userName;
         this.password = password;

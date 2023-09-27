@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 const SignupPage = () => {
-  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const url = 'http://localhost:7098/api/signup';
+  const [email, setEmail] = useState('');
+  const url = 'http://localhost:7098/register';
 
 
   const handleSignup = async () => {
@@ -21,15 +22,17 @@ const SignupPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({userName, password, email }),
       });
 
       if (response.ok) {
         // Successful registration, you can redirect to a login page or perform other actions
         console.log('Registration successful');
+        alert("You have registered successful")
       } else {
         // Handle registration failure, show error message to the user
         console.error('Registration failed');
+        alert("registration failed! Please try again.")
       }
     } catch (error) {
       console.error('An error occurred during registration', error);
@@ -41,10 +44,10 @@ const SignupPage = () => {
       <h2>Sign Up</h2>
       <form>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="userName"
+          placeholder="Username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
         <input
           type="password"
@@ -57,6 +60,12 @@ const SignupPage = () => {
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <button type="button" onClick={handleSignup}>
           Sign Up

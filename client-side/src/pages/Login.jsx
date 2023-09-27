@@ -17,8 +17,8 @@ const Login = () => {
              <div className="login-form">
             <h1>Codename Collection</h1>
             <form action="#" method="POST">
-              <p>Username or Email</p>
-              <input type="text" name="user" placeholder="mail@email.com" />
+              <p>Username</p>
+              <input type="userName" name="userName" placeholder="Username" />
               <p>Password</p>
               <input type="password" name="password" placeholder="Password" />
               <span>
