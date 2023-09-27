@@ -1,60 +1,56 @@
-// src/components/LoginPage.js
-import  { useState } from 'react';
-import './LoginPage.module.css';
+// src/components/Login.js
+import React, { useState } from 'react';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
+function Login() {
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const url = 'http://localhost:7098/api/login';
 
   const handleLogin = async () => {
+    // Make an API request to your Spring Boot backend here
     try {
-        // Make a POST request to your backend API to authenticate the user
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-  
-        if (response.ok) {
-          // Successful login, redirect to a protected page or perform other actions
-          console.log('Login successful');
-        } else {
-          // Handle login failure, show error message to the user
-          console.error('Login failed');
-        }
-      } catch (error) {
-        console.error('An error occurred during login', error);
+      const response = await fetch('http://localhost:7098/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userName, password }),
+      });
+
+      if (response.ok) {
+        console.log('Request Data:', { userName, password });
+      } else {
+        console.log("Username or password is incorrect.")
       }
+    } catch (error) {
+      console.error('Error: login failed', error);
+    }
   };
 
   return (
-    <>
-    <div className="login-form">
-      <h2>Codename Collection</h2>
-      <p>Username or Email</p>
-      <form action="#" method="POST">
+    <div>
+      <h2>Login</h2>
+      <div>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="userName"
+          placeholder="UserName"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
-        <p>Password</p>
+      </div>
+      <div>
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" onClick={handleLogin}>Login</button>
-        {/* <button type="submit" onClick={handleLogin}>Login</button> */}
-      </form>
+      </div>
+      <button onClick={handleLogin}>Login</button>
     </div>
-    </>
   );
-};
+}
 
-export default LoginPage;
+export default Login;
+
+
+
