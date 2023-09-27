@@ -28,9 +28,11 @@ const SignupPage = () => {
       if (response.ok) {
         // Successful registration, you can redirect to a login page or perform other actions
         console.log('Registration successful');
+        alert("You have registered successful")
       } else {
         // Handle registration failure, show error message to the user
         console.error('Registration failed');
+        alert("registration failed! Please try again.")
       }
     } catch (error) {
       console.error('An error occurred during registration', error);

@@ -1,10 +1,14 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import './LoginPage.module.css';
+import { useNavigate } from 'react-router-dom'
+
 
 function Login() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
+  
 
   const handleLogin = async () => {
     // Make an API request to your Spring Boot backend here
@@ -18,9 +22,15 @@ function Login() {
       });
 
       if (response.ok) {
+        navigate('/user-detail', );
         console.log('Request Data:', { userName, password });
+        
+        alert('User Login successfully');
+        
+       
       } else {
         console.log("Username or password is incorrect.")
+        alert("Username or password is incorrect.")
       }
     } catch (error) {
       console.error('Error: login failed', error);
