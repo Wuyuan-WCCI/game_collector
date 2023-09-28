@@ -92,3 +92,33 @@ Login Form  */
   border-radius: 5px;
   border: 0;
 }
+
+/* ###STYLING### 
+Owned List Page  */
+
+
+/* Reset default margin and padding for all elements */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* Style the container to hold the boxes */
+.container {
+  display: flex; /* Use flexbox to arrange the boxes */
+  justify-content: space-between; /* Distribute space evenly between boxes */
+  width: 100%; /* Make the container 100% width of the viewport */
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Style the boxes (make them equal-sized) */
+.box {
+  flex: 1; /* Distribute available space equally among the boxes */
+  background-color: #feffb5; /* Set a background color */
+  padding: 20px; /* Add padding for spacing inside the boxes */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 5px;
+  margin: 1rem;
+}
