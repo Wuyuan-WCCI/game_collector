@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import GameList from '../components/GameList';
 
 function DiscoverySearch() {
   const [data, setData] = useState([]);
@@ -8,30 +7,30 @@ function DiscoverySearch() {
 
   useEffect(() => {
     // Define the URL of your backend API
-    const apiUrl = 'http://localhost:7098/top_games'
+    const apiUrl = 'http://localhost:7098/top_games';
 
     fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (data.results && Array.isArray(data.results)) {
-        setData(data.results);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.results && Array.isArray(data.results)) {
+          setData(data.results);
+          setLoading(false);
+        } else {
+          // Handle cases where the response structure is unexpected
+          setError(new Error('Unexpected API response'));
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setError(error);
         setLoading(false);
-      } else {
-        // Handle cases where the response structure is unexpected
-        setError(new Error('Unexpected API response'));
-        setLoading(false);
-      }
-    })
-    .catch((error) => {
-      setError(error);
-      setLoading(false);
-    });
-}, []);
+      });
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>; // You can show a loading indicator here
@@ -43,15 +42,21 @@ function DiscoverySearch() {
 
   return (
     <div>
-    <br></br>
-    <br></br>
+      <br></br>
+      <br></br>
       <h1>HOT GAMES</h1>
-      <GameList></GameList>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
+      <div className="container">
+        {data.map((game) => (
+          <div className="box" key={game.id}>
+          <img src={game.image_background} alt={game.name} />
+            <h2>Title: {game.name}</h2>
+
+            <p><b>Release Date: </b> {game.released}</p>
+            <p><b>Rating: </b> {game.rating}/5</p>
+            {/* Add more game details as needed */}
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

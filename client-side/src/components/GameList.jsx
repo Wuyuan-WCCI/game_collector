@@ -35,7 +35,7 @@ function GameList() {
 
   return (
     <div>
-    <h2>Game List</h2>
+    {/* <h2>Game List</h2> */} <br></br>
     {loading ? (
       <p>Loading...</p>
     ) : error ? (
@@ -44,11 +44,15 @@ function GameList() {
       <ul>
         {games.map((game) => (
           <li key={game.id}>
-            <h2>{game.name}</h2>
-            <img src={game.image_background} alt={game.name} />
+          <img src={game.image_background} alt={game.name} />
+            <h2>Title: {game.name}</h2>
             <p>Release Date: {game.released}</p>
             <p>Rating: {game.rating}/5</p>
             {/* Add more game details as needed */}
+            {/* <h3>Title: {item.name}</h3>
+            <p>Slug: {item.slug}</p>
+            <p>Released: {item.release}</p>
+            <p>Description: {item.description}</p> */}
           </li>
         ))}
       </ul>

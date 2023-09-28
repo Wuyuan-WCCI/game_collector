@@ -116,7 +116,9 @@ Owned List Page  */
 /* Style the boxes (make them equal-sized) */
 .box {
   flex: 1; /* Distribute available space equally among the boxes */
-  background-color: #f0f0f0; /* Set a background color */
+  background-color: #feffb5; /* Set a background color */
   padding: 20px; /* Add padding for spacing inside the boxes */
   border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 5px;
+  margin: 1rem;
 }
