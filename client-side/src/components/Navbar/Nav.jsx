@@ -11,7 +11,7 @@ const Nav = () => {
             <a href="http://localhost:5173/owned-list">Owned Games</a>
             <a href="http://localhost:5173/wish-list">Wish List</a>
             <a href="http://localhost:5173/discover">Discover</a>
-            <a href="http://localhost:5173/login">Login/SignUp</a>
+            <a href="http://localhost:5173/login"><b>Login/SignUp</b></a>
         </nav>
         {/* <nav>
           <img src="client-side\src\assets\MysteryEducator.svg" width="60px" />
