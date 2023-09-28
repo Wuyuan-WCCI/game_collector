@@ -45,6 +45,7 @@ function GameList() {
         {games.map((game) => (
           <li key={game.id}>
             <h2>{game.name}</h2>
+            <img src={game.image_background} alt={game.name} />
             <p>Release Date: {game.released}</p>
             <p>Rating: {game.rating}/5</p>
             {/* Add more game details as needed */}
