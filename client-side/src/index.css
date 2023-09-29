@@ -110,10 +110,11 @@ Owned List Page  */
 /* Style the boxes (make them equal-sized) */
 .box {
   background-color: #feffb5; /* Set a background color */
+  box-shadow: 5px 5px 8px #87194C, 10px 10px 8px #000;
   padding: 20px; /* Add padding for spacing inside the boxes */
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
-  margin: 1rem;
+  margin: 1.5rem;
   display: flex;
   justify-content: space-between; /* Align buttons to the right */
   align-items: center; /* Vertically center buttons */
@@ -134,9 +135,11 @@ Owned List Page  */
 .box-name {
   height: 150px;
   width: 40%;
-  background-color: #000; /* Set a background color */
+  /* background-color: #000;  */
+  /* Set a background color */
   padding: 10px; /* Add padding for spacing inside the boxes */
-  border: 1px solid #ccc; /* Add a border for visual separation */
+  /* border: 1px solid #ccc;  */
+  /* Add a border for visual separation */
   border-radius: 5px;
   /* margin: 1rem; */
   /* display: flex; */

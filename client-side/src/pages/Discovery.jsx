@@ -66,7 +66,9 @@ function DiscoverySearch() {
     <div>
       <br></br>
       <br></br>
-      <h1>HOT GAMES</h1>
+      <br></br>
+      <br></br>
+      {/* <h1>HOT GAMES</h1> */}
       <div className="container">
         {data.map((game) => (
           <div className="box" key={game.id}>
@@ -94,6 +96,10 @@ function DiscoverySearch() {
           </div>
         ))}
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 }
