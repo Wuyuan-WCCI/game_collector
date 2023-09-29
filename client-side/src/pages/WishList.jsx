@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 
 const WishList = () => {
   const [collection, setCollection] = useState([]);
-  const baseUrl = 'http://localhost:7098/wish-list';
+  const baseUrl = "http://localhost:7098/wish-list";
 
   useEffect(() => {
     const fetchWishListData = async () => {
       try {
         const response = await fetch(baseUrl);
         if (!response.ok) {
-          throw new Error('Response is not right');
+          throw new Error("Response is not right");
         }
         const data = await response.json();
         setCollection(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -22,15 +22,12 @@ const WishList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>WishList</h1>
+    <div className="wishList">
+      <h1>Wish List</h1>
       <div className="container">
         {collection.map((item) => (
           <div className="box" key={item.id}>
-            <img
-              src={item.imgUrl}
-              alt={`Image ${item.name}`}
-            />
+            <img src={item.imgUrl} alt={`Image ${item.name}`} />
             <h3>Title: {item.name}</h3>
             <p>Slug: {item.slug}</p>
             <p>Released: {item.release}</p>
