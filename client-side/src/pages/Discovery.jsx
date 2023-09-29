@@ -5,6 +5,28 @@ function DiscoverySearch() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Define your WishList and OwnedList states
+  const [wishList, setWishList] = useState([]);
+  const [ownedList, setOwnedList] = useState([]);
+
+  // Function to handle adding a game to the WishList
+  const handleButtonAddWishList = (game) => {
+    // Check if the game is already in the WishList to avoid duplicates
+    if (!wishList.some((item) => item.id === game.id)) {
+      // Add the game to the WishList
+      setWishList([...wishList, game]);
+    }
+  };
+
+  // Function to handle adding a game to the OwnedList
+  const handleButtonAddOwnedList = (game) => {
+    // Check if the game is already in the OwnedList to avoid duplicates
+    if (!ownedList.some((item) => item.id === game.id)) {
+      // Add the game to the OwnedList
+      setOwnedList([...ownedList, game]);
+    }
+  };
+
   useEffect(() => {
     // Define the URL of your backend API
     const apiUrl = 'http://localhost:7098/top_games';
@@ -48,12 +70,27 @@ function DiscoverySearch() {
       <div className="container">
         {data.map((game) => (
           <div className="box" key={game.id}>
-          <img src={game.image_background} alt={game.name} />
-            <h2>Title: {game.name}</h2>
-
+          <div className="box-image">
+            <img src={game.image_background} alt={game.name} />
+            </div>
+            <div className="box-name">
+            <h2>{game.name}</h2>
+            </div>
+            <div className="box-release">
             <p><b>Release Date: </b> {game.released}</p>
+            </div>
+            <div className="box-rating">
             <p><b>Rating: </b> {game.rating}/5</p>
-            {/* Add more game details as needed */}
+            </div>
+            <div className="box-button">
+            <div className="button-container">
+              {/* Add button to add the game to the WishList */}
+              <button onClick={() => handleButtonAddWishList(game)}>Add to WishList</button>
+
+              {/* Add button to add the game to the OwnedList */}
+              <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
+            </div>
+            </div>
           </div>
         ))}
       </div>
