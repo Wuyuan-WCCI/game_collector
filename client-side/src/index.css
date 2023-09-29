@@ -101,7 +101,7 @@ Owned List Page  */
 }
 .container .box:hover {
   transform: scale(1.025);
-  transition-timing-function: 0.2s;
+  transition: 0.2s ease-in-out;
 }
 
 .wishList h1 {
