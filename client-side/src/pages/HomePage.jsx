@@ -8,26 +8,16 @@
 //     <h1>Welcome Home!</h1>
 //     </>
 //   );
-    
-//   };
-  
-//   export default HomePage;
 
-import { Link } from 'react-router-dom';
+//   };
+
+//   export default HomePage;
 
 const HomePage = () => {
   return (
-    <>
-      <br></br>
-      <br></br>
-      <br></br>
+    <div className="homepage">
       <h1>Welcome Home!</h1>
-      <Link to="/wish-list">Go to WishList</Link>
-      <br />
-      <Link to="/owned-list">Go to OwnedList</Link>
-      <br />
-      <Link to="/discover">Go to Discovery</Link>
-    </>
+    </div>
   );
 };
 
