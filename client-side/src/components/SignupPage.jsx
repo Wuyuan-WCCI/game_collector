@@ -41,14 +41,17 @@ const SignupPage = () => {
 
   return (
     <div>
-      <h2>Sign Up</h2>
-      <form>
+      
+      <form className='login-form'>
+      <h1>Sign Up</h1>
+      <p>Username</p>
         <input
           type="userName"
           placeholder="Username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
+        <p>Password</p>
         <input
           type="password"
           placeholder="Password"
@@ -61,6 +64,7 @@ const SignupPage = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
+        <p>Email</p>
         <input
           type="email"
           placeholder="Email"
