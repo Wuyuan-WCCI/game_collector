@@ -1,7 +1,7 @@
 // import style from '/src/index.css'
 // import Card from '/src/components/ui/Card'
 // src/components/Homepage.js
-
+import { Link } from "react-router-dom";
 import LoginPage from "../components/LoginPage";
 
 //  <LoginPage /> 
@@ -23,7 +23,9 @@ const Login = () => {
               <input type="password" name="password" placeholder="Password" />
               <span>
                 <button type="submit">Login</button>
-                <button type="submit">Create Account</button>
+                <Link to="/signup">
+            <button>Create Account</button>
+          </Link>
               </span>
             </form>
           </div>  

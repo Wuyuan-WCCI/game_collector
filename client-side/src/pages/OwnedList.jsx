@@ -32,10 +32,12 @@ const OwnedList = () => {
       <div className="container">
         {collection.map((item) => (
           <div className="box" key={item.id}>
+          <div className="box-image">
             <img
               src={item.imgUrl}
               alt={`Image ${item.name}`}
             />
+            </div>
             <h3>Title: {item.name}</h3>
             <p>Slug: {item.slug}</p>
             <p>Released: {item.release}</p>
