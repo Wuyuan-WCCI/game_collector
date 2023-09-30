@@ -138,7 +138,7 @@ Owned List Page  */
 }
 
 .box-image {
-  height: 150px;
+  height: 250px;
   width: 20%;
   background-color: #fff; /* Set a background color */
   padding: 10px; /* Add padding for spacing inside the boxes */
@@ -148,6 +148,15 @@ Owned List Page  */
   /* display: flex; */
   align-items: center; /* Vertically center buttons */
 }
+
+.box img {
+  height: auto;
+  width: 100%;
+  align-items: center; /* Vertically center buttons */
+  align-content: center;
+  /* transform: translate(1%,1%); */
+}
+
 .box-name {
   height: 150px;
   width: 40%;
@@ -178,7 +187,7 @@ Owned List Page  */
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
   /* margin: 1rem; */
-  /* display: flex; */
+  display: flex;
   justify-content: space-between; /* Align buttons to the right */
   align-items: center; /* Vertically center buttons */
   align-content: center;
@@ -191,8 +200,8 @@ Owned List Page  */
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
   /* margin: 1rem; */
-  /* display: flex; */
-  justify-content: space-between; /* Align buttons to the right */
+  display: flex;
+  justify-content: space-between; 
   align-items: center; /* Vertically center buttons */
   align-content: center;
 }
@@ -230,6 +239,3 @@ Owned List Page  */
 }
 
 /* Add hover effect to buttons */
-.button-container button:hover {
-  background-color: #87194c;
-}

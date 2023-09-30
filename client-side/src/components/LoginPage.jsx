@@ -37,10 +37,9 @@ function Login() {
     }
   };
 
-  const handleCreatAccount = async () => {
+  const handleCreateAccount = async () => {
     navigate("/register");
   }
-
 
   return (
     <div className="login-form">
@@ -63,7 +62,7 @@ function Login() {
         />
       
       <button type = "Submit" onClick={handleLogin}>Login</button>
-      <button type='button' onClick={handleCreatAccount}>Create Account</button>
+      <button type='button' onClick={handleCreateAccount}>Create Account</button>
       </form>
     </div>
   );

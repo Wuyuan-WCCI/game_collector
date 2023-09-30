@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function DiscoverySearch() {
   const [data, setData] = useState([]);
@@ -29,12 +29,12 @@ function DiscoverySearch() {
 
   useEffect(() => {
     // Define the URL of your backend API
-    const apiUrl = "http://localhost:7098/top_games";
+    const apiUrl = 'http://localhost:7098/top_games';
 
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         return response.json();
       })
@@ -44,7 +44,7 @@ function DiscoverySearch() {
           setLoading(false);
         } else {
           // Handle cases where the response structure is unexpected
-          setError(new Error("Unexpected API response"));
+          setError(new Error('Unexpected API response'));
           setLoading(false);
         }
       })
@@ -63,39 +63,35 @@ function DiscoverySearch() {
   }
 
   return (
-    <div className="discover">
-      <h1>HOT GAMES</h1>
+    <div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      {/* <h1>HOT GAMES</h1> */}
       <div className="container">
         {data.map((game) => (
           <div className="box" key={game.id}>
-            <div className="box-image">
-              <img src={game.image_background} alt={game.name} />
+          <div className="box-image">
+            <img src={game.image_background} alt={game.name} />
             </div>
             <div className="box-name">
-              <h2>{game.name}</h2>
+            <h2>{game.name}</h2>
             </div>
             <div className="box-release">
-              <p>
-                <b>Release Date: </b> {game.released}
-              </p>
+            <p><b>Release Date: </b> {game.released}</p>
             </div>
             <div className="box-rating">
-              <p>
-                <b>Rating: </b> {game.rating}/5
-              </p>
+            <p><b>Rating: </b> {game.rating}/5</p>
             </div>
             <div className="box-button">
-              <div className="button-container">
-                {/* Add button to add the game to the WishList */}
-                <button onClick={() => handleButtonAddWishList(game)}>
-                  Add to WishList
-                </button>
+            <div className="button-container">
+              {/* Add button to add the game to the WishList */}
+              <button onClick={() => handleButtonAddWishList(game)}>Add to WishList</button>
 
-                {/* Add button to add the game to the OwnedList */}
-                <button onClick={() => handleButtonAddOwnedList(game)}>
-                  Add to OwnedList
-                </button>
-              </div>
+              {/* Add button to add the game to the OwnedList */}
+              <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
+            </div>
             </div>
           </div>
         ))}

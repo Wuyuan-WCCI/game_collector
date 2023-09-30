@@ -73,12 +73,12 @@ public class Populator implements CommandLineRunner {
 
         System.out.println("\n================== Owned List ==================\n");
 
-        OwnedList newGame = new OwnedList("Mario", null, null, null, platforms);
+        OwnedList newGame = new OwnedList("Mario", null, null, "https://i.etsystatic.com/17317138/r/il/517956/4880965373/il_794xN.4880965373_1l44.jpg", platforms);
         newGame.setId(3);
         ownedListRepo.save(newGame);
         user1.getOwnedLists().add(newGame);
 
-        OwnedList newGame2 = new OwnedList("Final Fantasy", null, null, null, platforms);
+        OwnedList newGame2 = new OwnedList("Final Fantasy", null, null, "https://cdn.akamai.steamstatic.com/steam/apps/1173770/header.jpg?t=1646929110", platforms);
         newGame2.setId(52);
         ownedListRepo.save(newGame2);
         List<OwnedList> ownedList = ownedListRepo.findAll();
