@@ -56,7 +56,7 @@ Login Form  */
   background-color: #feffb5;
   border-radius: 5px;
   border: 1px solid white;
-  box-shadow: -5px -5px 8px #87194C, -10px -10px 8px #198754
+  box-shadow: -5px -5px 8px #87194c, -10px -10px 8px #198754;
 }
 
 .login-form h1 {
@@ -95,8 +95,24 @@ Login Form  */
 
 /* ###STYLING### 
 Owned List Page  */
+.ownedList h1 {
+  color: white;
+  padding-top: 190px;
+}
+.container .box:hover {
+  transform: scale(1.025);
+  transition: 0.2s ease-in-out;
+}
 
+.wishList h1 {
+  color: white;
+  padding-top: 190px;
+}
 
+.discover h1 {
+  color: white;
+  padding-top: 190px;
+}
 
 /* Style the container to hold the boxes */
 .container {
@@ -110,7 +126,7 @@ Owned List Page  */
 /* Style the boxes (make them equal-sized) */
 .box {
   background-color: #feffb5; /* Set a background color */
-  box-shadow: 5px 5px 8px #87194C, 10px 10px 8px #000;
+  box-shadow: 5px 5px 8px #87194c, 10px 10px 8px #000;
   padding: 20px; /* Add padding for spacing inside the boxes */
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
@@ -159,8 +175,8 @@ Owned List Page  */
 
 /* Game title name styling */
 .box-name h2 {
-  color: #87194C;
-  text-shadow: 1px 1px 2px #198754; 
+  color: #87194c;
+  text-shadow: 1px 1px 2px #198754;
 }
 
 .box-release {
@@ -191,10 +207,10 @@ Owned List Page  */
 }
 .box-button {
   /* Set a background color */
-  background-color: #feffb5; 
+  background-color: #feffb5;
   /* Add padding for spacing inside the boxes */
-  padding: 10px; 
- /* Add a border for visual separation */
+  padding: 10px;
+  /* Add a border for visual separation */
   /* border: 1px solid #ccc;  */
   border-radius: 5px;
   /* margin: 1rem; */
@@ -223,6 +239,3 @@ Owned List Page  */
 }
 
 /* Add hover effect to buttons */
-.button-container button:hover {
-  background-color: #87194C;
-}
