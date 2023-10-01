@@ -56,7 +56,9 @@ public class WishList extends Game {
 
     @Override
     public String toString() {
-        return "\nName = " + getName();
+        return "\nName = " + this.getName() + "\nSlug: " + this.getSlug() + "\nReleaseDate: " + this.getReleased()
+                + "\nStatus: "
+                + status + "\nDescription: " + this.getDescription() + "\n Image: " + this.getImgUrl();
     }
 
 }
