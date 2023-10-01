@@ -1,19 +1,20 @@
-// src/components/Login.js
+
 import { useState } from 'react';
 import './LoginPage.module.css';
 import { useNavigate } from 'react-router-dom'
 
 
-function Login() {
+const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+  const url = 'http://localhost:7098/login';
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     // Make an API request to your Spring Boot backend here
     try {
-      const response = await fetch('http://localhost:7098/login', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,11 +23,14 @@ function Login() {
       });
 
       if (response.ok) {
-        navigate('/user-detail', );
-        console.log('Request Data:', { userName, password });
+        const data = await response.json();
+        console.log('Response data:', data);
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userId', data.id);
+        console.log('Login successfully');
         
-        alert('User Login successfully');
-        
+        alert('User Login successfully')
+        navigate('/user-detail')
        
       } else {
         console.log("Username or password is incorrect.")
@@ -43,10 +47,9 @@ function Login() {
 
   return (
     <div className="login-form">
-      <h1>Login</h1>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
       <p>Username</p>
-      
-      <form>
         <input
           type="userName"
           placeholder="UserName"

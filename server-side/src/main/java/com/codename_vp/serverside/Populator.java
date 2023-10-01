@@ -36,15 +36,15 @@ public class Populator implements CommandLineRunner {
 
         System.out.println("Hello Populator\n");
 
-        User user1 = new User(" miketb12 ", " miketb12@gmail.com ", " 1234");
+        User user1 = new User("miketb12", "1234", " miketb12@gmail.com");
         userRepo.save(user1);
         users.add(0, user1);
 
-        User user2 = new User(" miketb22 ", " miketb12@gmail.com ", " 1234");
+        User user2 = new User("miketb22", "1234", "miketb12@gmail.com ");
         userRepo.save(user2);
         users.add(1, user2);
 
-        User user3 = new User("miketb52 ", " miketb12@gmail.com ", " 1234");
+        User user3 = new User("miketb52", "1234", "miketb12@gmail.com");
         userRepo.save(user3);
         users.add(2, user3);
 
@@ -73,14 +73,18 @@ public class Populator implements CommandLineRunner {
 
         System.out.println("\n================== Owned List ==================\n");
 
-        OwnedList newGame = new OwnedList("Mario", null, null, "https://i.etsystatic.com/17317138/r/il/517956/4880965373/il_794xN.4880965373_1l44.jpg", platforms);
+        OwnedList newGame = new OwnedList("Mario", null, null,
+                "https://i.etsystatic.com/17317138/r/il/517956/4880965373/il_794xN.4880965373_1l44.jpg", platforms);
         newGame.setId(3);
         ownedListRepo.save(newGame);
         user1.getOwnedLists().add(newGame);
 
-        OwnedList newGame2 = new OwnedList("Final Fantasy", null, null, "https://cdn.akamai.steamstatic.com/steam/apps/1173770/header.jpg?t=1646929110", platforms);
+        OwnedList newGame2 = new OwnedList("Final Fantasy", null, null,
+                "https://cdn.akamai.steamstatic.com/steam/apps/1173770/header.jpg?t=1646929110", platforms);
         newGame2.setId(52);
         ownedListRepo.save(newGame2);
+        user1.getOwnedLists().add(newGame2);
+
         List<OwnedList> ownedList = ownedListRepo.findAll();
         if (ownedList.isEmpty()) {
             System.out.println("The Wish List is empty");
