@@ -23,7 +23,10 @@ const Login = () => {
       });
 
       if (response.ok) {
-        
+        const data = await response.json();
+        console.log('Response data:', data);
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userId', data.id);
         console.log('Login successfully');
         
         alert('User Login successfully')
