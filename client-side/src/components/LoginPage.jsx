@@ -10,7 +10,8 @@ function Login() {
   const navigate = useNavigate()
   
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     // Make an API request to your Spring Boot backend here
     try {
       const response = await fetch('http://localhost:7098/login', {
