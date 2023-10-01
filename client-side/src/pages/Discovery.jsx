@@ -73,7 +73,7 @@ function DiscoverySearch() {
         {data.map((game) => (
           <div className="box" key={game.id}>
           <div className="box-image">
-            <img src={game.image_background} alt={game.name} />
+            <img src={game.background_image} alt={game.name} />
             </div>
             <div className="box-name">
             <h2>{game.name}</h2>

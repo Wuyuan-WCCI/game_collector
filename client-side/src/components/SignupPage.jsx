@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
   const [userName, setUserName] = useState('');
@@ -6,7 +7,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const url = 'http://localhost:7098/register';
-
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -26,9 +27,9 @@ const SignupPage = () => {
       });
 
       if (response.ok) {
-        // Successful registration, you can redirect to a login page or perform other actions
         console.log('Registration successful');
-        alert("You have registered successful")
+        alert("You have registered successful, please login!")
+        navigate('/login')
       } else {
         // Handle registration failure, show error message to the user
         console.error('Registration failed');

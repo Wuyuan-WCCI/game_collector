@@ -56,6 +56,8 @@ public class OwnedList extends Game {
 
     @Override
     public String toString() {
-        return "\nGame's Name = " + getName();
+        return "\nName = " + this.getName() + "\nSlug: " + this.getSlug() + "\nReleaseDate: " + this.getReleased()
+                + "\nStatus: "
+                + status + "\nDescription: " + this.getDescription() + "\n Image: " + this.getImgUrl();
     }
 }
