@@ -1,5 +1,5 @@
 
-
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const UserProfile = () => {
@@ -36,29 +36,46 @@ const UserProfile = () => {
   }, []);
 
   return (
+    
     <div className="container">
       <h2>User Profile</h2>
       {user ? (
+        <>
         <div className='box' key={user.id}>
           <p>User ID: {user.id}</p>
           <p>Username: {user.userName}</p>
           <p>Email: {user.email}</p>
-          <div>
-            <li>
-              <p>Wish List: {user.wishList}</p>
-            </li>
-            <li>
-              <p>Owned List: {user.ownedList}</p>
-            </li>
-            
-          
-          </div>
+
           {/* Add more user details here */}
         </div>
+              <br></br>
+      <br></br>
+      <br></br>
+      <Link to="/wish-list">
+      <h2>Wishlist</h2>
+            </Link>
+      <div className='box' key={user.id}>
+          <p>WishList:</p>
+
+        </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Link to="/owned-list">
+      <h2>OwnedList</h2>
+            </Link>
+      <div className='box' key={user.id}>
+          <p>OwnedList: </p>
+
+        </div>
+        </>
       ) : (
         <p>Loading user details...</p>
       )}
+
     </div>
+
+    
   );
 };
 
