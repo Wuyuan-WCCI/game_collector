@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
+import GameSearchForm from '../components/GameSearchForm';
+import GameDetail from './GameDetails';
+
 
 function DiscoverySearch() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedGameId, setSelectedGameId] = useState(null);
 
   // Define your WishList and OwnedList states
   const [wishList, setWishList] = useState([]);
@@ -25,6 +29,10 @@ function DiscoverySearch() {
       // Add the game to the OwnedList
       setOwnedList([...ownedList, game]);
     }
+  };
+
+  const handleSearch = (gameId) => {
+    setSelectedGameId(gameId);
   };
 
   useEffect(() => {
@@ -69,6 +77,15 @@ function DiscoverySearch() {
       <br></br>
       <br></br>
       {/* <h1>HOT GAMES</h1> */}
+      <div>
+      {/* Render the search form */}
+      <GameSearchForm onSearch={handleSearch} />
+
+      {/* Render the game details component */}
+      {selectedGameId && <GameDetail gameId={selectedGameId} />}
+
+      {/* ...the rest of your game listing */}
+    </div>
       <div className="container">
         {data.map((game) => (
           <div className="box" key={game.id}>
@@ -77,6 +94,12 @@ function DiscoverySearch() {
             </div>
             <div className="box-name">
             <h2>{game.name}</h2>
+            </div>
+            <div className="box-name">
+            <h2>{game.description}</h2>
+            </div>
+            <div className="box-button">
+            <h2>{game.id}</h2>
             </div>
             <div className="box-release">
             <p><b>Release Date: </b> {game.released}</p>
