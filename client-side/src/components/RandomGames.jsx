@@ -48,7 +48,7 @@ function RandomGames() {
     // Fetch details for each random gameId
     const fetchGames = async () => {
       try {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
           const randomGameId = getRandomGameId();
           await fetchGameWithRetry(randomGameId, MAX_RETRIES);
         }
@@ -77,14 +77,17 @@ function RandomGames() {
       <div className="container">
         {randomGames.map((game) => (
           <div className="box" key={game.id}>
+          <div className='box-discover-image'>
           <img
               src={game.background_image}
               alt={`Image ${game.name}`}
-            />
-            <h2>ID: {game.id}</h2>
+            /></div>
+            <div className='box-discover-name'>
             <h2>Name: {game.name}</h2>
+            </div>
+            <div className='box-discover-description'>
             <p>Description: {game.description}</p>
-            <p>Description: {game.description}</p>
+            </div>
           </div>
         ))}
       </div>
