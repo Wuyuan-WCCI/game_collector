@@ -11,7 +11,8 @@ const Nav = () => {
             <a href="http://localhost:5173/owned-list">Owned Games</a>
             <a href="http://localhost:5173/wish-list">Wish List</a>
             <a href="http://localhost:5173/register">Register</a>
-            <a href="http://localhost:5173/random-games">Random Games (Discover)</a>
+            <a href="http://localhost:5173/random-games">Random Games </a>
+            <a href="http://localhost:5173/new-games">New Releases</a>
             <a href="http://localhost:5173/user-detail">UserPage</a>
             <a href="http://localhost:5173/discover">Discover</a>
             <a href="http://localhost:5173/login"><b>Login/SignUp</b></a>

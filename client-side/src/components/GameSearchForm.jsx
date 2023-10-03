@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function GameSearchForm({ onSearch }) {
   const [gameId, setGameId] = useState('');
@@ -20,5 +21,8 @@ function GameSearchForm({ onSearch }) {
     </div>
   );
 }
-
+// Add prop validation
+GameSearchForm.propTypes = {
+  onSearch: PropTypes.func.any,
+};
 export default GameSearchForm;

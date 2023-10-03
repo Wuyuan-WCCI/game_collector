@@ -2,13 +2,14 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const UserProfile = () => {
+
+  const UserProfile = () => {
   const [user, setUser] = useState(null);
   
 
   useEffect(() => {
     // Retrieve the authentication token from where it's stored (localStorage, state, etc.)
-    const authToken = localStorage.getItem('authToken'); // You may need to adjust this based on your setup.
+    const authToken = localStorage.getItem('authToken'); 
     const userId = localStorage.getItem('userId')
 
     if (authToken) {
@@ -36,7 +37,6 @@ const UserProfile = () => {
   }, []);
 
   return (
-    
     <div className="container">
       <h2>User Profile</h2>
       {user ? (
@@ -52,7 +52,7 @@ const UserProfile = () => {
       <br></br>
       <br></br>
       <Link to="/wish-list">
-      <h2>Wishlist</h2>
+      <h2>My Wishlist</h2>
             </Link>
       <div className='box' key={user.id}>
           <p>WishList:</p>
@@ -62,7 +62,7 @@ const UserProfile = () => {
       <br></br>
       <br></br>
       <Link to="/owned-list">
-      <h2>OwnedList</h2>
+      <h2>My OwnedList</h2>
             </Link>
       <div className='box' key={user.id}>
           <p>OwnedList: </p>
@@ -74,8 +74,6 @@ const UserProfile = () => {
       )}
 
     </div>
-
-    
   );
 };
 
