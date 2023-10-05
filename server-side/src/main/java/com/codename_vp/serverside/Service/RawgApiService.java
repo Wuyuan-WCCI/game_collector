@@ -1,6 +1,7 @@
 package com.codename_vp.serverside.Service;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,6 +51,19 @@ public class RawgApiService {
 
     public ResponseEntity<String> getTop10Games() {
         String url = apiUrl + "/games?key=" + apiKey + "&ordering=-rating&page_size=10&metacritic=800";
+
+        return restTemplate.getForEntity(url, String.class);
+    }
+
+    public ResponseEntity<String> getNewReleaseGames() {
+        LocalDate currentDate = LocalDate.now();
+        String formattedDate = currentDate.toString();
+
+        // Construct the "dates" parameter with the start and end date
+        String dateRange = "2023-09-01" + "," + formattedDate;
+
+        // Construct the URL with the "dates" parameter
+        String url = apiUrl + "/games?key=" + apiKey + "&ordering=-added&page_size=20&dates=" + dateRange;
 
         return restTemplate.getForEntity(url, String.class);
     }

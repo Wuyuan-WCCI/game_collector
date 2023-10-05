@@ -10,8 +10,22 @@ const Nav = () => {
             <a href="http://localhost:5173/">Home</a>
             <a href="http://localhost:5173/owned-list">Owned Games</a>
             <a href="http://localhost:5173/wish-list">Wish List</a>
+            <a href="http://localhost:5173/register">Register</a>
+            <a href="http://localhost:5173/random-games">Random Games </a>
+            <a href="http://localhost:5173/new-games">New Releases</a>
+            <a href="http://localhost:5173/user-detail">UserPage</a>
             <a href="http://localhost:5173/discover">Discover</a>
             <a href="http://localhost:5173/login"><b>Login/SignUp</b></a>
+
+            {/* <Route path="/" element={<HomePage />} />;
+        <Route path="/login" element={<LoginPage />} />;
+        <Route path="/register" element={<SignupPage />} />;
+        <Route path="/discover" element={<DiscoverySearch />}/>
+        <Route path="/game-detail/:gameId" element={<GameDetail />} />
+        <Route path="/random-games" element={<RandomGames />} />
+        <Route path="/user-detail" element={<UserProfile />} />;
+        <Route path="/wish-list" element ={<WishList/>}/>;
+        <Route path="/owned-list" element ={<OwnedList/>}/>; */}
         </nav>
         {/* <nav>
           <img src="client-side\src\assets\MysteryEducator.svg" width="60px" />

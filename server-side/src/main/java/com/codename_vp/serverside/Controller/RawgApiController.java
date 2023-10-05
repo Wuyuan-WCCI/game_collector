@@ -40,7 +40,12 @@ public class RawgApiController {
         return rawgService.getTop10Games();
     }
 
-    @PostMapping("add-to-wish-list/{gameId}")
+    @GetMapping("/new_games")
+    public ResponseEntity<String> getNewReleaseGames() {
+        return rawgService.getNewReleaseGames();
+    }
+
+    @PostMapping("/add-to-wish-list/{gameId}")
     public ResponseEntity<WishList> addToWishList(@PathVariable int gameId) {
         WishList wishList = rawgService.addToWishList(gameId);
         if (wishList != null) {
@@ -53,7 +58,7 @@ public class RawgApiController {
 
     }
 
-    @PostMapping("add-to-owned-list/{gameId}")
+    @PostMapping("/add-to-owned-list/{gameId}")
     public ResponseEntity<OwnedList> addToOwnList(@PathVariable int gameId) {
         OwnedList ownedList = rawgService.addToOwnedList(gameId);
         return ResponseEntity.ok(ownedList);

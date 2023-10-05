@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import GameSearchForm from '../components/GameSearchForm';
-import GameDetail from './GameDetails';
 
 
-function DiscoverySearch() {
+function NewReleases() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedGameId, setSelectedGameId] = useState(null);
+
 
   // Define your WishList and OwnedList states
   const [wishList, setWishList] = useState([]);
@@ -31,13 +29,10 @@ function DiscoverySearch() {
     }
   };
 
-  const handleSearch = (gameId) => {
-    setSelectedGameId(gameId);
-  };
 
   useEffect(() => {
     // Define the URL of your backend API
-    const apiUrl = 'http://localhost:7098/top_games';
+    const apiUrl = 'http://localhost:7098/new_games';
 
     fetch(apiUrl)
       .then((response) => {
@@ -78,11 +73,7 @@ function DiscoverySearch() {
       <br></br>
       {/* <h1>HOT GAMES</h1> */}
       <div>
-      {/* Render the search form */}
-      <GameSearchForm onSearch={handleSearch} />
 
-      {/* Render the game details component */}
-      {selectedGameId && <GameDetail gameId={selectedGameId} />}
 
       {/* ...the rest of your game listing */}
     </div>
@@ -127,4 +118,4 @@ function DiscoverySearch() {
   );
 }
 
-export default DiscoverySearch;
+export default NewReleases;

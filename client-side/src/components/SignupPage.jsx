@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
   const [userName, setUserName] = useState('');
@@ -6,7 +7,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const url = 'http://localhost:7098/register';
-
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -26,9 +27,9 @@ const SignupPage = () => {
       });
 
       if (response.ok) {
-        // Successful registration, you can redirect to a login page or perform other actions
         console.log('Registration successful');
-        alert("You have registered successful")
+        alert("You have registered successful, please login!")
+        navigate('/login')
       } else {
         // Handle registration failure, show error message to the user
         console.error('Registration failed');
@@ -41,14 +42,17 @@ const SignupPage = () => {
 
   return (
     <div>
-      <h2>Sign Up</h2>
-      <form>
+      
+      <form className='login-form'>
+      <h1>Sign Up</h1>
+      <p>Username</p>
         <input
           type="userName"
           placeholder="Username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
+        <p>Password</p>
         <input
           type="password"
           placeholder="Password"
@@ -61,6 +65,7 @@ const SignupPage = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
+        <p>Email</p>
         <input
           type="email"
           placeholder="Email"

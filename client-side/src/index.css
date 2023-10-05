@@ -43,6 +43,7 @@ main {
   min-height: 100vh;
 }
 
+
 .homepage {
   color: white;
   top: 50%;
@@ -68,11 +69,15 @@ Login Form  */
   box-shadow: -5px -5px 8px #87194c, -10px -10px 8px #198754;
 }
 
+.login-form h2 {
+  right: 50%;
+}
+
 .login-form h1 {
   font-size: 40px;
   text-align: center;
   text-transform: uppercase;
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 .login-form p {
@@ -84,10 +89,10 @@ Login Form  */
   font-size: 16px;
   width: 80%;
   padding: 15px 10px;
-  border: 0;
+  border: 1px solid;
   outline: none;
   border-radius: 5px;
-  margin: 0 20px;
+  margin: 2px 20px;
 }
 
 .login-form button {
@@ -147,7 +152,7 @@ Owned List Page  */
 }
 
 .box-image {
-  height: 250px;
+  height: auto;
   width: 20%;
   background-color: #fff; /* Set a background color */
   padding: 10px; /* Add padding for spacing inside the boxes */
@@ -247,4 +252,58 @@ Owned List Page  */
   width: 100px;
 }
 
+.box-discover-name {
+  height: 250px;
+  width: 30%;
+  /* background-color: #000;  */
+  /* Set a background color */
+  padding: 10px; /* Add padding for spacing inside the boxes */
+  /* border: 1px solid #ccc;  */
+  /* Add a border for visual separation */
+  border-radius: 5px;
+  /* margin: 1rem; */
+  /* display: flex; */
+  justify-content: space-between; /* Align buttons to the right */
+  align-items: center; /* Vertically center buttons */
+  align-content: center;
+}
+.box-discover-description {
+  height: 250px;
+  width: 40%;
+  /* background-color: #000;  */
+  /* Set a background color */
+  padding: 10px; /* Add padding for spacing inside the boxes */
+  /* border: 1px solid #ccc;  */
+  /* Add a border for visual separation */
+  border-radius: 5px;
+  /* margin: 1rem; */
+  /* display: flex; */
+  justify-content: space-between; /* Align buttons to the right */
+  align-items: center; /* Vertically center buttons */
+  align-content: center;
+}
+.box-discover-image {
+  height: auto;
+  width: 40%;
+  /* background-color: #000;  */
+  /* Set a background color */
+  padding: 10px; /* Add padding for spacing inside the boxes */
+  /* border: 1px solid #ccc;  */
+  /* Add a border for visual separation */
+  border-radius: 5px;
+  /* margin: 1rem; */
+  /* display: flex; */
+  justify-content: space-between; /* Align buttons to the right */
+  align-items: center; /* Vertically center buttons */
+  align-content: center;
+}
+
 /* Add hover effect to buttons */
+
+
+/* ###STYLING### 
+GAME DETAILS  */
+
+.game-detail p {
+  color: #fff;
+}

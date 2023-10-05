@@ -8,6 +8,9 @@ import UserProfile from './pages/UserProfile';
 import WishList from './pages/WishList';
 import OwnedList from './pages/OwnedList';
 import DiscoverySearch from './pages/Discovery';
+import GameDetail from './pages/GameDetails';
+import RandomGames from './components/RandomGames';
+import NewReleases from './components/NewReleases';
 function App() {
   return (
     <Layout>
@@ -16,6 +19,9 @@ function App() {
         <Route path="/login" element={<LoginPage />} />;
         <Route path="/register" element={<SignupPage />} />;
         <Route path="/discover" element={<DiscoverySearch />}/>
+        <Route path="/game-detail/:gameId" element={<GameDetail />} />
+        <Route path="/random-games" element={<RandomGames />} /> {/* Add a new route for RandomGames */}
+        <Route path="/new-games" element={<NewReleases />} /> {/* Add a new route for RandomGames */}
         <Route path="/user-detail" element={<UserProfile />} />;
         <Route path="/wish-list" element ={<WishList/>}/>;
         <Route path="/owned-list" element ={<OwnedList/>}/>;
