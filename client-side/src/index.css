@@ -43,7 +43,6 @@ main {
   min-height: 100vh;
 }
 
-
 .homepage {
   color: white;
   top: 50%;
@@ -135,6 +134,7 @@ Owned List Page  */
   width: 100%; /* Make the container 100% width of the viewport */
   max-width: 1200px; /* Set a maximum width for the container */
   margin: 0 auto; /* Center the container horizontally */
+  word-wrap: break-word;
 }
 
 /* Style the boxes (make them equal-sized) */
@@ -164,15 +164,16 @@ Owned List Page  */
 }
 
 .box img {
-  height: auto;
+  height: 250px;
   width: 100%;
   align-items: center; /* Vertically center buttons */
   align-content: center;
+  object-fit: contain;
   /* transform: translate(1%,1%); */
 }
 
 .box-name {
-  height: 150px;
+  height: auto;
   width: 40%;
   /* background-color: #000;  */
   /* Set a background color */
@@ -281,6 +282,7 @@ Owned List Page  */
   justify-content: space-between; /* Align buttons to the right */
   align-items: center; /* Vertically center buttons */
   align-content: center;
+  overflow: hidden;
 }
 .box-discover-image {
   height: auto;
@@ -299,7 +301,6 @@ Owned List Page  */
 }
 
 /* Add hover effect to buttons */
-
 
 /* ###STYLING### 
 GAME DETAILS  */
