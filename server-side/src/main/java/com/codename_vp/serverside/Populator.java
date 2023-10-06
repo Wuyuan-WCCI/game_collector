@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.codename_vp.serverside.Entity.Game;
 import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.Platform;
 import com.codename_vp.serverside.Entity.User;
@@ -36,15 +37,15 @@ public class Populator implements CommandLineRunner {
 
         System.out.println("Hello Populator\n");
 
-        User user1 = new User(" miketb12 ", " miketb12@gmail.com ", " 1234");
+        User user1 = new User("abc123", "1234", "abc123@gmail.com ");
         userRepo.save(user1);
         users.add(0, user1);
 
-        User user2 = new User(" miketb22 ", " miketb12@gmail.com ", " 1234");
+        User user2 = new User("def123", "1234", "def123@gmail.com ");
         userRepo.save(user2);
         users.add(1, user2);
 
-        User user3 = new User("miketb52 ", " miketb12@gmail.com ", " 1234");
+        User user3 = new User("hijk123", "1234", "hijk123@gmail.com");
         userRepo.save(user3);
         users.add(2, user3);
 
