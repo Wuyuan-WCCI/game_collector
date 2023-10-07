@@ -51,21 +51,21 @@ import { useState, useEffect } from 'react';
               <br></br>
       <br></br>
       <br></br>
-      <Link to="/wish-list">
-      <h2>My Wishlist</h2>
-            </Link>
-      <div className='box' key={user.id}>
-          <p>WishList:</p>
-
-        </div>
-      <br></br>
-      <br></br>
-      <br></br>
       <Link to="/owned-list">
       <h2>My OwnedList</h2>
             </Link>
       <div className='box' key={user.id}>
           <p>OwnedList: </p>
+
+        </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Link to="/wish-list">
+      <h2>My Wishlist</h2>
+            </Link>
+      <div className='box' key={user.id}>
+          <p>WishList:</p>
 
         </div>
         </>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function NewReleases() {
@@ -77,39 +78,40 @@ function NewReleases() {
 
       {/* ...the rest of your game listing */}
     </div>
-      <div className="container">
-        {data.map((game) => (
-          <div className="box" key={game.id}>
+    <div className="container">
+    {data.map((game) => (
+      <Link to={`/game-detail/${game.id}`} key={game.id}>
+        <div className="box">
           <div className="box-image">
             <img src={game.background_image} alt={game.name} />
-            </div>
-            <div className="box-name">
+          </div>
+          <div className="box-name">
             <h2>{game.name}</h2>
-            </div>
-            <div className="box-name">
+          </div>
+          <div className="box-name">
             <h2>{game.description}</h2>
-            </div>
-            <div className="box-button">
+          </div>
+          {/* <div className="box-button">
             <h2>{game.id}</h2>
-            </div>
-            <div className="box-release">
+          </div>
+          <div className="box-release">
             <p><b>Release Date: </b> {game.released}</p>
-            </div>
-            <div className="box-rating">
+          </div>
+          <div className="box-rating">
             <p><b>Rating: </b> {game.rating}/5</p>
-            </div>
-            <div className="box-button">
+          </div> */}
+          {/* <div className="box-button">
             <div className="button-container">
-              {/* Add button to add the game to the WishList */}
+              Add button to add the game to the WishList 
               <button onClick={() => handleButtonAddWishList(game)}>Add to WishList</button>
-
-              {/* Add button to add the game to the OwnedList */}
+               Add button to add the game to the OwnedList 
               <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
             </div>
-            </div>
-          </div>
-        ))}
-      </div>
+          </div> */}
+        </div>
+      </Link>
+    ))}
+  </div>
       <br></br>
       <br></br>
       <br></br>
