@@ -12,8 +12,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-@Entity(name = "app_user")
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id

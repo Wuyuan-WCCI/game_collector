@@ -82,7 +82,8 @@ function RandomGames() {
     </div>
     <div className='box-3'>
       <b><h1>Description</h1></b>
-      <p>Description: {game.description}</p>
+      <p>Description:</p>
+      <div dangerouslySetInnerHTML={{ __html: game.description }} />
     </div>
     <div className='box-4'>
     <img src={game.background_image_additional} alt={`Image ${game.name}`} />

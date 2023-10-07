@@ -25,6 +25,8 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.2' // Check for the latest version
    	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2' // Check for the latest version
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation 'mysql:mysql-connector-java:8.0.33'  // Adjust the version as needed
+
 }
 
 tasks.named('test') {
