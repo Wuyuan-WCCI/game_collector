@@ -73,7 +73,7 @@ function RandomGames() {
 
   return (
     <div>
-      <h1>Random Games</h1>
+      <h1 style={{color: 'gold'}}>Random Games</h1>
       <div className="container">
         {randomGames.map((game) => (
           <div className="box" key={game.id}>
@@ -83,10 +83,11 @@ function RandomGames() {
               alt={`Image ${game.name}`}
             /></div>
             <div className='box-discover-name'>
-            <h2>Name: {game.name}</h2>
+            <h3>Name: {game.name}</h3>
             </div>
             <div className='box-discover-description'>
-            <p>Description: {game.description}</p>
+            <h5>Description:</h5>
+            <div dangerouslySetInnerHTML={{ __html: game.description }} />
             </div>
           </div>
         ))}

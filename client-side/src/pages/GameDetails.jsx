@@ -31,7 +31,8 @@ function GameDetail({ gameId }) {
       <p>Slug: {game.slug}</p>
       <p>Name: {game.name}</p>
       <p>OG Name: {game.name_original}</p>
-      <p>Description: {game.description}</p>
+      <p>Description:</p>
+      <div dangerouslySetInnerHTML={{ __html: game.description }} />
       {/* Display other game details as needed */}
     </div>
   );
