@@ -58,20 +58,26 @@ function RandomGames() {
   }
 
   return (
-    <div className='container'>
+    <div className='container-gd'>
     <br></br>
     <div className='container-game-details'>
     <div className='box-1'>
             <img src={game.background_image} alt={`Image ${game.name}`} />
     </div>
     <div className='box-2'>
-    <b><h1>GAME INFORMATION</h1></b>
+    {/* <b><h1>INFORMATION</h1></b> */}
     <h2>{game.name}</h2>
-    <h2>Genre: {game.genre}</h2>
-    <h2>Release Date: {game.released}</h2>
-    <h2>            <p>Rating: {game.rating} / {game.rating_top}</p></h2>
-    <h2>Platforms:{game.name}</h2>
-    <div className='button-container'>
+    <br></br>
+    <h3>Genre:</h3> <b>{game.genre}</b>
+    <br></br>
+    <h3>Release Date:</h3> <b>{game.released}</b>
+    <br></br>
+    <h3>  Rating: </h3><b>{game.rating} / {game.rating_top}</b>
+    <br></br>
+    <h3>Platforms:</h3> <b>{game.platform}</b>
+    <br></br>
+    <br></br>
+    <div className='button-container-2'>
     <button 
     // onClick={() => handleButtonAddWishList(game)}
     >Add to WishList</button>
@@ -82,7 +88,7 @@ function RandomGames() {
     </div>
     <div className='box-3'>
       <b><h1>Description</h1></b>
-      <p>Description:</p>
+      {/* <p>Description:</p> */}
       <div dangerouslySetInnerHTML={{ __html: game.description }} />
     </div>
     <div className='box-4'>

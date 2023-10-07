@@ -77,16 +77,17 @@ function RandomGames() {
       <div className="container">
         {randomGames.map((game) => (
           <div className="box" key={game.id}>
+          <div className='box-discover-name'>
+            <h3>{game.name}</h3>
+            </div>
           <div className='box-discover-image'>
           <img
               src={game.background_image}
               alt={`Image ${game.name}`}
             /></div>
-            <div className='box-discover-name'>
-            <h3>Name: {game.name}</h3>
-            </div>
+
             <div className='box-discover-description'>
-            <h5>Description:</h5>
+            {/* <h5>Description:</h5> */}
             <div dangerouslySetInnerHTML={{ __html: game.description }} />
             </div>
           </div>
