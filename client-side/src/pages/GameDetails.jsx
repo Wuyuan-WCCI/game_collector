@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams
-
+// import style from '../index.css'
 function RandomGames() {
   const { gameId } = useParams(); // Get the game ID from route parameters
   const [game, setGame] = useState(null);
@@ -9,6 +9,8 @@ function RandomGames() {
 
   const MAX_RETRIES = 3; // Maximum number of retries for fetching a game
 
+
+  
   useEffect(() => {
     // Define the URL of your backend API to fetch game details
     const apiUrl = `http://localhost:7098/game-detail/${gameId}`;
@@ -56,21 +58,55 @@ function RandomGames() {
   }
 
   return (
-    <div>
-      <h1>Random Game</h1>
+    <div className='container'>
+    <br></br>
+    <div className='container-game-details'>
+    <div className='box-1'>
+            <img src={game.background_image} alt={`Image ${game.name}`} />
+    </div>
+    <div className='box-2'>
+    <b><h1>GAME INFORMATION</h1></b>
+    <h2>{game.name}</h2>
+    <h2>Genre: {game.genre}</h2>
+    <h2>Release Date: {game.released}</h2>
+    <h2>            <p>Rating: {game.rating} / {game.rating_top}</p></h2>
+    <h2>Platforms:{game.name}</h2>
+    <div className='button-container'>
+    <button 
+    // onClick={() => handleButtonAddWishList(game)}
+    >Add to WishList</button>
+<button 
+// onClick={() => handleButtonAddOwnedList(game)}
+>Add to OwnedList</button>
+</div>
+    </div>
+    <div className='box-3'>
+      <b><h1>Description</h1></b>
+      <p>Description: {game.description}</p>
+    </div>
+    <div className='box-4'>
+    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
+    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
+    </div>
+      {/* <h1>{game.name}</h1>
       <div className="container">
         <div className="box" key={game.id}>
-          <div className='box-discover-image'>
-            <img src={game.background_image} alt={`Image ${game.name}`} />
-          </div>
-          <div className='box-discover-name'>
+
+          <div>
             <h2>Name: {game.name}</h2>
           </div>
           <div className='box-discover-description'>
             <p>Description: {game.description}</p>
           </div>
+          <div className='box-discover-rating'>
+            <p>Rating: {game.rating} / {game.rating_top}</p>
+          </div>
+          <div>
+            <img src={game.background_image_additional} alt={`Image ${game.name}`} />
+          </div>
         </div>
-      </div>
+      </div> */}
+    </div>
     </div>
   );
 }

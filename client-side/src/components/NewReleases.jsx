@@ -91,7 +91,7 @@ function NewReleases() {
           <div className="box-name">
             <h2>{game.description}</h2>
           </div>
-          <div className="box-button">
+          {/* <div className="box-button">
             <h2>{game.id}</h2>
           </div>
           <div className="box-release">
@@ -99,16 +99,15 @@ function NewReleases() {
           </div>
           <div className="box-rating">
             <p><b>Rating: </b> {game.rating}/5</p>
-          </div>
-          <div className="box-button">
+          </div> */}
+          {/* <div className="box-button">
             <div className="button-container">
-              {/* Add button to add the game to the WishList */}
+              Add button to add the game to the WishList 
               <button onClick={() => handleButtonAddWishList(game)}>Add to WishList</button>
-
-              {/* Add button to add the game to the OwnedList */}
+               Add button to add the game to the OwnedList 
               <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </Link>
     ))}
