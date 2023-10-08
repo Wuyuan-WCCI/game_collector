@@ -45,6 +45,11 @@ public class RawgApiController {
         return rawgService.getNewReleaseGames();
     }
 
+    @GetMapping("/game/video/{gameId}")
+    public ResponseEntity<String> getGameVideo(@PathVariable int gameId) {
+        return rawgService.getTrailerVideo(gameId);
+    }
+
     @PostMapping("/add-to-wish-list/{gameId}")
     public ResponseEntity<WishList> addToWishList(@PathVariable int gameId) {
         WishList wishList = rawgService.addToWishList(gameId);
