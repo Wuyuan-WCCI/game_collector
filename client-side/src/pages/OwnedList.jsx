@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 const OwnedList = () => {
   const [collection, setCollection] = useState([]);
   const baseUrl = 'http://localhost:7098/owned-list';
@@ -31,6 +31,7 @@ const OwnedList = () => {
       <h1>Owned List</h1>
       <div className="container">
         {collection.map((item) => (
+          <Link to={`/game-detail/${item.id}`} key={item.id}>
           <div className="box" key={item.id}>
           <div className="box-image">
             <img
@@ -44,6 +45,7 @@ const OwnedList = () => {
             <p>Description: {item.description}</p>
             {/* Add more item details as needed */}
           </div>
+          </Link>
         ))}
       </div>
     </div>

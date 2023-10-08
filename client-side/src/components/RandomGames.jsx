@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function RandomGames() {
   const [randomGames, setRandomGames] = useState([]);
@@ -76,6 +77,7 @@ function RandomGames() {
       <h1 style={{color: 'gold'}}>Random Games</h1>
       <div className="container">
         {randomGames.map((game) => (
+          <Link to={`/game-detail/${game.id}`} key={game.id}>
           <div className="box" key={game.id}>
           <div className='box-discover-name'>
             <h3>{game.name}</h3>
@@ -86,11 +88,12 @@ function RandomGames() {
               alt={`Image ${game.name}`}
             /></div>
 
-            <div className='box-discover-description'>
-            {/* <h5>Description:</h5> */}
+            {/* <div className='box-discover-description'>
+            <h5>Description:</h5>
             <div dangerouslySetInnerHTML={{ __html: game.description }} />
-            </div>
+            </div> */}
           </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,101 +1,186 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
-// import style from '../index.css'
-function RandomGames() {
-  const { gameId } = useParams(); // Get the game ID from route parameters
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+function GameInfoDetails() {
+  const { gameId } = useParams();
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [videoUrl, setVideoUrl] = useState(null); // State to store the video URL
 
-  const MAX_RETRIES = 3; // Maximum number of retries for fetching a game
+  const MAX_RETRIES = 3;
 
-
-  
   useEffect(() => {
-    // Define the URL of your backend API to fetch game details
-    const apiUrl = `http://localhost:7098/game-detail/${gameId}`;
+    const gameAPI = `http://localhost:7098/game-detail/${gameId}`;
+    const videoAPI = `http://localhost:7098/game/video/${gameId}`;
 
-    // Function to fetch a game with retries
     const fetchGameWithRetry = async (retries) => {
       try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(gameAPI);
         if (!response.ok) {
           throw new Error(`Network response was not ok for gameId ${gameId}`);
         }
         const gameData = await response.json();
-        // Ensure the response is an object with game data
         if (gameData.id) {
-          setGame(gameData); // Set the fetched game data
+          setGame(gameData);
           setLoading(false);
         } else {
-          // Handle cases where the response is unexpected
           throw new Error(`Unexpected API response for gameId ${gameId}`);
         }
       } catch (error) {
-        // Retry fetching with a new random gameId if retries remain
         if (retries > 0) {
-          const newGameId = Math.floor(Math.random() * 1000) + 1; // Generate a new random gameId
+          const newGameId = Math.floor(Math.random() * 1000) + 1;
           console.warn(`Retrying with a new random gameId: ${newGameId}`);
           fetchGameWithRetry(retries - 1);
         } else {
-          // No more retries, mark the game as not found
           setError(error);
           setLoading(false);
         }
       }
     };
 
-    // Fetch the game details based on the provided gameId
+    // Function to fetch the video URL
+    const fetchVideoUrl = async () => {
+      try {
+        const response = await fetch(videoAPI);
+        if (!response.ok) {
+          throw new Error(`Network response was not ok for gameId ${gameId}`);
+        }
+        const responseData = await response.json();
+    
+        console.log("Video API response:", responseData); // Debugging statement
+    
+        // Ensure the response is an object with the "results" array
+        if (responseData.results && responseData.results.length > 0) {
+          // Assuming we want to use the first item from the "results" array
+          const firstVideo = responseData.results[0];
+    
+          // Check if the first video item has a "data" property with a "max" URL
+          if (firstVideo.data && firstVideo.data.max) {
+            setVideoUrl(firstVideo.data.max); // Set the fetched video URL
+          } else {
+            throw new Error(`No "max" URL found for gameId ${gameId}`);
+          }
+        } else {
+          throw new Error(`No video data found for gameId ${gameId}`);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     fetchGameWithRetry(MAX_RETRIES);
-  }, [gameId]); // Add gameId to the dependency array
+    fetchVideoUrl();
+  }, [gameId]);
 
   if (loading) {
-    return <p>Loading...</p>; // You can show a loading indicator here
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>; // Handle the error here
+    return <p>Error: {error.message}</p>;
   }
 
   return (
-    <div className='container-gd'>
-    <br></br>
-    <div className='container-game-details'>
-    <div className='box-1'>
-            <img src={game.background_image} alt={`Image ${game.name}`} />
+    <div className="container-gd">
+      <br />
+      <div className="container-game-details">
+        <div className="box-1">
+          <img src={game.background_image} alt={`Image ${game.name}`} />
+        </div>
+        <div className="box-2">
+          <h2>{game.name}</h2>
+          <h3>Genre:</h3>{" "}
+          <b>
+            {game.genres.map((genre, index) => (
+              <span key={genre.id}>
+                {genre.name}
+                {index < game.genres.length - 1 && ", "}
+              </span>
+            ))}
+          </b>
+          <br />
+          <h3>Release Date:</h3> <b>{game.released}</b>
+          <br />
+          <h3>Rating:</h3>{" "}
+          <b>
+            {game.rating} / {game.rating_top}
+          </b>
+          <br />
+          <h3>Platforms:</h3>
+          <div>
+            <b>
+              {game.platforms.map((platform, index) => (
+                <span key={platform.platform.id}>
+                  {platform.platform.name}
+                  {index < game.platforms.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </b>
+          </div>
+
+          <div className="button-container-2">
+            <button>Add to WishList</button>
+            <button>Add to OwnedList</button>
+          </div>
+        </div>
+        <div className="box-3">
+          <b>
+            <h1>Description</h1>
+          </b>
+          <div dangerouslySetInnerHTML={{ __html: game.description }} />
+        </div>
+        <div className="box-4 video-container">
+        {videoUrl ? (
+    <iframe
+      title={`Video ${game.name}`}
+      width="1080"
+      height="720"
+      src={videoUrl}
+      frameBorder="0"
+      allowFullScreen
+    ></iframe>
+  ) : (
+    
+    <img
+      src={game.background_image_additional}
+      alt={`Image ${game.name}`}
+    />
+  )}
+        </div>
+      </div>
+            <br />
     </div>
-    <div className='box-2'>
-    {/* <b><h1>INFORMATION</h1></b> */}
-    <h2>{game.name}</h2>
-    <br></br>
-    <h3>Genre:</h3> <b>{game.genre}</b>
-    <br></br>
-    <h3>Release Date:</h3> <b>{game.released}</b>
-    <br></br>
-    <h3>  Rating: </h3><b>{game.rating} / {game.rating_top}</b>
-    <br></br>
-    <h3>Platforms:</h3> <b>{game.platform}</b>
-    <br></br>
-    <br></br>
-    <div className='button-container-2'>
-    <button 
-    // onClick={() => handleButtonAddWishList(game)}
-    >Add to WishList</button>
-<button 
-// onClick={() => handleButtonAddOwnedList(game)}
->Add to OwnedList</button>
-</div>
-    </div>
-    <div className='box-3'>
-      <b><h1>Description</h1></b>
-      {/* <p>Description:</p> */}
-      <div dangerouslySetInnerHTML={{ __html: game.description }} />
-    </div>
-    <div className='box-4'>
-    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
-    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
-    </div>
-      {/* <h1>{game.name}</h1>
+  );
+}
+
+export default GameInfoDetails;
+
+
+
+
+  {/* {game.developers.slice(0, 3).map((developer) => (
+    <img
+      key={developer.id} // Use a unique key
+      src={developer.image_background}
+      alt={`Developer Image ${developer.name}`}
+    />
+  ))} */}
+
+          {/* <img src={game.background_image_additional} alt={`Image ${game.name}`} /> */}
+          {/* I can use this map below to grab other images in the file. */}
+          {/* {game.genres.map((name) => (
+            <span key={genre.genre.id}>{platform.platform.name}</span>
+          ))} */}
+  {/* {game.stores.slice(0, 3).map((store) => (
+    <img
+      key={store.store.id} // Use a unique key
+      src={store.store.image_background}
+      alt={`Store Image ${store.store.name}`}
+    />
+  ))} */}
+{
+  /* <h1>{game.name}</h1>
       <div className="container">
         <div className="box" key={game.id}>
 
@@ -112,10 +197,5 @@ function RandomGames() {
             <img src={game.background_image_additional} alt={`Image ${game.name}`} />
           </div>
         </div>
-      </div> */}
-    </div>
-    </div>
-  );
+      </div> */
 }
-
-export default RandomGames;
