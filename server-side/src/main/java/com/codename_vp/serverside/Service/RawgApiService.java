@@ -50,8 +50,13 @@ public class RawgApiService {
     }
 
     public ResponseEntity<String> getTop10Games() {
-        String url = apiUrl + "/games?key=" + apiKey + "&ordering=-rating&page_size=10&metacritic=800";
+        String url = apiUrl + "/games?key=" + apiKey + "&ordering=-rating&page_size=10&metacritic=100";
 
+        return restTemplate.getForEntity(url, String.class);
+    }
+
+    public ResponseEntity<String> getTrailerVideo(int gameId) {
+        String url = apiUrl + "/games/" + gameId + "/movies?key=" + apiKey;
         return restTemplate.getForEntity(url, String.class);
     }
 
