@@ -118,7 +118,7 @@ function GameInfoDetails() {
               ))}
             </b>
           </div>
-          <br />
+
           <div className="button-container-2">
             <button>Add to WishList</button>
             <button>Add to OwnedList</button>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GameSearchForm from '../components/GameSearchForm';
 import GameDetail from './GameDetails';
 
@@ -88,6 +89,7 @@ function DiscoverySearch() {
     </div>
       <div className="container">
         {data.map((game) => (
+          <Link to={`/game-detail/${game.id}`} key={game.id}>
           <div className="box" key={game.id}>
           <div className="box-image">
             <img src={game.background_image} alt={game.name} />
@@ -117,6 +119,7 @@ function DiscoverySearch() {
             </div>
             </div>
           </div>
+          </Link>
         ))}
       </div>
       <br></br>
