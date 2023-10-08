@@ -442,7 +442,8 @@ color: #feffb5;
 
 .box-4 img {
   height:250px;
-  width: auto;
+  width: 400px;
+  border-radius: 5px;
   border: #feffb5 solid 1px;
 
 }

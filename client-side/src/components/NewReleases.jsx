@@ -74,24 +74,25 @@ function NewReleases() {
       <br></br>
       {/* <h1>HOT GAMES</h1> */}
       <div>
+        {/* ...the rest of your game listing */}
+      </div>
+      <div className="container">
+        {data.map((game) => (
+          <Link to={`/game-detail/${game.id}`} key={game.id}>
+            <div className="box">
+              <div className="box-image">
+                <img src={game.background_image} alt={game.name} />
+              </div>
+              <div className="box-name">
+                <h2>{game.name}</h2>
+              </div>
+              <div className="box-name">
+                <h2>{game.description}</h2>
+              </div>
+              {/* Render the platform information for each game */}
 
-
-      {/* ...the rest of your game listing */}
-    </div>
-    <div className="container">
-    {data.map((game) => (
-      <Link to={`/game-detail/${game.id}`} key={game.id}>
-        <div className="box">
-          <div className="box-image">
-            <img src={game.background_image} alt={game.name} />
-          </div>
-          <div className="box-name">
-            <h2>{game.name}</h2>
-          </div>
-          <div className="box-name">
-            <h2>{game.description}</h2>
-          </div>
-          {/* <div className="box-button">
+              {/* Rest of your game details */}
+                        {/* <div className="box-button">
             <h2>{game.id}</h2>
           </div>
           <div className="box-release">
@@ -108,16 +109,18 @@ function NewReleases() {
               <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
             </div>
           </div> */}
-        </div>
-      </Link>
-    ))}
-  </div>
+            </div>
+          </Link>
+        ))}
+      </div>
       <br></br>
       <br></br>
       <br></br>
       <br></br>
     </div>
   );
+  
 }
 
 export default NewReleases;
+

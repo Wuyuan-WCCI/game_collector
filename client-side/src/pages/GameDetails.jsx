@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"; // Import useParams
 // import style from '../index.css'
 function RandomGames() {
   const { gameId } = useParams(); // Get the game ID from route parameters
@@ -9,8 +9,6 @@ function RandomGames() {
 
   const MAX_RETRIES = 3; // Maximum number of retries for fetching a game
 
-
-  
   useEffect(() => {
     // Define the URL of your backend API to fetch game details
     const apiUrl = `http://localhost:7098/game-detail/${gameId}`;
@@ -58,44 +56,110 @@ function RandomGames() {
   }
 
   return (
-    <div className='container-gd'>
-    <br></br>
-    <div className='container-game-details'>
-    <div className='box-1'>
-            <img src={game.background_image} alt={`Image ${game.name}`} />
+    <div className="container-gd">
+      <br></br>
+      <div className="container-game-details">
+        <div className="box-1">
+          <img src={game.background_image} alt={`Image ${game.name}`} />
+        </div>
+        <div className="box-2">
+          {/* <b><h1>INFORMATION</h1></b> */}
+          <h2>{game.name}</h2>
+          <h3>Genre:</h3>{" "}
+          <b>
+            {" "}
+            {game.genres.map((genre, index) => (
+              <span key={genre.id}>
+                {genre.name}
+                {index < game.genres.length - 1 && ", "}
+              </span>
+            ))}
+          </b>
+          <br></br>
+          <h3>Release Date:</h3> <b>{game.released}</b>
+          <br></br>
+          <h3>Rating:</h3>{" "}
+          <b>
+            {game.rating} / {game.rating_top}
+          </b>
+          <br></br>
+          <h3>Platforms:</h3>
+          <div>
+            <b>
+              {game.platforms.map((platform, index) => (
+                <span key={platform.platform.id}>
+                  {platform.platform.name}
+                  {index < game.platforms.length - 1 ? ", " : ""}{" "}
+                  {/* Add a comma if it's not the last platform */}
+                </span>
+              ))}
+            </b>
+          </div>
+          <br></br>
+          <div className="button-container-2">
+            <button
+            // onClick={() => handleButtonAddWishList(game)}
+            >
+              Add to WishList
+            </button>
+            <button
+            // onClick={() => handleButtonAddOwnedList(game)}
+            >
+              Add to OwnedList
+            </button>
+          </div>
+        </div>
+        <div className="box-3">
+          <b>
+            <h1>Description</h1>
+          </b>
+          {/* <p>Description:</p> */}
+          <div dangerouslySetInnerHTML={{ __html: game.description }} />
+        </div>
+        <div className="box-4">
+          <img
+            src={game.background_image_additional}
+            alt={`Image ${game.name}`}
+          />
+  {game.platforms.slice(0, 2).map((platform) => (
+    <img
+      key={platform.platform.id} // Use a unique key
+      src={platform.platform.image_background}
+      alt={`Platform Image ${platform.platform.name}`}
+    />
+  ))}
+
+  {/* {game.stores.slice(0, 3).map((store) => (
+    <img
+      key={store.store.id} // Use a unique key
+      src={store.store.image_background}
+      alt={`Store Image ${store.store.name}`}
+    />
+  ))} */}
+
+  {/* {game.developers.slice(0, 3).map((developer) => (
+    <img
+      key={developer.id} // Use a unique key
+      src={developer.image_background}
+      alt={`Developer Image ${developer.name}`}
+    />
+  ))} */}
+
+          {/* <img src={game.background_image_additional} alt={`Image ${game.name}`} /> */}
+          {/* I can use this map below to grab other images in the file. */}
+          {/* {game.genres.map((name) => (
+            <span key={genre.genre.id}>{platform.platform.name}</span>
+          ))} */}
+        </div>
+      </div>
     </div>
-    <div className='box-2'>
-    {/* <b><h1>INFORMATION</h1></b> */}
-    <h2>{game.name}</h2>
-    <br></br>
-    <h3>Genre:</h3> <b>{game.genre}</b>
-    <br></br>
-    <h3>Release Date:</h3> <b>{game.released}</b>
-    <br></br>
-    <h3>  Rating: </h3><b>{game.rating} / {game.rating_top}</b>
-    <br></br>
-    <h3>Platforms:</h3> <b>{game.platform}</b>
-    <br></br>
-    <br></br>
-    <div className='button-container-2'>
-    <button 
-    // onClick={() => handleButtonAddWishList(game)}
-    >Add to WishList</button>
-<button 
-// onClick={() => handleButtonAddOwnedList(game)}
->Add to OwnedList</button>
-</div>
-    </div>
-    <div className='box-3'>
-      <b><h1>Description</h1></b>
-      {/* <p>Description:</p> */}
-      <div dangerouslySetInnerHTML={{ __html: game.description }} />
-    </div>
-    <div className='box-4'>
-    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
-    <img src={game.background_image_additional} alt={`Image ${game.name}`} />
-    </div>
-      {/* <h1>{game.name}</h1>
+  );
+}
+
+export default RandomGames;
+
+{
+  /* <h1>{game.name}</h1>
       <div className="container">
         <div className="box" key={game.id}>
 
@@ -112,10 +176,5 @@ function RandomGames() {
             <img src={game.background_image_additional} alt={`Image ${game.name}`} />
           </div>
         </div>
-      </div> */}
-    </div>
-    </div>
-  );
+      </div> */
 }
-
-export default RandomGames;
