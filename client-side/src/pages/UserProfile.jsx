@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState([]);
@@ -33,6 +34,11 @@ const UserProfile = () => {
     }
   }, []);
 
+  const parseHTML = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.documentElement.textContent;
+  };
+
   // Toggle the expansion state of a game description
   const toggleDescriptionExpansion = (index) => {
     const newExpandedDescriptions = [...expandedDescriptions];
@@ -42,7 +48,7 @@ const UserProfile = () => {
 
   return (
     <div className="container">
-      <h2>User Profile</h2>
+      <h2 style={{color: 'gold'}}>User Profile</h2>
       {user ? (
         <>
           <div className='box'>
@@ -53,14 +59,14 @@ const UserProfile = () => {
           <br></br>
           <br></br>
           <br></br>
-          <h2>My Owned List</h2>
+          <h2 style={{color: 'gold'}}>My Owned List </h2>
           {user.ownedLists && user.ownedLists.length > 0 ? (
             <div className='box'>
               <ul>
                 {user.ownedLists.map((ownedItem, index) => (
-                  <li key={ownedItem.id}>
-                  <div className="box-1">
-          <img src={ownedItem.game.imgUrl} alt={`Image ${ownedItem.game.name}`} />
+                  <li key={ownedItem.id} className="game-item">
+                  <div className="box-1" style={{ width: '800px', height: '10px' }}>
+          <img src={ownedItem.game.imgUrl} alt={`Image ${ownedItem.game.name}`} style={{width:'400px', height: '300px'} }/>
         </div>
                     <p>Name: {ownedItem.game.name}</p>
                     <p>Slug: {ownedItem.game.slug}</p>
@@ -68,15 +74,14 @@ const UserProfile = () => {
                     <p>Released Date: {ownedItem.game.released}</p>
                     <p>
                       Description: {expandedDescriptions[index]
-                        ? ownedItem.game.description
-                        : ownedItem.game.description.substring(0, 255)}
+                        ? <div dangerouslySetInnerHTML={{ __html: ownedItem.game.description }} />
+                        : parseHTML(ownedItem.game.description).substring(0, 255)}
                       {ownedItem.game.description.length > 255 && (
                         <button onClick={() => toggleDescriptionExpansion(index)}>
                           {expandedDescriptions[index] ? 'Read less' : '......Read more'}
                         </button>
                       )}
                     </p>
-                   
                   </li>
                 ))}
               </ul>
@@ -87,14 +92,14 @@ const UserProfile = () => {
           <br></br>
           <br></br>
           <br></br>
-          <h2>My Wishlist</h2>
+          <h2 style={{color: 'gold'}}>My Wishlist</h2>
           {user.wishLists && user.wishLists.length > 0 ? (
             <div className='box'>
               <ul>
                 {user.wishLists.map((wishListItem, index) => (
                   <li key={wishListItem.id}>
-                  <div className="box-1">
-          <img src={wishListItem.game.imgUrl} alt={`Image ${wishListItem.game.name}`} />
+                  <div className="box-1" style={{ width: '800px', height: '100px' }}>
+          <img src={wishListItem.game.imgUrl} alt={`Image ${wishListItem.game.name}`} style={{width:'400px', height: '300px'} } />
         </div>
                     <p>Name: {wishListItem.game.name}</p>
                     <p>Slug: {wishListItem.game.slug}</p>
@@ -102,11 +107,11 @@ const UserProfile = () => {
                     <p>Released Date: {wishListItem.game.released}</p>
                     <p>
                       Description: {expandedDescriptions[user.ownedLists.length + index]
-                        ? wishListItem.game.description
-                        : wishListItem.game.description.substring(0, 255)}
+                        ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />
+                        : parseHTML(wishListItem.game.description).substring(0, 255)}
                       {wishListItem.game.description.length > 255 && (
                         <button onClick={() => toggleDescriptionExpansion(user.ownedLists.length + index)}>
-                          {expandedDescriptions[user.ownedLists.length + index] ? 'Read less' : '.....Read more'}
+                          {expandedDescriptions[user.ownedLists.length + index] ? 'Read less' : '......Read more'}
                         </button>
                       )}
                     </p>
@@ -126,6 +131,7 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
 
 
 
