@@ -1,63 +1,63 @@
 package com.codename_vp.serverside.Entity;
 
-import java.util.HashSet;
-
-import java.util.Set;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.transaction.Transactional;
 
 @Entity
-public class OwnedList extends Game {
+@Transactional
+public class OwnedList {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String status;
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_owned_list_id")
+    @JoinColumn(name = "owned_user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "ownedList_platform", joinColumns = @JoinColumn(name = "ownedList_id"), inverseJoinColumns = @JoinColumn(name = "platform_id"))
-    private Set<Platform> platforms = new HashSet<>();
-
-    public OwnedList(String name, String description, String price, String imgUrl,
-            Set<Platform> platforms) {
-        super(name, description, price, imgUrl);
-        this.status = "Owned";
-        this.platforms = platforms;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Set<Platform> getPlatforms() {
-        return platforms;
-    }
-
-    public void setPlatforms(Set<Platform> platforms) {
-        this.platforms = platforms;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id")
+    private Game game;
 
     public OwnedList() {
 
     }
 
-    @Override
-    public String toString() {
-        return "\nName = " + this.getName() + "\nSlug: " + this.getSlug() + "\nReleaseDate: " + this.getReleased()
-                + "\nStatus: "
-                + status + "\nDescription: " + this.getDescription() + "\n Image: " + this.getImgUrl();
+    public OwnedList(User user, Game game) {
+        this.user = user;
+        this.game = game;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codename_vp.serverside.Entity.User;
@@ -32,6 +33,11 @@ public class UserController {
     @GetMapping("/user/users")
     public List<User> findUsers() {
         return this.userService.getAllUsers();
+    }
+
+    @PostMapping("/user/id/{userId}/add-game-to-wish-list/{gameId}")
+    public User addGameToWishList(@PathVariable int userId, @PathVariable Long gameId) {
+        return userService.addGameToWishList(userId, gameId);
     }
 
 }

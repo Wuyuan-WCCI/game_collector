@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import AddToListButton from "../components/AddToLisButton";
 
 function GameInfoDetails() {
   const { gameId } = useParams();
@@ -9,11 +10,13 @@ function GameInfoDetails() {
   const [videoUrl, setVideoUrl] = useState(null); // State to store the video URL
 
   const MAX_RETRIES = 3;
+  const userId = localStorage.getItem('userId');
+  const authToken = localStorage.getItem('authToken'); 
 
   useEffect(() => {
-    const gameAPI = `http://localhost:7098/game-detail/${gameId}`;
+    const gameAPI = `http://localhost:7098/game/detail/${gameId}`;
     const videoAPI = `http://localhost:7098/game/video/${gameId}`;
-
+    console.log('user id:' + userId + "game id: " + gameId + "authToken: " + authToken)
     const fetchGameWithRetry = async (retries) => {
       try {
         const response = await fetch(gameAPI);
@@ -120,8 +123,12 @@ function GameInfoDetails() {
           </div>
 
           <div className="button-container-2">
-            <button>Add to WishList</button>
-            <button>Add to OwnedList</button>
+          {authToken && (
+            <>
+              <AddToListButton gameId={game.id} userId={userId} authToken={authToken}actionType="addToWishList" />
+              <AddToListButton gameId={game.id} userId={userId} authToken={authToken}actionType="addToOwnedList" />
+            </>
+          )}
           </div>
         </div>
         <div className="box-3">

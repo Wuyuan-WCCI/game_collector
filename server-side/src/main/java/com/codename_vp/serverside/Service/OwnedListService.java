@@ -27,16 +27,6 @@ public class OwnedListService {
         this.ownedListRepo.deleteById(id);
     }
 
-    public OwnedList getGameInfoByName(String name) {
-        return ownedListRepo.findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found"));
-    }
-
-    public OwnedList getGameById(int id) {
-        return this.ownedListRepo.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game ID not found"));
-    }
-
     public List<OwnedList> getOwnedList() {
         return this.ownedListRepo.findAll();
     }
