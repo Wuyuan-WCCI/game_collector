@@ -34,4 +34,9 @@ public class UserController {
         return this.userService.getAllUsers();
     }
 
+    @PostMapping("/user/id/{userId}/add-game-to-wish-list/{gameId}")
+    public User addGameToWishList(@PathVariable int userId, @PathVariable Long gameId) {
+        return userService.addGameToWishList(userId, gameId);
+    }
+
 }

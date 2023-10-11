@@ -3,10 +3,10 @@ package com.codename_vp.serverside.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.codename_vp.serverside.Entity.Game;
+import com.codename_vp.serverside.Entity.User;
 import com.codename_vp.serverside.Entity.WishList;
 import com.codename_vp.serverside.Repository.WishListRepo;
 
@@ -19,27 +19,22 @@ public class WishListService {
     @Autowired
     private WishListRepo wishListRepo;
 
-    public void addToWishList(WishList wishList) {
-        this.wishListRepo.save(wishList);
+    public List<WishList> getWishListByUserId(Long userId) {
+        return wishListRepo.findByUser_Id(userId);
     }
 
-    @Transactional
-    public void removeFromWishList(int id) {
-        this.wishListRepo.deleteById(id);
+    public WishList addToWishList(User user, Game game) {
+        WishList wishList = new WishList();
+        wishList.setUser(user); // Set the user in the WishList
+        wishList.setGame(game);
+        wishListRepo.save(wishList);
+        user.getWishLists().add(wishList);
+
+        return wishList;
     }
 
-    public WishList getGameInfoByName(String name) {
-        return wishListRepo.findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found"));
-    }
-
-    public WishList getGameById(int id) {
-        return this.wishListRepo.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game ID not found"));
-    }
-
-    public List<WishList> getWishList() {
-        return this.wishListRepo.findAll();
+    public void removeFromWishList(Long wishListId) {
+        wishListRepo.deleteById(wishListId);
     }
 
 }

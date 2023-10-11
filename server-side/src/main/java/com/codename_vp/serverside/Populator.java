@@ -14,9 +14,12 @@ import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.Platform;
 import com.codename_vp.serverside.Entity.User;
 import com.codename_vp.serverside.Entity.WishList;
+import com.codename_vp.serverside.Repository.GameRepo;
 import com.codename_vp.serverside.Repository.OwnedListRepo;
 import com.codename_vp.serverside.Repository.UserRepo;
 import com.codename_vp.serverside.Repository.WishListRepo;
+import com.codename_vp.serverside.Service.GameService;
+import com.codename_vp.serverside.Service.WishListService;
 
 @Component
 public class Populator implements CommandLineRunner {
@@ -30,11 +33,20 @@ public class Populator implements CommandLineRunner {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private GameRepo gameRepo;
+
+    @Autowired
+    private GameService gameService;
+
+    @Autowired
+    private WishListService wishListService;
+
     public void run(String... args) throws Exception {
 
         Set<Platform> platforms = new HashSet<Platform>();
         List<User> users = new ArrayList<>();
-
+        List<Game> games = new ArrayList<>();
         System.out.println("Hello Populator\n");
 
         User user1 = new User("abc123", "1234", "abc123@gmail.com ");
@@ -49,63 +61,21 @@ public class Populator implements CommandLineRunner {
         userRepo.save(user3);
         users.add(2, user3);
 
+        System.out.println("\n================== GAMES ==================\n");
+
+        Game game1 = new Game(1L, "Assassin's Creed Mirage", null, null, null);
+        gameRepo.save(game1);
+
+        Game game2 = new Game(2L, "Witchfire", null, null, null);
+        gameRepo.save(game2);
         System.out.println("\n================== Wish List ==================\n");
 
-        WishList Danasty = new WishList("Warrior", null, null, null, platforms);
-        Danasty.setId(2);
-        wishListRepo.save(Danasty);
-        user1.getWishLists().add(Danasty);
-
-        WishList danasty1 = new WishList("Ninja", null, null, null, platforms);
-        danasty1.setId(1);
-        wishListRepo.save(danasty1);
-        user1.getWishLists().add(danasty1);
-
-        List<WishList> wishList = wishListRepo.findAll();
-        if (wishList.isEmpty()) {
-            System.out.println("The Wish List is empty");
-        } else {
-            for (WishList game : wishList) {
-                System.out.println(
-                        "Game Name: " + game.getName() + " ID: " + game.getId() + " Status: " + game.getStatus()
-                                + "Platforms: " + game.getPlatforms());
-            }
-        }
-
-        System.out.println("\n================== Owned List ==================\n");
-
-        OwnedList newGame = new OwnedList("Mario", null, null,
-                "https://i.etsystatic.com/17317138/r/il/517956/4880965373/il_794xN.4880965373_1l44.jpg", platforms);
-        newGame.setId(3);
-        ownedListRepo.save(newGame);
-        user1.getOwnedLists().add(newGame);
-
-        OwnedList newGame2 = new OwnedList("Final Fantasy", null, null,
-                "https://cdn.akamai.steamstatic.com/steam/apps/1173770/header.jpg?t=1646929110", platforms);
-        newGame2.setId(52);
-        ownedListRepo.save(newGame2);
-        user1.getOwnedLists().add(newGame2);
-
-        List<OwnedList> ownedList = ownedListRepo.findAll();
-        if (ownedList.isEmpty()) {
-            System.out.println("The Wish List is empty");
-        } else {
-            for (OwnedList game : ownedList) {
-                System.out.println(" ID: " + game.getId() +
-                        " Game Name: " + game.getName() + " Status: " + game.getStatus()
-                        + " Platforms: " + game.getPlatforms());
-            }
-        }
-
-        System.out.println("\n================== Users ==================\n");
-
         for (User user : users) {
-            System.out.println(" ID: " + user.getId() +
-                    " Username: " + user.getUserName() + " Email: " + user.getEmail()
+            System.out.println("Name: " + user.getUserName() +
+                    " Email: " + user.getEmail()
                     + "\nOwned List: " + user.getOwnedLists() + "\nWish List: "
                     + user.getWishLists());
+
         }
-
     }
-
 }

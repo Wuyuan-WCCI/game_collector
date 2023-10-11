@@ -15,13 +15,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "\"user\"")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
+
     @Column(name = "userName")
     private String userName;
 
@@ -31,12 +32,12 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_wish_list_id", referencedColumnName = "user_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "wishlist_user_id", referencedColumnName = "user_id")
     private List<WishList> wishLists = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_owned_list_id", referencedColumnName = "user_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ownedlist_user_id", referencedColumnName = "user_id")
     private List<OwnedList> ownedLists = new ArrayList<>();
 
     // Constructors
@@ -99,6 +100,14 @@ public class User {
 
     public void setWishLists(List<WishList> wishLists) {
         this.wishLists = wishLists;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + userName + '\'' +
+                '}';
     }
 
 }

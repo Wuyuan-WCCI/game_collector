@@ -1,46 +1,63 @@
 package com.codename_vp.serverside.Entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
-import jakarta.persistence.MappedSuperclass;
-
-@MappedSuperclass
+@Entity
 public class Game {
     @Id
-    private int id;
+    private Long id;
 
     private String name;
+
     private String slug;
 
-    private String price;
+    private String genre;
+
+    private String status;
+
     private String imgUrl;
 
     private String released;
+
     private String officialSite;
+
+    private String platform;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    public Game(String name, String description, String price, String imgUrl) {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "game_platform", joinColumns = @JoinColumn(name = "game_id"), inverseJoinColumns = @JoinColumn(name = "platform_id"))
+    private Set<Platform> platforms = new HashSet<>();
+
+    public Game(Long id, String name, String imgUrl, String platform, String description) {
 
         this.name = name;
         this.description = description;
-        this.price = price;
         this.imgUrl = imgUrl;
+        this.platform = platform;
+        this.id = id;
 
     }
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Game id(int id) {
+    public Game id(Long id) {
         setId(id);
         return this;
     }
@@ -68,19 +85,6 @@ public class Game {
 
     public Game description(String description) {
         setDescription(description);
-        return this;
-    }
-
-    public String getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public Game price(String price) {
-        setPrice(price);
         return this;
     }
 
@@ -116,7 +120,51 @@ public class Game {
         this.officialSite = officialSite;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public Set<Platform> getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(Set<Platform> platforms) {
+        this.platforms = platforms;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
     public Game() {
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", Name ='" + name + '\'' +
+                ", Slug=" + slug +
+                ", Genre='" + genre + '\'' +
+                ", Platform='" + platform + '\'' +
+                ", Description" + description +
+                '}';
     }
 
 }

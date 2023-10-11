@@ -24,8 +24,8 @@ public class RawgApiController {
         this.rawgService = rawgApiService;
     }
 
-    @GetMapping("/game-detail/{gameId}")
-    public ResponseEntity<String> getGameDetailById(@PathVariable int gameId) {
+    @GetMapping("/game/detail/{gameId}")
+    public ResponseEntity<String> getGameDetailById(@PathVariable Long gameId) {
 
         return rawgService.getGameDetailById(gameId);
     }
@@ -51,12 +51,12 @@ public class RawgApiController {
     }
 
     @PostMapping("/add-to-wish-list/{gameId}")
-    public ResponseEntity<WishList> addToWishList(@PathVariable int gameId) {
-        WishList wishList = rawgService.addToWishList(gameId);
+    public ResponseEntity<WishList> addToWishList(@PathVariable Long gameId, @RequestParam int userId) {
+        WishList wishList = rawgService.addToWishList(gameId, userId);
         if (wishList != null) {
-            System.out.println("Add game to Wish List");
+            System.out.println("Added game to Wish List");
             return ResponseEntity.ok(wishList);
-            // Return a ResponseEntity with the WishList object
+
         } else {
             return ResponseEntity.notFound().build(); // Return a 404 Not Found response
         }
@@ -64,9 +64,15 @@ public class RawgApiController {
     }
 
     @PostMapping("/add-to-owned-list/{gameId}")
-    public ResponseEntity<OwnedList> addToOwnList(@PathVariable int gameId) {
-        OwnedList ownedList = rawgService.addToOwnedList(gameId);
-        return ResponseEntity.ok(ownedList);
+    public ResponseEntity<OwnedList> addToOwnList(@PathVariable Long gameId, @RequestParam int userId) {
+        OwnedList ownedList = rawgService.addToOwnedList(gameId, userId);
+        if (ownedList != null) {
+            System.out.println("Added game to Owned List");
+            return ResponseEntity.ok(ownedList);
+
+        } else {
+            return ResponseEntity.notFound().build(); // Return a 404 Not Found response
+        }
 
     }
 

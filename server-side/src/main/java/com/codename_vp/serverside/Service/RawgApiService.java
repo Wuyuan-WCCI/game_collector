@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.codename_vp.serverside.Entity.Game;
 import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.Platform;
+import com.codename_vp.serverside.Entity.User;
 import com.codename_vp.serverside.Entity.WishList;
+import com.codename_vp.serverside.Repository.GameRepo;
 import com.codename_vp.serverside.Repository.PlatformRepo;
 import com.codename_vp.serverside.Repository.WishListRepo;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -33,12 +36,18 @@ public class RawgApiService {
     private PlatformRepo platformRepo;
 
     @Autowired
-    OwnedListService ownedListService;
+    private OwnedListService ownedListService;
 
     @Autowired
-    WishListService wishListService;
+    private WishListService wishListService;
 
-    public ResponseEntity<String> getGameDetailById(int game_id) {
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private GameRepo gameRepo;
+
+    public ResponseEntity<String> getGameDetailById(Long game_id) {
 
         String url = apiUrl + "/games/" + game_id + "?key=" + apiKey;
         return restTemplate.getForEntity(url, String.class);
@@ -73,7 +82,7 @@ public class RawgApiService {
         return restTemplate.getForEntity(url, String.class);
     }
 
-    public OwnedList addToOwnedList(int gameId) {
+    public OwnedList addToOwnedList(Long gameId, int userId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
 
         wishListService.removeFromWishList(gameId);
@@ -85,16 +94,16 @@ public class RawgApiService {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
 
-                OwnedList ownedList = new OwnedList();
+                Game game = new Game();
 
-                ownedList.setId(jsonNode.get("id").asInt());
-                ownedList.setName(jsonNode.get("name").asText());
-                ownedList.setSlug(jsonNode.get("slug").asText());
-                ownedList.setStatus("Owned");
-                ownedList.setOfficialSite(jsonNode.get("website").asText());
-                ownedList.setDescription(jsonNode.get("description").asText());
-                ownedList.setReleased(jsonNode.get("released").asText());
-                ownedList.setImgUrl(jsonNode.get("background_image").asText());
+                game.setId(jsonNode.get("id").asLong());
+                game.setName(jsonNode.get("name").asText());
+                game.setSlug(jsonNode.get("slug").asText());
+                game.setStatus("Owned");
+                game.setOfficialSite(jsonNode.get("website").asText());
+                game.setDescription(jsonNode.get("description").asText());
+                game.setReleased(jsonNode.get("released").asText());
+                game.setImgUrl(jsonNode.get("background_image").asText());
 
                 Set<Platform> platformSet = new HashSet<>();
                 JsonNode platformsNode = jsonNode.get("platforms");
@@ -114,9 +123,16 @@ public class RawgApiService {
                         }
                     }
                 }
-                ownedList.setPlatforms(platformSet);
+                game.setPlatforms(platformSet);
+                gameRepo.save(game);
+                User user = userService.getUserById(userId);
+
+                OwnedList ownedList = new OwnedList(user, game);
+
                 this.ownedListService.addToOwnedList(ownedList);
-                System.out.println("You added game " + ownedList.getName() + " to owned list ");
+                System.out.println("You added game " + game.getName() + " to owned list ");
+                user.getOwnedLists().add(ownedList);
+                System.out.println("The game is in your Owned List now");
 
                 return ownedList;
 
@@ -129,7 +145,7 @@ public class RawgApiService {
         }
     }
 
-    public WishList addToWishList(int gameId) {
+    public WishList addToWishList(Long gameId, int userId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
@@ -137,14 +153,16 @@ public class RawgApiService {
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
-                WishList wishList = new WishList();
-                wishList.setId(jsonNode.get("id").asInt());
-                wishList.setName(jsonNode.get("name").asText());
-                wishList.setSlug(jsonNode.get("slug").asText());
-                wishList.setDescription(jsonNode.get("description").asText());
-                wishList.setStatus("Wished");
-                wishList.setReleased(jsonNode.get("released").asText());
-                wishList.setImgUrl(jsonNode.get("background_image").asText());
+                Game game = new Game();
+
+                game.setId(jsonNode.get("id").asLong());
+                game.setName(jsonNode.get("name").asText());
+                game.setSlug(jsonNode.get("slug").asText());
+                game.setStatus("Owned");
+                game.setOfficialSite(jsonNode.get("website").asText());
+                game.setDescription(jsonNode.get("description").asText());
+                game.setReleased(jsonNode.get("released").asText());
+                game.setImgUrl(jsonNode.get("background_image").asText());
 
                 // Add platforms to the wish list
                 Set<Platform> platformSet = new HashSet<>();
@@ -164,8 +182,13 @@ public class RawgApiService {
                         }
                     }
                 }
-                wishList.setPlatforms(platformSet);
-                this.wishListRepo.save(wishList);
+                game.setPlatforms(platformSet);
+                gameRepo.save(game);
+
+                User user = userService.getUserById(userId);
+                WishList wishList = new WishList(user, game);
+                wishListRepo.save(wishList);
+                user.getWishLists().add(wishList);
 
                 return wishList;
 
