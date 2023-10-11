@@ -39,7 +39,7 @@ public class WishListController {
     }
 
     // Endpoint to add a game to the wishlist for a user
-    @PostMapping("wishlist/add/{userId}/{gameId}")
+    @PostMapping("/wishlist/add/{userId}/{gameId}")
     public ResponseEntity<WishList> addToWishList(@PathVariable int userId, @PathVariable Long gameId) {
         User user = userService.getUserById(userId);
         Game game = gameService.getGameById(gameId);

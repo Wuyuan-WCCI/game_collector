@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.codename_vp.serverside.Entity.Game;
 import com.codename_vp.serverside.Entity.OwnedList;
+import com.codename_vp.serverside.Entity.User;
+import com.codename_vp.serverside.Entity.WishList;
 import com.codename_vp.serverside.Repository.OwnedListRepo;
 
 import jakarta.transaction.Transactional;
@@ -20,6 +23,16 @@ public class OwnedListService {
 
     public void addToOwnedList(OwnedList ownedList) {
         this.ownedListRepo.save(ownedList);
+    }
+
+    public OwnedList addToOwnedList(User user, Game game) {
+        OwnedList ownedList = new OwnedList();
+        ownedList.setUser(user); // Set the user in the WishList
+        ownedList.setGame(game);
+        ownedListRepo.save(ownedList);
+        user.getOwnedLists().add(ownedList);
+
+        return ownedList;
     }
 
     @Transactional
