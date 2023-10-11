@@ -1,0 +1,46 @@
+/* UserProfile.css */
+
+.container {
+  margin: 20px;
+}
+
+.box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.game-image {
+  flex: 0 0 200px;
+  margin-right: 20px;
+}
+
+.game-image img {
+  max-width: 100%;
+}
+
+.game-details {
+  flex: 1;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+button:hover {
+  text-decoration: underline;
+}

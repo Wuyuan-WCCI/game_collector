@@ -20,7 +20,7 @@ public class OwnedList {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owned_user_id")
+    @JoinColumn(name = "ownedlist_user_id")
     private User user;
 
     @ManyToOne

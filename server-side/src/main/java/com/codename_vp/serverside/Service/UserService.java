@@ -22,7 +22,6 @@ public class UserService {
     @Autowired
     private GameRepo gameRepo;
 
-    @Autowired
     public UserService(UserRepo userRepo, GameRepo gameRepo) {
         this.userRepo = userRepo;
         this.gameRepo = gameRepo;

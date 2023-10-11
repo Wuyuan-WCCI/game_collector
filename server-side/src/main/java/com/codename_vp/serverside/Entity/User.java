@@ -3,8 +3,6 @@ package com.codename_vp.serverside.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +36,7 @@ public class User {
     @JoinColumn(name = "wishlist_user_id", referencedColumnName = "user_id")
     private List<WishList> wishLists = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ownedlist_user_id", referencedColumnName = "user_id")
     private List<OwnedList> ownedLists = new ArrayList<>();
 

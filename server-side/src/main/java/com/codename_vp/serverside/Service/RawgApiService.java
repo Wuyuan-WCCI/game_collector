@@ -131,6 +131,8 @@ public class RawgApiService {
 
                 this.ownedListService.addToOwnedList(ownedList);
                 System.out.println("You added game " + game.getName() + " to owned list ");
+                user.getOwnedLists().add(ownedList);
+                System.out.println("The game is in your Owned List now");
 
                 return ownedList;
 
@@ -185,7 +187,8 @@ public class RawgApiService {
 
                 User user = userService.getUserById(userId);
                 WishList wishList = new WishList(user, game);
-                this.wishListRepo.save(wishList);
+                wishListRepo.save(wishList);
+                user.getWishLists().add(wishList);
 
                 return wishList;
 
