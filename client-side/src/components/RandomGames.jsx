@@ -10,10 +10,10 @@ function RandomGames() {
 
   useEffect(() => {
     // Define the URL of your backend API to fetch random games
-    const apiUrl = 'http://localhost:7098/game-detail'; // Adjust the API endpoint as needed
+    const apiUrl = 'http://localhost:7098/game/detail'; // Adjust the API endpoint as needed
 
     // Generate 10 random gameIds between 1 and 1000 (adjust the range as needed)
-    const getRandomGameId = () => Math.floor(Math.random() * 1000) + 1;
+    const getRandomGameId = () => Math.floor(Math.random() * 400000) + 1;
 
     // Create an array to store the fetched games
     const fetchedGames = [];
