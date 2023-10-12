@@ -30,7 +30,7 @@ public class RawgApiController {
         return rawgService.getGameDetailById(gameId);
     }
 
-    @GetMapping("/rawg/search")
+    @GetMapping("/game/search")
     public ResponseEntity<String> searchGameByName(@RequestParam String query) {
         return rawgService.searchGameByName(query);
     }

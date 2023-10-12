@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GameSearchForm from '../components/GameSearchForm';
-import GameDetail from './GameDetails';
+import SearchBar from '../components/SearchBar';
 
 
 function DiscoverySearch() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedGameId, setSelectedGameId] = useState(null);
 
   // Define your WishList and OwnedList states
   const [wishList, setWishList] = useState([]);
@@ -32,9 +30,12 @@ function DiscoverySearch() {
     }
   };
 
-  const handleSearch = (gameId) => {
-    setSelectedGameId(gameId);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
+
 
   useEffect(() => {
     // Define the URL of your backend API
@@ -73,19 +74,14 @@ function DiscoverySearch() {
 
   return (
     <div>
+    <SearchBar onSearch={handleSearch} />
       <br></br>
       <br></br>
       <br></br>
       <br></br>
       {/* <h1>HOT GAMES</h1> */}
       <div>
-      {/* Render the search form */}
-      <GameSearchForm onSearch={handleSearch} />
 
-      {/* Render the game details component */}
-      {selectedGameId && <GameDetail gameId={selectedGameId} />}
-
-      {/* ...the rest of your game listing */}
     </div>
       <div className="container">
         {data.map((game) => (

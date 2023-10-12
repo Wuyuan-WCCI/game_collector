@@ -11,6 +11,7 @@ import DiscoverySearch from './pages/Discovery';
 import GameDetail from './pages/GameDetails';
 import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';
+import SearchResultsPage from './components/SearchResultsPage';
 function App() {
   return (
     <Layout>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/user-detail" element={<UserProfile />} />;
         <Route path="/wish-list" element ={<WishList/>}/>;
         <Route path="/owned-list" element ={<OwnedList/>}/>;
+        <Route path="/search-results" element ={<SearchResultsPage/>}/>;
       </Routes>
       </Layout>
   );

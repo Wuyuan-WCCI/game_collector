@@ -1,24 +1,23 @@
-// import React from 'react';
-// const HomePage = () => {
-//   return(
-//     <>
-//     <br></br>
-//     <br></br>
-//     <br></br>
-//     <h1>Welcome Home!</h1>
-//     </>
-//   );
-
-//   };
-
-//   export default HomePage;
+import React, { useState } from 'react';
+import SearchBar from '../components/SearchBar';
+import SearchResults from '../components/SearchResultsPage';
 
 const HomePage = () => {
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
-    <div className="homepage">
-      <h1>Welcome Home!</h1>
+    <div>
+      <SearchBar onSearch={handleSearch} />
+      
     </div>
   );
 };
 
 export default HomePage;
+
+
