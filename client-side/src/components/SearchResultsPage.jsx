@@ -47,7 +47,7 @@ function SearchResults( ) {
         <SearchBar onSearch={handleSearch} />
       </div>
       <div className="search-results-container">
-        <h3 style={{ color: 'gold' }}>Search Results</h3>
+        <h3 style={{ color: 'gold', marginBottom: '30px'}}>Search Results:</h3>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
