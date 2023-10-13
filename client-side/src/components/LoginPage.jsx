@@ -27,10 +27,14 @@ const Login = () => {
         console.log('Response data:', data);
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('userId', data.id);
+        localStorage.setItem('userName', data.userName);
+        console.log('Login User Name: ' +userName)
         console.log('Login successfully');
         
         alert('User Login successfully')
+        
         navigate('/user-detail')
+        location.reload();
        
       } else {
         console.log("Username or password is incorrect.")
