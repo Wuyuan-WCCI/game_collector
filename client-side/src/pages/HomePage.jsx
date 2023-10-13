@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
-import SearchResults from '../components/SearchResultsPage';
 
 const HomePage = () => {
 
@@ -11,9 +10,8 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <SearchBar onSearch={handleSearch} />
-      
     </div>
   );
 };

@@ -47,7 +47,7 @@ function AddToListButton({ gameId, userId,authToken, actionType }) {
 
 AddToListButton.propTypes = {
   gameId: PropTypes.number.isRequired,
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.string.isRequired,
   authToken: PropTypes.string.isRequired,
   actionType: PropTypes.oneOf(['addToWishList', 'addToOwnedList']).isRequired,
 };

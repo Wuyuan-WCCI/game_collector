@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import './SearchResultsPage.css'
+import SearchBar from '../components/SearchBar';
+import { Link } from 'react-router-dom';
 
 function SearchResults( ) {
   const [searchResults, setSearchResults] = useState([]);
@@ -11,8 +13,15 @@ function SearchResults( ) {
   
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   useEffect(() => {
+    
+
+  
     
     console.log("Query: "+ query);
     if (query) {
@@ -34,20 +43,37 @@ function SearchResults( ) {
 
   return (
     <div>
-      <h2 style={{ color: 'gold' }}>Search Results</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>Error: {error.message}</p>
-      ) : (
-        <ul>
-  {searchResults.map((result) => (
-    <li key={result.id}>
-      <p style={{ color: 'white' }}>{result.name}</p>
-    </li>
-  ))}
-</ul>
-      )}
+      <div className="search-bar">
+        <SearchBar onSearch={handleSearch} />
+      </div>
+      <div className="search-results-container">
+        <h3 style={{ color: 'gold' }}>Search Results</h3>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error: {error.message}</p>
+        ) : (
+          <ul className="search-results-list">
+            {searchResults.map((result) => (
+              
+              <Link to={`/game-detail/${result.id}`  }key={result.id}>
+              <li className="search-result-item">
+              <div className="result-item-content">
+                <img src={result.background_image} alt={result.name} className='result-img' 
+                />
+                <div className="result-text" >
+          <p>ID: <b>{result.id}</b></p>
+          
+          <p style={{color:'purple'}}><b>{result.name} </b></p>
+          <p>Released Date: {result.released}</p>
+        </div>
+                </div>
+              </li>
+              </Link>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
