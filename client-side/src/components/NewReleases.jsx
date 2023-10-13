@@ -12,23 +12,23 @@ function NewReleases() {
   const [wishList, setWishList] = useState([]);
   const [ownedList, setOwnedList] = useState([]);
 
-  // Function to handle adding a game to the WishList
-  const handleButtonAddWishList = (game) => {
-    // Check if the game is already in the WishList to avoid duplicates
-    if (!wishList.some((item) => item.id === game.id)) {
-      // Add the game to the WishList
-      setWishList([...wishList, game]);
-    }
-  };
+  // // Function to handle adding a game to the WishList
+  // const handleButtonAddWishList = (game) => {
+  //   // Check if the game is already in the WishList to avoid duplicates
+  //   if (!wishList.some((item) => item.id === game.id)) {
+  //     // Add the game to the WishList
+  //     setWishList([...wishList, game]);
+  //   }
+  // };
 
-  // Function to handle adding a game to the OwnedList
-  const handleButtonAddOwnedList = (game) => {
-    // Check if the game is already in the OwnedList to avoid duplicates
-    if (!ownedList.some((item) => item.id === game.id)) {
-      // Add the game to the OwnedList
-      setOwnedList([...ownedList, game]);
-    }
-  };
+  // // Function to handle adding a game to the OwnedList
+  // const handleButtonAddOwnedList = (game) => {
+  //   // Check if the game is already in the OwnedList to avoid duplicates
+  //   if (!ownedList.some((item) => item.id === game.id)) {
+  //     // Add the game to the OwnedList
+  //     setOwnedList([...ownedList, game]);
+  //   }
+  // };
 
 
   useEffect(() => {
