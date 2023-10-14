@@ -8,6 +8,9 @@
     background-color:rgba(240, 240, 240, 0);
     border-radius: 5px;
     margin: 0 auto;
+    /* margin: 0 auto; */
+    transform: translate(0%, 100%);
+    
   }
   
   .search-bar-container input {
@@ -19,7 +22,7 @@
   }
   
   .search-bar-container button {
-    background-color: #007bff;
+    background-color: #000;
     color: #fff;
     border: none;
     border-radius: 5px;
