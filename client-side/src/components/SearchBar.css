@@ -5,11 +5,11 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #feffb5;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin: 0 auto;
-    
+    /* margin: 0 auto; */
+    transform: translate(50%, 100%);
     
   }
   
@@ -21,7 +21,7 @@
   }
   
   .search-bar-container button {
-    background-color: #007bff;
+    background-color: #000;
     color: #fff;
     border: none;
     border-radius: 5px;

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+
 
 function SearchResults( ) {
   const [searchResults, setSearchResults] = useState([]);
@@ -11,6 +12,8 @@ function SearchResults( ) {
   
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
+
+
 
   useEffect(() => {
     
@@ -33,7 +36,7 @@ function SearchResults( ) {
   }, [query]);
 
   return (
-    <div>
+    <div className='container container-search'>
       <h2 style={{ color: 'gold' }}>Search Results</h2>
       {loading ? (
         <p>Loading...</p>
@@ -42,9 +45,11 @@ function SearchResults( ) {
       ) : (
         <ul>
   {searchResults.map((result) => (
+    <Link to={`/game-detail/${result.id}`} key={result.id}>
     <li key={result.id}>
       <p style={{ color: 'white' }}>{result.name}</p>
     </li>
+    </Link>
   ))}
 </ul>
       )}

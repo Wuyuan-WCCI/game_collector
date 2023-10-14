@@ -137,6 +137,10 @@ Owned List Page  */
   word-wrap: break-word;
 }
 
+.container-search ul li {
+  text-decoration: underline yellow;
+}
+
 /* Style the boxes (make them equal-sized) */
 .box {
   background-color: #feffb5; /* Set a background color */
@@ -152,8 +156,9 @@ Owned List Page  */
 }
 
 .box-image {
+  flex: 45%;
   height: auto;
-  width: 20%;
+  width: auto;
   background-color: #fff; /* Set a background color */
   padding: 10px; /* Add padding for spacing inside the boxes */
   border: 1px solid #ccc; /* Add a border for visual separation */
@@ -165,16 +170,13 @@ Owned List Page  */
 
 .box img {
   height: 250px;
-  width: 100%;
-  align-items: center; /* Vertically center buttons */
-  align-content: center;
-  object-fit: contain;
+  /* width: 100%; */
   /* transform: translate(1%,1%); */
 }
 
 .box-name {
   height: auto;
-  width: 40%;
+  /* width: 10%; */
   /* background-color: #000;  */
   /* Set a background color */
   padding: 10px; /* Add padding for spacing inside the boxes */
