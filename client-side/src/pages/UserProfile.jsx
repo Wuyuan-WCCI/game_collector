@@ -74,7 +74,7 @@ const UserProfile = () => {
 
             <div className="game-info">
             <Link to={`/game-detail/${ownedItem.game.id}`} key={ownedItem.game.id}>
-              <p><b>{ownedItem.game.name}</b></p>
+              <h4><b>{ownedItem.game.name}</b></h4>
               </Link>
               {/* <p>Slug: {ownedItem.game.slug}</p> */}
               <p><b>Status:</b> {ownedItem.game.status}</p>
@@ -117,7 +117,7 @@ const UserProfile = () => {
 
             <div className="game-info game-details-box-2">
             <Link to={`/game-detail/${wishListItem.game.id}`} key={wishListItem.game.id}>
-              <p><b>{wishListItem.game.name}</b></p>
+              <h4><b>{wishListItem.game.name}</b></h4>
               </Link>
               {/* <p>Slug: {wishListItem.game.slug}</p> */}
               {/* <p>Status: {wishListItem.game.status}</p> */}
