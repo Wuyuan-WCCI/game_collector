@@ -59,68 +59,88 @@ const UserProfile = () => {
           <br></br>
           <br></br>
           <br></br>
-          <h2 style={{color: 'gold'}}>My Owned List </h2>
-          {user.ownedLists && user.ownedLists.length > 0 ? (
-            <div className='box'>
-              <ul>
-                {user.ownedLists.map((ownedItem, index) => (
-                  <li key={ownedItem.id} className="game-item">
-                  <div className="box-1" style={{ width: '800px', height: '10px' }}>
-          <img src={ownedItem.game.imgUrl} alt={`Image ${ownedItem.game.name}`} style={{width:'400px', height: '300px'} }/>
-        </div>
-                    <p>Name: {ownedItem.game.name}</p>
-                    <p>Slug: {ownedItem.game.slug}</p>
-                    <p>Status: {ownedItem.game.status}</p>
-                    <p>Released Date: {ownedItem.game.released}</p>
-                    <p>
-                      Description: {expandedDescriptions[index]
-                        ? <div dangerouslySetInnerHTML={{ __html: ownedItem.game.description }} />
-                        : parseHTML(ownedItem.game.description).substring(0, 255)}
-                      {ownedItem.game.description.length > 255 && (
-                        <button onClick={() => toggleDescriptionExpansion(index)}>
-                          {expandedDescriptions[index] ? 'Read less' : '......Read more'}
-                        </button>
-                      )}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+          <h2 style={{ color: 'gold' }}>My Owned List</h2>
+{user.ownedLists && user.ownedLists.length > 0 ? (
+  <div className='box'>
+    <ul>
+      {user.ownedLists.map((ownedItem, index) => (
+        
+        <li key={ownedItem.id} className="game-item">
+          <div className="game-details">
+
+            <div className="game-image">
+              <img src={ownedItem.game.imgUrl} alt={`Image ${ownedItem.game.name}`} />
             </div>
-          ) : (
-            <p>No items in your owned list.</p>
+
+            <div className="game-info">
+            <Link to={`/game-detail/${ownedItem.game.id}`} key={ownedItem.game.id}>
+              <p><b>{ownedItem.game.name}</b></p>
+              </Link>
+              {/* <p>Slug: {ownedItem.game.slug}</p> */}
+              <p><b>Status:</b> {ownedItem.game.status}</p>
+              {/* <p>Released Date: {ownedItem.game.released}</p> */}
+              <p>
+                {expandedDescriptions[index]
+                  ? <div dangerouslySetInnerHTML={{ __html: ownedItem.game.description }} />
+                  : parseHTML(ownedItem.game.description).substring(0, 255)}
+                {ownedItem.game.description.length > 255 && (
+                  <button onClick={() => toggleDescriptionExpansion(index)}>
+                    {expandedDescriptions[index] ? 'Read less' : '......Read more'}
+                  </button>
+                )}
+              </p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+) : (
+  <p>No items in your owned list.</p>
+
           )}
           <br></br>
           <br></br>
           <br></br>
-          <h2 style={{color: 'gold'}}>My Wishlist</h2>
-          {user.wishLists && user.wishLists.length > 0 ? (
-            <div className='box'>
-              <ul>
-                {user.wishLists.map((wishListItem, index) => (
-                  <li key={wishListItem.id}>
-                  <div className="box-1" style={{ width: '800px', height: '100px' }}>
-          <img src={wishListItem.game.imgUrl} alt={`Image ${wishListItem.game.name}`} style={{width:'400px', height: '300px'} } />
-        </div>
-                    <p>Name: {wishListItem.game.name}</p>
-                    <p>Slug: {wishListItem.game.slug}</p>
-                    <p>Status: {wishListItem.game.status}</p>
-                    <p>Released Date: {wishListItem.game.released}</p>
-                    <p>
-                      Description: {expandedDescriptions[user.ownedLists.length + index]
-                        ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />
-                        : parseHTML(wishListItem.game.description).substring(0, 255)}
-                      {wishListItem.game.description.length > 255 && (
-                        <button onClick={() => toggleDescriptionExpansion(user.ownedLists.length + index)}>
-                          {expandedDescriptions[user.ownedLists.length + index] ? 'Read less' : '......Read more'}
-                        </button>
-                      )}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+          <h2 style={{ color: 'gold' }}>My WishList</h2>
+{user.wishLists && user.wishLists.length > 0 ? (
+  <div className='box'>
+    <ul>
+      {user.wishLists.map((wishListItem, index) => (
+        
+        <li key={wishListItem.id} className="game-item">
+          <div className="game-details">
+
+            <div className="game-image">
+              <img src={wishListItem.game.imgUrl} alt={`Image ${wishListItem.game.name}`} />
             </div>
-          ) : (
-            <p>No items in your wishlist.</p>
+
+            <div className="game-info game-details-box-2">
+            <Link to={`/game-detail/${wishListItem.game.id}`} key={wishListItem.game.id}>
+              <p><b>{wishListItem.game.name}</b></p>
+              </Link>
+              {/* <p>Slug: {wishListItem.game.slug}</p> */}
+              {/* <p>Status: {wishListItem.game.status}</p> */}
+              {/* <p>Released Date: {wishListItem.game.released}</p> */}
+              <p>
+                {expandedDescriptions[index]
+                  ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />
+                  : parseHTML(wishListItem.game.description).substring(0, 255)}
+                {wishListItem.game.description.length > 255 && (
+                  <button onClick={() => toggleDescriptionExpansion(index)}>
+                    {expandedDescriptions[index] ? 'Read less' : '......Read more'}
+                  </button>
+                )}
+              </p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+) : (
+  <p>No items in your wishlist.</p>
+
           )}
         </>
       ) : (
