@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
@@ -17,6 +17,8 @@ function SearchResults( ) {
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
+
+
 
   useEffect(() => {
     
