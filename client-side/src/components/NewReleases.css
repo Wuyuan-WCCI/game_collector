@@ -1,0 +1,33 @@
+/* Styling for the container of each game item in the carousel */
+.carousel-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Styling for each game item */
+.carousel-item {
+   margin: 0;
+ 
+}
+
+/* Styling for the game image container */
+.carousel-image {
+  max-width: 100%;
+}
+
+/* Styling for the game image */
+.carousel-item-img {
+  max-width: 290px;
+  height: 200px;
+  border: 2px solid gold;
+  border-radius: 8px;
+}
+
+/* Styling for the game name */
+.carousel-name {
+  margin: 5;
+  font-size: 18px;
+  color: #eee6e6;
+  text-align:center;
+  padding: 10px;
+}
