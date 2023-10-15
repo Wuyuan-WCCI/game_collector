@@ -4,6 +4,41 @@ import Slider from 'react-slick'; // Import the Slider component
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './NewReleases.css'; 
+import PropTypes from 'prop-types';
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-right`}
+      style={{ ...style, display: "block"}}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-left`}
+      style={{ ...style, display:"block" }}
+      onClick={onClick}
+    />
+    
+  );
+}
+
+SamplePrevArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
+SampleNextArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
+
 
 function NewReleases() {
   const [data, setData] = useState([]);
@@ -49,8 +84,8 @@ function NewReleases() {
     
     
   
-    prevArrow: <div className="carousel-arrow left">{'<'}</div>, // Customize the left arrow
-    nextArrow: <div className="carousel-arrow right">{'>'}</div>, // Customize the right arrow
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow /> 
   };
   
 
@@ -78,7 +113,6 @@ function NewReleases() {
               {/* ... Other content ... */}
             </div>
           </div>
-           
           </Link>
         ))}
       </Slider>

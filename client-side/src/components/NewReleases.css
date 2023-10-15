@@ -2,13 +2,11 @@
 .carousel-container {
   max-width: 80%;
   margin: 0 auto;
-  padding: auto;
+  align-items: center;
 }
 
-/* Styling for each game item */
-.carousel-item {
-  /* Your existing styles */
-}
+
+
 
 /* Styling for the game image container */
 .carousel-image {
@@ -34,21 +32,32 @@
 
 /* Styling for the game image when hovered */
 .carousel-item-img:hover {
-  border-color: #ff9900;
-  transform: scale(1.1)/* Change the border color on hover */
+    border-color: #ff9900;
+    transform: scale(1.1);
+  }
+  .carousel-arrow-left::before,
+.carousel-arrow-right::before {
+  transform: translateY(-120%);
+  transition: transform 0.3s; /* Add a smooth transition effect */
 }
 
-.carousel-arrow {
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.carousel-arrow.left {
-  position: absolute;
-  left: 0;
-}
-
-.carousel-arrow.right {
-  position: absolute;
-  right: 0;
-}
+  .carousel-arrow {
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.5s; /* Add a smooth transition effect */
+  }
+  
+  .carousel-arrow-left::before {
+    content: 'Preview';
+    position: absolute;
+    left: -45px;
+    transform: translateY(-120%);
+    transition: transform 0.5s; /* Add a smooth transition effect */
+  }
+  
+  .carousel-arrow-right::before {
+    content: 'Next';
+    position: absolute;
+    transform: translateY(-120%);
+    transition: transform 0.3s; /* Add a smooth transition effect */
+  }
