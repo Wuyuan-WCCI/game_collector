@@ -1,43 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick'; // Import the Slider component
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './NewReleases.css'; 
-import PropTypes from 'prop-types';
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} carousel-arrow-right`}
-      style={{ ...style, display: "block"}}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} carousel-arrow-left`}
-      style={{ ...style, display:"block" }}
-      onClick={onClick}
-    />
-    
-  );
-}
-
-SamplePrevArrow.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object, // Validate style as an object
-  onClick: PropTypes.func, // Validate onClick as a function
-};
-SampleNextArrow.propTypes = {
-  className: PropTypes.string,
-  style: PropTypes.object, // Validate style as an object
-  onClick: PropTypes.func, // Validate onClick as a function
-};
 
 
 function NewReleases() {
@@ -72,23 +35,6 @@ function NewReleases() {
       });
   }, []);
 
-  // Configure settings for the carousel
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 1000,
-    slidesToShow: 5, // Number of games to show at once
-    slidesToScroll: 1,
-    waitForAnimate: false,
-    
-    
-    
-  
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow /> 
-  };
-  
-
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -102,17 +48,17 @@ function NewReleases() {
       <Slider {...settings}>
         {data.map((game) => (
           <Link to={`/game-detail/${game.id}`} key={game.id}>
-          <div >
-          <div style={{display: 'block', padding: '20px', margin:'10'}}>
-              <div className="carousel-image">
-                <img src={game.background_image} alt={game.name} className="carousel-item-img" />
+            <div className="box">
+              <div className="box-image">
+                <img src={game.background_image} alt={game.name} />
               </div>
               <div >
                 <h2 className="carousel-name">{game.name}</h2>
               </div>
               {/* ... Other content ... */}
             </div>
-          </div>
+          </div> */}
+            </div>
           </Link>
         ))}
       </Slider>
