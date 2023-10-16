@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick'; // Import the Slider component
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './NewReleases.css'; 
+import './Carousel.css'; 
 import PropTypes from 'prop-types';
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -48,7 +49,7 @@ function NewReleases() {
 
   useEffect(() => {
    // Define the URL of your backend API
-    const apiUrl = 'http://localhost:7098/new_games';
+    const apiUrl = 'http://localhost:7098/game/new_games';
 
     fetch(apiUrl)
       .then((response) => {
@@ -104,8 +105,8 @@ function NewReleases() {
         {data.map((game) => (
           <Link to={`/game-detail/${game.id}`} key={game.id}>
           <div >
-          <div style={{display: 'block', padding: '20px', margin:'10'}}>
-              <div className="carousel-image">
+          <div style={{display: 'block', padding: '20px'}}>
+              <div>
                 <img src={game.background_image} alt={game.name} className="carousel-item-img" />
               </div>
               <div >

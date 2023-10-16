@@ -35,14 +35,14 @@ const OwnedList = () => {
           <div className="box" key={item.id}>
           <div className="box-image">
             <img
-              src={item.imgUrl}
+              src={item.game.imgUrl}
               alt={`Image ${item.name}`}
             />
             </div>
-            <h3>Title: {item.name}</h3>
-            <p>Slug: {item.slug}</p>
-            <p>Released: {item.release}</p>
-            <p>Description: {item.description}</p>
+            <h3>Title: {item.game.name}</h3>
+            <p>Slug: {item.game.slug}</p>
+            <p>Released: {item.game.release}</p>
+            <p>Description: {item.game.description}</p>
             {/* Add more item details as needed */}
           </div>
           </Link>

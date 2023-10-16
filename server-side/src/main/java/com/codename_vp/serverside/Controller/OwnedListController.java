@@ -41,7 +41,7 @@ public class OwnedListController {
         return this.ownedListService.getOwnedList();
     }
 
-    @PostMapping("/ownedlist/add/{userId}/{gameId}")
+    @PostMapping("/user/{userId}/ownedlist/add/{gameId}")
     public ResponseEntity<OwnedList> addToOwnedList(@PathVariable int userId, @PathVariable Long gameId) {
         User user = userService.getUserById(userId);
         Game game = gameService.getGameById(gameId);

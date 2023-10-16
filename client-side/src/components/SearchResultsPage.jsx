@@ -49,7 +49,7 @@ function SearchResults( ) {
         <SearchBar onSearch={handleSearch} />
       </div>
       <div className="search-results-container">
-        <h3 style={{ color: 'gold', marginBottom: '30px'}}>Search Results:</h3>
+        <h3 style={{ color: 'gold', marginBottom: '30px', marginTop: '30px'}}>Search Results:</h3>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
@@ -64,7 +64,7 @@ function SearchResults( ) {
                 <img src={result.background_image} alt={result.name} className='result-img' 
                 />
                 <div className="result-text" >
-          <p>ID: <b>{result.id}</b></p>
+          <p>ID: {result.id}</p>
           
           <p style={{color:'purple'}}><b>{result.name} </b></p>
           <p>Released Date: {result.released}</p>

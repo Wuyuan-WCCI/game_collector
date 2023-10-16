@@ -1,21 +1,36 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import RemoveFromWishlistButton from '../components/RemoveFromWishListButton'
+import RemoveFromOwnedListButton from '../components/RemoveFromOwnedListButton';
+import MoveToOwnedListButton from '../components/MoveToOwnedListButton'
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState([]);
+  const [userId, setUserId] = useState(null);
 
+  const onGameRemoved = (wishListId) => {
+    
+    console.log(`Removing game with wishListId: ${wishListId}`);
+  };
+
+  const handleItemMoved = (wishListId) => {
+    
+    console.log(`Item moved from wish list to owned list: ${wishListId}`);
+  };
+  
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
-    const userId = localStorage.getItem('userId');
+    const localUserId = localStorage.getItem('userId');
 
     if (authToken) {
-      fetch(`http://localhost:7098/user/id/${userId}`, {
+      setUserId(localUserId);
+      fetch(`http://localhost:7098/user/id/${localUserId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
+        
       })
         .then((response) => {
           if (response.ok) {
@@ -84,11 +99,18 @@ const UserProfile = () => {
                   ? <div dangerouslySetInnerHTML={{ __html: ownedItem.game.description }} />
                   : parseHTML(ownedItem.game.description).substring(0, 255)}
                 {ownedItem.game.description.length > 255 && (
-                  <button onClick={() => toggleDescriptionExpansion(index)}>
+                  <button className='read-button'
+                   onClick={() => toggleDescriptionExpansion(index)}>
                     {expandedDescriptions[index] ? 'Read less' : '......Read more'}
                   </button>
+                  
                 )}
               </p>
+              <RemoveFromOwnedListButton
+            userId={userId}
+            ownedListId={ownedItem.id}
+            onRemove={() => onGameRemoved(ownedItem.id)}
+          />
             </div>
           </div>
         </li>
@@ -117,7 +139,7 @@ const UserProfile = () => {
 
             <div className="game-info game-details-box-2">
             <Link to={`/game-detail/${wishListItem.game.id}`} key={wishListItem.game.id}>
-              <h4><b>{wishListItem.game.name}</b></h4>
+              <h4 ><b>{wishListItem.game.name}</b></h4>
               </Link>
               {/* <p>Slug: {wishListItem.game.slug}</p> */}
               {/* <p>Status: {wishListItem.game.status}</p> */}
@@ -127,11 +149,23 @@ const UserProfile = () => {
                   ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />
                   : parseHTML(wishListItem.game.description).substring(0, 255)}
                 {wishListItem.game.description.length > 255 && (
-                  <button onClick={() => toggleDescriptionExpansion(index)}>
+                  <button className='read-button'
+                  style={{color: 'gold'}}onClick={() => toggleDescriptionExpansion(index)}>
                     {expandedDescriptions[index] ? 'Read less' : '......Read more'}
                   </button>
+                  
                 )}
               </p>
+              <RemoveFromWishlistButton
+            userId={userId}
+            wishListId={wishListItem.id}
+            onRemove={() => onGameRemoved(wishListItem.id)}
+          />
+          <MoveToOwnedListButton
+        userId={userId}
+        wishListId={wishListItem.id}
+        onMove={handleItemMoved}
+      />
             </div>
           </div>
         </li>

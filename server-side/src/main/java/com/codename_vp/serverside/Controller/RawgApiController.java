@@ -35,12 +35,12 @@ public class RawgApiController {
         return rawgService.searchGameByName(query);
     }
 
-    @GetMapping("/top_games")
+    @GetMapping("/game/top_games")
     public ResponseEntity<String> getTopGames() {
         return rawgService.getTop10Games();
     }
 
-    @GetMapping("/new_games")
+    @GetMapping("/game/new_games")
     public ResponseEntity<String> getNewReleaseGames() {
         return rawgService.getNewReleaseGames();
     }

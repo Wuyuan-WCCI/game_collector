@@ -6,7 +6,7 @@ function GameList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = 'http://localhost:7098/top_games';
+    const apiUrl = 'http://localhost:7098/game/top_games';
 
     fetch(apiUrl)
     .then((response) => {
