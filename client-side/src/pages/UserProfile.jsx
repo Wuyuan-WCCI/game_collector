@@ -72,7 +72,7 @@ const UserProfile = () => {
               <img src={ownedItem.game.imgUrl} alt={`Image ${ownedItem.game.name}`} />
             </div>
 
-            <div className="game-info">
+            <div className="game-info game-details-box-2">
             <Link to={`/game-detail/${ownedItem.game.id}`} key={ownedItem.game.id}>
               <h4><b>{ownedItem.game.name}</b></h4>
               </Link>
