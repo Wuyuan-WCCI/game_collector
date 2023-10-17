@@ -18,7 +18,7 @@ const RemoveFromWishlistButton = ({ userId, wishListId, onRemove }) => {
   };
 
   return (
-    <button onClick={handleRemove}>Remove from Wish List</button>
+    <button onClick={handleRemove} className='RemoveFromListButton'>Remove</button>
   );
 };
 

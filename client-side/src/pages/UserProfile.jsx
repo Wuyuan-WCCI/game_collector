@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import RemoveFromWishlistButton from '../components/RemoveFromWishListButton'
 import RemoveFromOwnedListButton from '../components/RemoveFromOwnedListButton';
 import MoveToOwnedListButton from '../components/MoveToOwnedListButton'
+import '../components/Buttons.css'
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -106,11 +107,14 @@ const UserProfile = () => {
                   
                 )}
               </p>
-              <RemoveFromOwnedListButton
-            userId={userId}
-            ownedListId={ownedItem.id}
-            onRemove={() => onGameRemoved(ownedItem.id)}
-          />
+              <div>
+              <RemoveFromOwnedListButton 
+                userId={userId}
+                ownedListId={ownedItem.id}
+                onRemove={() => onGameRemoved(ownedItem.id)}
+              />
+              </div>
+             
             </div>
           </div>
         </li>
@@ -118,7 +122,7 @@ const UserProfile = () => {
     </ul>
   </div>
 ) : (
-  <p>No items in your owned list.</p>
+  <p style={{color: "blue"}}>No items in your owned list.</p>
 
           )}
           <br></br>
@@ -156,16 +160,17 @@ const UserProfile = () => {
                   
                 )}
               </p>
-              <RemoveFromWishlistButton
+              < RemoveFromWishlistButton
             userId={userId}
             wishListId={wishListItem.id}
             onRemove={() => onGameRemoved(wishListItem.id)}
-          />
-          <MoveToOwnedListButton
-        userId={userId}
-        wishListId={wishListItem.id}
-        onMove={handleItemMoved}
-      />
+          />  
+              <MoveToOwnedListButton
+              userId={userId}
+              wishListId={wishListItem.id}
+              onMove={handleItemMoved} 
+             />
+         
             </div>
           </div>
         </li>
@@ -173,7 +178,7 @@ const UserProfile = () => {
     </ul>
   </div>
 ) : (
-  <p>No items in your wishlist.</p>
+  <p style={{color: 'blue'}}>No items in your wishlist.</p>
 
           )}
         </>

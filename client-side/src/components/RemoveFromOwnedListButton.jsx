@@ -18,7 +18,7 @@ const RemoveFromOwnedListButton = ({ userId, ownedListId, onRemove }) => {
   };
 
   return (
-    <button onClick={handleRemove}>Remove from Owned List</button>
+    <button onClick={handleRemove} className="RemoveFromListButton">Remove</button>
   );
 };
 

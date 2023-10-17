@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import './Buttons.css'
 
 const MoveToOwnedListButton = ({ userId, wishListId, onMove }) => {
   const handleMoveToOwnedList = () => {
@@ -18,12 +19,12 @@ const MoveToOwnedListButton = ({ userId, wishListId, onMove }) => {
   };
 
   return (
-    <button onClick={handleMoveToOwnedList}>Move to Owned List</button>
+    <button onClick={handleMoveToOwnedList} className='RemoveFromListButton'>Move to Owned</button>
   );
 };
 
 MoveToOwnedListButton.propTypes = {
-    userId: PropTypes.number.isRequired,
+    userId: PropTypes.string.isRequired,
     wishListId: PropTypes.number.isRequired,
     onMove: PropTypes.func.isRequired,
 };

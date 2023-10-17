@@ -14,6 +14,7 @@ function SearchResults( ) {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   const [searchQuery, setSearchQuery] = useState('');
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -21,9 +22,6 @@ function SearchResults( ) {
 
 
   useEffect(() => {
-    
-
-  
     
     console.log("Query: "+ query);
     if (query) {

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.codename_vp.serverside.Entity.Game;
-import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.User;
 import com.codename_vp.serverside.Entity.WishList;
 import com.codename_vp.serverside.Repository.GameRepo;
