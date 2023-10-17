@@ -41,4 +41,8 @@ public class OwnedListService {
         return this.ownedListRepo.findAll();
     }
 
+    public List<OwnedList> getOwnedListByUserId(Long userId) {
+        return ownedListRepo.findByUser_Id(userId);
+    }
+
 }

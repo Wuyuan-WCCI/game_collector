@@ -74,7 +74,7 @@ function GameInfoDetails() {
 
     fetchGameWithRetry(MAX_RETRIES);
     fetchVideoUrl();
-  }, [gameId]);
+  }, [gameId,authToken,userId]);
 
   if (loading) {
     return <p>Loading...</p>;

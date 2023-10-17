@@ -32,7 +32,7 @@ public class WishListController {
     private GameService gameService;
 
     // Endpoint to get wishlist items for a specific user
-    @GetMapping("wishlist/user/{userId}")
+    @GetMapping("/user/{userId}/wishlist")
     public ResponseEntity<List<WishList>> getWishListByUserId(@PathVariable Long userId) {
         List<WishList> wishList = wishListService.getWishListByUserId(userId);
         return ResponseEntity.ok(wishList);

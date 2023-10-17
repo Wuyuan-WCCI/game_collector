@@ -1,0 +1,53 @@
+/* ListPage.css */
+
+/* Style for the container div */
+.list-container {
+    max-width: 75%;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  /* Style for each item box */
+  .container-box {
+    width: 100%;
+    margin: auto;
+    padding: 1px;
+   
+    text-align: center;
+    background-color: rgba(red, green, blue, alpha);
+    font-size: 15px;
+  }
+  
+  /* Style for the image */
+  .container-box-img {
+    max-width: 250px;
+    height: 180px;
+    border: 2px solid gold;
+    border-radius: 50px;
+  }
+  
+
+
+  /* Style for the released date */
+  .container-font {
+    width: 70%;
+    font-size: 18px;
+    color: #ebf5a9;
+    margin: auto;
+    text-align: center;
+   
+  }
+
+  .container-font:hover {
+    transform: scale(1.15);
+    color: #ff9900;
+  }
+
+  .container-box-img:hover {
+    border-color: #ff9900;
+    transform: scale(1.15);
+  }
+  

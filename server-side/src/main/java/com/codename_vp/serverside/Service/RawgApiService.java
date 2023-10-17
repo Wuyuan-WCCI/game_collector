@@ -186,7 +186,10 @@ public class RawgApiService {
                 gameRepo.save(game);
 
                 User user = userService.getUserById(userId);
+
                 WishList wishList = new WishList(user, game);
+                wishList.setUser(user);
+                System.out.println("Add game to " + user.getUserName() + "'s wish list!");
                 wishListRepo.save(wishList);
                 user.getWishLists().add(wishList);
 

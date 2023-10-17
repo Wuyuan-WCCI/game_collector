@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codename_vp.serverside.Entity.Game;
 import com.codename_vp.serverside.Entity.OwnedList;
 import com.codename_vp.serverside.Entity.User;
+import com.codename_vp.serverside.Entity.WishList;
 import com.codename_vp.serverside.Service.GameService;
 import com.codename_vp.serverside.Service.OwnedListService;
 import com.codename_vp.serverside.Service.UserService;
@@ -57,6 +58,12 @@ public class OwnedListController {
     @DeleteMapping("owned-list/delete/{id}")
     public void removeFromOwnedList(@PathVariable int id) {
         this.ownedListService.removeFromOwnedList(id);
+    }
+
+    @GetMapping("/user/{userId}/ownedlist")
+    public ResponseEntity<List<OwnedList>> getWishListByUserId(@PathVariable Long userId) {
+        List<OwnedList> ownedList = ownedListService.getOwnedListByUserId(userId);
+        return ResponseEntity.ok(ownedList);
     }
 
 }
