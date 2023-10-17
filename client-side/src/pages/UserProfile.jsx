@@ -23,6 +23,7 @@ const UserProfile = () => {
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
     const localUserId = localStorage.getItem('userId');
+    
 
     if (authToken) {
       setUserId(localUserId);
@@ -75,7 +76,7 @@ const UserProfile = () => {
           <br></br>
           <br></br>
           <br></br>
-          <h2 style={{ color: 'gold' }}>My Owned List</h2>
+          <Link to={`/owned-list`}> <h2 style={{ color: 'gold' }}>My Owned List</h2></Link>
 {user.ownedLists && user.ownedLists.length > 0 ? (
   <div className='box'>
     <ul>
@@ -128,7 +129,7 @@ const UserProfile = () => {
           <br></br>
           <br></br>
           <br></br>
-          <h2 style={{ color: 'gold' }}>My WishList</h2>
+          <Link to={`/wish-list`}> <h2 style={{ color: 'gold' }}>My Wish List</h2></Link>
 {user.wishLists && user.wishLists.length > 0 ? (
   <div className='box'>
     <ul>
