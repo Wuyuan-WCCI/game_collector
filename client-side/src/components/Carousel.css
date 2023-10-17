@@ -1,0 +1,70 @@
+
+/* Styling for the container of each game item in the carousel */
+.carousel-container {
+    max-width: 55%;
+    margin: auto;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ff9900;
+    height: 300;
+    
+
+  }
+  
+  
+  
+  
+  /* Styling for the game image container */
+  .carousel-image {
+    max-width: 100%;
+  }
+  
+  /* Styling for the game image */
+  .carousel-item-img {
+    max-width: 180px;
+    height: 165px;
+    border: 2px solid gold;
+    border-radius: 10px;
+
+  }
+  
+  /* Styling for the game name */
+  .carousel-name {
+    margin: 5px;
+    font-size: 18px;
+    color: #aec7dc;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Styling for the game image when hovered */
+  .carousel-item-img:hover {
+      border-color: #ff9900;
+      transform: scale(1.15);
+    }
+    
+    .carousel-arrow-left::before,
+  .carousel-arrow-right::before {
+    transform: translateY(-250%);
+    transition: transform 0.5s; /* Add a smooth transition effect */
+  }
+  
+    .carousel-arrow {
+      font-size: 30px;
+      cursor: pointer;
+      transition: transform 0.5s; /* Add a smooth transition effect */
+    }
+    
+    .carousel-arrow-left::before {
+      content: 'Preview';
+      position: absolute;
+      left: -60px;
+      
+    }
+    
+    .carousel-arrow-right::before {
+      content: 'Next';
+      position: absolute;
+      left: 15px;
+     
+    }

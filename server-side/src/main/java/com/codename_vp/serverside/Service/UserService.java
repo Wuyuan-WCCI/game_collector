@@ -22,6 +22,9 @@ public class UserService {
     @Autowired
     private GameRepo gameRepo;
 
+    @Autowired
+    private OwnedListService ownedListService;
+
     public UserService(UserRepo userRepo, GameRepo gameRepo) {
         this.userRepo = userRepo;
         this.gameRepo = gameRepo;
@@ -64,4 +67,77 @@ public class UserService {
             throw new IllegalArgumentException("User not found with ID: " + userId);
         }
     }
+
+    public User removeFromWishList(int userId, Long wishListId) {
+        Optional<User> optionalUser = userRepo.findById(userId);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            System.out.println("remove from wishlist User Id: " + user);
+
+            // Find and remove the specific WishList with the given wishListId
+            user.getWishLists().removeIf(wishList -> wishList.getId().equals(wishListId));
+
+            // Save the updated user
+            return userRepo.save(user);
+        } else {
+            // Handle the case where the user doesn't exist
+            throw new IllegalArgumentException("User not found with ID: " + userId);
+        }
+
+    }
+
+    public User removeFromOwnedList(int userId, Long ownedListId) {
+        Optional<User> optionalUser = userRepo.findById(userId);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            System.out.println("Remove Owned list ID:" + " from User Id: " + user);
+
+            // Find and remove the specific WishList with the given wishListId
+            user.getOwnedLists().removeIf(ownedList -> ownedList.getId().equals(ownedListId));
+
+            // Save the updated user
+            return userRepo.save(user);
+        } else {
+            // Handle the case where the user doesn't exist
+            throw new IllegalArgumentException("User not found with ID: " + userId);
+        }
+
+    }
+
+    public User moveFromWishListToOwnedList(int userId, Long wishListId) {
+        // Find the user by userId
+        Optional<User> optionalUser = userRepo.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+
+            // Find the wish list item by wishListId
+            WishList wishListItem = user.getWishLists()
+                    .stream()
+                    .filter(wl -> wl.getId().equals(wishListId))
+                    .findFirst()
+                    .orElse(null);
+
+            if (wishListItem == null) {
+                throw new IllegalArgumentException("WishList item not found with ID: " + wishListId);
+            }
+
+            // Create a new owned list item with the same game
+            Game game = wishListItem.getGame();
+            ownedListService.addToOwnedList(user, game);
+
+            // Remove the wish list item
+            user.getWishLists().remove(wishListItem);
+
+            // Save the updated user
+            userRepo.save(user);
+
+            return user;
+        } else {
+            // Handle the case where the user doesn't exist
+            throw new IllegalArgumentException("User not found with ID: " + userId);
+        }
+    }
+
 }
