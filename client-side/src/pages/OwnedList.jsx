@@ -1,49 +1,71 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import '../components/ListPage.css'
+
 const OwnedList = () => {
   const [collection, setCollection] = useState([]);
-  const baseUrl = 'http://localhost:7098/owned-list';
-
-  const fetchWishListData = async () => {
-    try {
-      const response = await fetch(baseUrl);
-      if (!response.ok) {
-        throw new Error('Response is not right');
+  
+  const authToken = localStorage.getItem('authToken');
+  const localUsername = localStorage.getItem('userName');
+  
+ 
+  const fetchOwnedListData = async () => {
+    if (authToken) {
+      const localUserId = localStorage.getItem('userId');
+      const baseUrl = `http://localhost:7098/user/${localUserId}/ownedlist`;
+      try {
+        const response = await fetch(baseUrl, { // Fixed the options format here
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error('Response is not right');
+        }
+  
+        const dataText = await response.text();
+        console.log('Response text:', dataText);
+        const data = JSON.parse(dataText);
+        setCollection(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-      const dataText = await response.text(); // Read the raw text
-      console.log('Response text:', dataText); // Log the response text
-      const data = JSON.parse(dataText); // Attempt to parse the JSON
-      setCollection(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
     }
   }
-
+  
   useEffect(() => {
-    // Call the fetchWishListData function
-    fetchWishListData();
-  }, []); // Empty dependency array to run this effect only once
+    
+    fetchOwnedListData();
+  }, []); 
 
   console.log("OwnedGames: " + collection);
 
   return (
     <div>
-      <h1>Owned List</h1>
-      <div className="container">
+      <h1 style={{color: 'orange'}}>{localUsername + "'s"} Owned List</h1>
+      <div className="list-container">
         {collection.map((item) => (
-          <Link to={`/game-detail/${item.id}`} key={item.id}>
-          <div className="box" key={item.id}>
-          <div className="box-image">
+          <Link to={`/game-detail/${item.game.id}`} key={item.id}>
+          <div  className="container-box" key={item.id}>
+          <div style={{display: 'block', padding: '20px'}}>
+            <div>
             <img
-              src={item.imgUrl}
+              src={item.game.imgUrl}
               alt={`Image ${item.name}`}
+              className="container-box-img"
             />
             </div>
-            <h3>Title: {item.name}</h3>
-            <p>Slug: {item.slug}</p>
-            <p>Released: {item.release}</p>
-            <p>Description: {item.description}</p>
-            {/* Add more item details as needed */}
+            
+            </div>
+            <div className="container-font">
+            <p><b>Title: {item.game.name}</b></p>
+            
+            <p>Released: {item.game.released}</p>
+            </div>
+           
+           
           </div>
           </Link>
         ))}

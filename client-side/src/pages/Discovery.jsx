@@ -19,7 +19,7 @@ function DiscoverySearch() {
 
   useEffect(() => {
     // Define the URL of your backend API
-    const apiUrl = 'http://localhost:7098/top_games';
+    const apiUrl = 'http://localhost:7098/game/top_games';
 
     fetch(apiUrl)
       .then((response) => {

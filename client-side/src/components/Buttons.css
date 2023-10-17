@@ -1,0 +1,48 @@
+.button {
+    
+    background-color: #007BFF; /* Button background color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Show a hand cursor on hover */
+  }
+  
+  /* Style when hovering over the button */
+  .button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+  }
+
+  /* Style for RemoveFromWishlistButton */
+.RemoveFromListButton {
+    background-color: #1e73f2; /* Red background color */
+    color: #fff; /* White text color */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .RemoveFromListButton:hover {
+    background-color: #C0392B; /* Darker red on hover */
+  }
+  
+  /* Style for MoveToOwnedListButton */
+  .MoveToOwnedListButton {
+    background-color: #2ECC71; /* Green background color */
+    color: #fff; /* White text color */
+    padding: 10px;
+    
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .MoveToOwnedListButton:hover {
+    background-color: #27AE60; /* Darker green on hover */
+  }
+  
+  /* Apply the styles to the buttons */
+  .RemoveFromListButton,
+  .MoveToOwnedListButton {
+    margin-right: 10px; /* Add spacing between the buttons */
+  }
+  

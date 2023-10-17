@@ -10,8 +10,8 @@ function AddToListButton({ gameId, userId,authToken, actionType }) {
     console.log('user id:' + userId + "game id: " + gameId + "authToken: " + authToken)
     const endpoint =
       actionType === 'addToWishList'
-        ? `${baseUrl}/add-to-wish-list/${gameId}?userId=${userId}`
-        : `${baseUrl}/add-to-owned-list/${gameId}?userId=${userId}`;
+        ? `${baseUrl}/user/add-to-wish-list/${gameId}?userId=${userId}`
+        : `${baseUrl}/user/add-to-owned-list/${gameId}?userId=${userId}`;
 
     // Make an API request to add the game to the corresponding list
     axios
