@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick'; // Import the Slider component
 import 'slick-carousel/slick/slick.css';
@@ -100,6 +100,10 @@ function NewReleases() {
   }
 
   return (
+    <>
+    <br></br>
+    <br></br>
+    <br></br>
     <div className="carousel-container">
       <Slider {...settings}>
         {data.map((game) => (
@@ -119,6 +123,7 @@ function NewReleases() {
         ))}
       </Slider>
     </div>
+    </>
   );
 }
 

@@ -505,3 +505,45 @@ color: #feffb5;
   background-color: rgba(245,245,245,0);
   border: 0;
 }
+
+.developers-page {
+  display: flex;
+  flex-direction: column; /* Display the cards vertically */
+  align-items: center; /* Center the cards horizontally */
+  gap: 40px;
+  padding: 5% 5%;
+}
+
+.developer-card {
+  border: 3px solid #87194c;
+  border-radius: 10px;
+  color: black;
+  background-color: #feffb5;
+  padding: 20px;
+  text-align: center;
+  width: 40%; /* Adjust the card width as needed */
+  margin: 0 auto; /* Center the card within the container */
+}
+/* .developers-page {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+  gap: 40px;
+  padding: 5% 5%;
+  width: 50%;
+}
+
+.developer-card {
+  border: 3px solid #87194c;
+  border-radius: 10px;
+  color: black;
+  background-color: #feffb5;
+  padding: 20px;
+  text-align: center;
+
+} */
+
+.developer-card img {
+  height: 250px;
+  border: 1px solid #87194c;
+  border-radius: 5px;
+}

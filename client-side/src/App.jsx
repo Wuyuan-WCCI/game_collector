@@ -12,6 +12,7 @@ import GameDetail from './pages/GameDetails';
 import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';
 import SearchResultsPage from './components/SearchResultsPage';
+import DevelopersPage from './pages/DevelopersPage';
 function App() {
   return (
     <Layout>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/wish-list" element ={<WishList/>}/>;
         <Route path="/owned-list" element ={<OwnedList/>}/>;
         <Route path="/search-results" element ={<SearchResultsPage/>}/>;
+        <Route path="/developers" element={<DevelopersPage/>} />
       </Routes>
       </Layout>
   );
