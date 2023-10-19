@@ -42,7 +42,8 @@ const SignupPage = () => {
 
   return (
     <div>
-      
+      <br></br>
+      <br></br>
       <form className='login-form'>
       <h1>Sign Up</h1>
       <p>Username</p>
