@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import NewReleases from '../components/NewReleases'
 import RandomGames from '../components/RandomGames';

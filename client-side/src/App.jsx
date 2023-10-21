@@ -12,7 +12,9 @@ import GameDetail from './pages/GameDetails';
 import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';
 import SearchResultsPage from './components/SearchResultsPage';
+
 import GameVideo from './pages/GameVideo';
+
 import DevelopersPage from './pages/DevelopersPage';
 function App() {
   return (

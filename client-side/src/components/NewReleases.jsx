@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick'; // Import the Slider component
 import 'slick-carousel/slick/slick.css';
@@ -100,7 +100,6 @@ function NewReleases() {
   }
 
   return (
-    
     <div className="carousel-container">
       <div>
       <h2 style={{color: 'yellow'}}>New Released Games</h2>
@@ -125,6 +124,7 @@ function NewReleases() {
         ))}
       </Slider>
     </div>
+    </>
   );
 }
 
