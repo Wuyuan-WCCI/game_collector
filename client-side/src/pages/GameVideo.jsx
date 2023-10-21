@@ -8,8 +8,8 @@ function GameVideo() {
 
   const fetchVideoForRandomGames = async () => {
     try {
-      const maxRetries = 100;
-      const numVideosToFetch = 5;
+      const maxRetries = 10;
+      const numVideosToFetch = 1;
       const fetchedVideos = [];
       
 

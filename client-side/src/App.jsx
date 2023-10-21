@@ -7,7 +7,7 @@ import Layout from './components/Navbar/Layout';
 import UserProfile from './pages/UserProfile';
 import WishList from './pages/WishList';
 import OwnedList from './pages/OwnedList';
-import DiscoverySearch from './pages/Discovery';
+import DiscoverySearch from './components/Discovery';
 import GameDetail from './pages/GameDetails';
 import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';

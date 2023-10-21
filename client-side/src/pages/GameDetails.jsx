@@ -15,8 +15,7 @@ function GameInfoDetails() {
   const userId = localStorage.getItem('userId');
   const authToken = localStorage.getItem('authToken'); 
   const [isModalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-const closeModal = () => setModalOpen(false);
+  
 
 
   useEffect(() => {

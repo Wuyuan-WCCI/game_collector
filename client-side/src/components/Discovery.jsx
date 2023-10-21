@@ -1,20 +1,50 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../components/SearchBar';
+import Slider from 'react-slick'; // Import the Slider component
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './Carousel.css'; 
+import PropTypes from 'prop-types';
 
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-right`}
+      style={{ ...style, display: "block"}}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-left`}
+      style={{ ...style, display:"block" }}
+      onClick={onClick}
+    />
+    
+  );
+}
+
+SamplePrevArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
+SampleNextArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
 
 function DiscoverySearch() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
-
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
 
 
   useEffect(() => {
@@ -44,6 +74,21 @@ function DiscoverySearch() {
       });
   }, []);
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 1000,
+    slidesToShow: 5, // Number of games to show at once
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    
+    
+    
+  
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow /> 
+  };
+
   if (loading) {
     return <p>Loading...</p>; // You can show a loading indicator here
   }
@@ -53,38 +98,32 @@ function DiscoverySearch() {
   }
 
   return (
-    <div>
-    <SearchBar onSearch={handleSearch} />
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      {/* <h1>HOT GAMES</h1> */}
-      <div>
 
-    </div>
-      <div className="container">
+    
+    <div className="carousel-container">
+      
+      <div>
+      <h2 style={{color: 'gold'}}>Top 10 Games</h2>
+      </div>
+      <div >
+      <Slider {...settings}>
+
+        
         {data.map((game) => (
           <Link to={`/game-detail/${game.id}`} key={game.id}>
-          <div className="box" key={game.id}>
-          <div className="box-button">
-            <h2>{game.id}</h2>
+          <div >
+          <div style={{display: 'block', padding: '20px'}}>
+              <div>
+                <img src={game.background_image} alt={game.name} className="carousel-item-img" />
+              </div>
+              <div >
+                <h2 className="carousel-name">{game.name}</h2>
+              </div>
+              {/* ... Other content ... */}
             </div>
-            <div className="box-name">
-            <h2>{game.name}</h2>
-            </div>
-          <div className="box-image">
-            <img src={game.background_image} alt={game.name} />
-            </div>
-
-            <div className="box-name">
-            <h2>{game.description}</h2>
-            </div>
-
-
           </div>
           </Link>
-        ))}
+        ))} </Slider>
       </div>
       <br></br>
       <br></br>

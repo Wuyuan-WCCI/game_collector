@@ -100,7 +100,12 @@ function NewReleases() {
   }
 
   return (
+    
     <div className="carousel-container">
+      <div>
+      <h2 style={{color: 'yellow'}}>New Released Games</h2>
+      </div>
+    
       <Slider {...settings}>
         {data.map((game) => (
           <Link to={`/game-detail/${game.id}`} key={game.id}>
@@ -112,6 +117,7 @@ function NewReleases() {
               <div >
                 <h2 className="carousel-name">{game.name}</h2>
               </div>
+              <h4>Released Date: {game.released}</h4>
               {/* ... Other content ... */}
             </div>
           </div>

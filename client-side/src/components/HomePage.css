@@ -1,0 +1,50 @@
+.body{
+    width: 100%;
+    height: auto;
+}
+
+
+.container-home-page {
+    display: grid;
+    grid-template-areas:
+        'search-bar search-bar search-bar search-bar'
+      'video-1 video-1 video-1 video-1'
+      'video-1 video-1 video-1 video-1'
+      'top-game top-game top-game top-game'
+      'new new new new '
+      'random random random random';
+
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    margin: 140px;
+    margin-top: 100px;
+    
+  }
+
+  .video-1 {
+    grid-area: video-1;
+    width: 750px;
+    height: 455px;
+    padding: 0;
+    align-content: center;
+   
+  }
+
+  .top-game {
+    grid-area: top-game;
+
+  }
+
+  .random-game {
+    grid-area:random;
+  }
+
+  .new-release {
+    grid-area: new;
+  }
+
+  .home-search-bar{
+    grid-area: search-bar;
+    margin-top: 1000px;
+  }
