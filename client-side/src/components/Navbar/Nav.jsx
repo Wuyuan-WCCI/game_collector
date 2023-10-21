@@ -21,12 +21,7 @@ const Nav = () => {
       </div>
       <nav>
         <a href="http://localhost:5173/">Home</a>
-        <a href="http://localhost:5173/register">Register</a>
-
-        <a href="http://localhost:5173/user-detail">UserPage</a>
-        
-        
-        
+        <a href="http://localhost:5173/register">Register</a> 
         <div className="dropdown">
           <a href="http://localhost:5173/user-detail" className="dropbtn">
             UserPage

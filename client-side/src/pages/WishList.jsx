@@ -49,7 +49,7 @@ const WishList = () => {
         {collection.map((item) => (
           <Link to={`/game-detail/${item.game.id}`} key={item.id}>
           <div  className="container-box" key={item.id}>
-          <div style={{display: 'block', padding: '20px'}}>
+          <div style={{display: 'block', padding: '10px'}}>
             <div>
             <img
               src={item.game.imgUrl}
@@ -60,7 +60,7 @@ const WishList = () => {
             
             </div>
             <div className="container-font">
-            <p><b>Title: {item.game.name}</b></p>
+            <p>Title: {item.game.name}</p>
             
             <p>Released: {item.game.released}</p>
             </div>

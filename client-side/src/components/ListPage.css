@@ -2,18 +2,20 @@
 
 /* Style for the container div */
 .list-container {
-    max-width: 75%;
+    max-width: 80%;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: auto;
   }
   
   /* Style for each item box */
   .container-box {
-    width: 100%;
-    margin: auto;
+    
+    width:calc(25% -2px);
+    margin: 2px;
+    height: 300px;
     padding: 1px;
    
     text-align: center;

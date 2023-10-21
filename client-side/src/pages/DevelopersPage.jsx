@@ -16,9 +16,9 @@ const DevelopersPage = () => {
         },
         {
         name: "Wuyuan Sun",
-        role: "Back-end Developer",
+        role: "Full Stack Software Developer",
         image: wuyuanImg,
-        bio: "Hi, I'm Wuyuan, a passionate web developer specializing in front-end development. With a strong foundation in HTML, CSS, and JavaScript, I craft intuitive and visually appealing online experiences. Lets connect and explore how we can collaborate on your next web development venture!",
+        bio: "Hi, I'm Wuyuan, a dedicated full-stack software developer with expertise in Java Spring Boot and React for web development. . With a strong foundation in HTML, CSS, and JavaScript, I craft intuitive and visually appealing online experiences. Lets connect and explore how we can collaborate on your next web development venture!",
         },
         {
         name: "Raymond Samuel",

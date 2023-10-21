@@ -124,7 +124,7 @@ function NewReleases() {
         ))}
       </Slider>
     </div>
-    </>
+    
   );
 }
 
