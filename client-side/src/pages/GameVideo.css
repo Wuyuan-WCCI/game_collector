@@ -1,0 +1,79 @@
+/* GameVideo.css */
+.body-video {
+    width: 60%;
+    height: 50%;
+    margin-top:10px;
+    margin: auto;
+    background-color:rgba(240, 240, 240, 0);
+    
+  }
+  
+  .container-video {
+    display: grid;
+    grid-template-areas:
+      'video-1 video-1 video-2'
+      'video-1 video-1 video-3'
+      'video-1 video-1 video-4'
+      'video-1 video-1 video-5';
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    margin: 140px;
+    margin-top: 10px;
+    
+  }
+  
+  .video-item {
+    padding: 1rem;
+    border: 1px solid gold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+  }
+  
+  /* Define the grid areas for each video */
+  .video-1 {
+    grid-area: video-1;
+    width: 750px;
+    height: 455px;
+    padding: 0;
+    margin: auto;
+  }
+  
+  .video-2 {
+    grid-area: video-2;
+    width: 180px;
+    height: 100px;
+    padding: 0;
+  }
+  
+  .video-3 {
+    grid-area: video-3;
+    padding: 0;
+    width: 180px;
+    height: 100px;
+  }
+  
+  .video-4 {
+    grid-area: video-4;
+    padding: 0;
+    width: 180px;
+    height: 100px;
+    
+    
+  }
+  
+  .video-5 {
+    grid-area: video-5;
+    padding: 0;
+    width: 180px;
+    height: 100px;
+  }
+  
+  
+
+  
+
+
+
+  

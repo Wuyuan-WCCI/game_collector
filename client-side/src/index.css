@@ -343,7 +343,7 @@ gap: 1.5rem;
 
 .box-1 img {
   height:500px;
-  width: auto;
+  width: 875px;
   border-radius: 5px;
   border: #feffb5 solid 1px;
 }
@@ -353,7 +353,7 @@ gap: 1.5rem;
   color: #feffb5;
   height: 500px;
   width: 100%;
-padding: 10px 20px;
+padding: 10px 10px;
   background-color: rgba(0,0,0,.9);
   border-radius: 5px;
   border: rgb(254, 255, 181) solid 1px;
@@ -363,11 +363,11 @@ padding: 10px 20px;
 
   color: #87194c;
   text-shadow: #fff;
-  font-size: 36px;
+  font-size: 30px;
 }
 .box-2 h2 {
   color: #87194c;
-  font-size: 36px;
+  font-size: 25px;
   text-align: center;
 }
 .box-2 h3 {
@@ -385,10 +385,24 @@ padding: 10px 20px;
   color: black;
   border: 2px solid #87194c;
   padding: 8px 8px;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
   height: auto;
   width: 100px;
+  margin-top: 20px;
+}
+
+.box-button-added{
+  background-color: rgba(242, 200, 32, 0.9);
+  color: black;
+  border: 2px solid #87194c;
+  padding: 8px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  height: auto;
+  width: 100px;
+  margin-top: 20px;
+ align-items: center;
 }
 /* Add hover effect to buttons */
 .button-container-2 button:hover {
@@ -423,15 +437,16 @@ color: #feffb5;
   height: auto;
   width: 100%;
   gap: inherit;
-  /* background-color: #ccc; */
-  /* margin-bottom: 40px; */
+  background-color: rgba(0,0,0,.9);
+  border: #feffb5 solid 1px;
+ 
 }
 
 .box-4 img {
   height:250px;
   width: 400px;
   border-radius: 5px;
-  border: #feffb5 solid 1px;
+ 
 
 }
 
@@ -446,7 +461,7 @@ color: #feffb5;
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
-  border: #feffb5 solid 1px;
+  
 }
 
 /* Media for device size, etc.. */
@@ -505,3 +520,4 @@ color: #feffb5;
   background-color: rgba(245,245,245,0);
   border: 0;
 }
+

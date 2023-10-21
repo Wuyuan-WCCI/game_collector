@@ -35,7 +35,7 @@ function AddToListButton({ gameId, userId,authToken, actionType }) {
   return (
     <div>
       {isAdded ? (
-        <p>Added to {actionType === 'addToWishList' ? 'WishList' : 'OwnedList'}</p>
+        <div className='box-button-added'>Added to {actionType === 'addToWishList' ? 'WishList' : 'OwnedList'}</div>
       ) : (
         <button onClick={handleAction}>
           Add to {actionType === 'addToWishList' ? 'Wish List' : 'OwnedList'}

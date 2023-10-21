@@ -40,6 +40,11 @@ const SignupPage = () => {
     }
   };
 
+  const handleCancel = () => {
+    // You can define the behavior for canceling here, e.g., redirect to a different page.
+    navigate('/'); // Change the path as needed.
+  };
+
   return (
     <div>
       
@@ -74,6 +79,9 @@ const SignupPage = () => {
         />
         <button type="button" onClick={handleSignup}>
           Sign Up
+        </button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
         </button>
       </form>
     </div>

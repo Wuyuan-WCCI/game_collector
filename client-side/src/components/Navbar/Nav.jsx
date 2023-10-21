@@ -22,7 +22,7 @@ const Nav = () => {
         <a href="http://localhost:5173/discover">Discover</a>
         {authToken ? (
           <>
-            <a href="http://localhost:5173/user-detail">Welcome! {userName}</a>
+            <a href="http://localhost:5173/user-detail"><p style={{color: 'gold', fontSize: '25px'}}>Welcome! {userName}</p></a>
             <LogoutButton /> {/* Add the LogoutButton component */}
           </>
         ) : (

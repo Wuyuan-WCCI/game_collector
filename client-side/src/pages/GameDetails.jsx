@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AddToListButton from "../components/AddToLisButton";
+import './GameDetails.css';
+
 
 function GameInfoDetails() {
   const { gameId } = useParams();
@@ -12,6 +14,10 @@ function GameInfoDetails() {
   const MAX_RETRIES = 3;
   const userId = localStorage.getItem('userId');
   const authToken = localStorage.getItem('authToken'); 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+const closeModal = () => setModalOpen(false);
+
 
   useEffect(() => {
     const gameAPI = `http://localhost:7098/game/detail/${gameId}`;
@@ -92,7 +98,10 @@ function GameInfoDetails() {
           <img src={game.background_image} alt={`Image ${game.name}`} />
         </div>
         <div className="box-2">
-          <h2>{game.name}</h2>
+          <div className="game-name">
+            <h2>{game.name}</h2>
+          </div>
+          <div className="game-detail">
           <h3>Genre:</h3>{" "}
           <b>
             {game.genres.map((genre, index) => (
@@ -106,9 +115,12 @@ function GameInfoDetails() {
           <h3>Release Date:</h3> <b>{game.released}</b>
           <br />
           <h3>Rating:</h3>{" "}
+          
           <b>
             {game.rating} / {game.rating_top}
           </b>
+            
+
           <br />
           <h3>Platforms:</h3>
           <div>
@@ -121,6 +133,8 @@ function GameInfoDetails() {
               ))}
             </b>
           </div>
+          </div>
+          
 
           <div className="button-container-2">
           {authToken && (
@@ -148,16 +162,28 @@ function GameInfoDetails() {
       allowFullScreen
     ></iframe>
   ) : (
-    
+   
     <img
       src={game.background_image_additional}
       alt={`Image ${game.name}`}
+      onClick={() => setModalOpen(true)}
     />
   )}
         </div>
       </div>
+      {isModalOpen && (
+        <div className="modal" onClick={() => setModalOpen(false)}>
+          <img
+            src={game.background_image_additional}
+            alt={`Image ${game.name}`}
+            onClick={() => setModalOpen(false)}
+            
+          />
+        </div>
+      )}
             <br />
     </div>
+    
   );
 }
 

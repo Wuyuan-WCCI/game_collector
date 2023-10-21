@@ -62,9 +62,10 @@ function SearchResults( ) {
                 <img src={result.background_image} alt={result.name} className='result-img' 
                 />
                 <div className="result-text" >
+                <p style={{color:'purple'}}><b>{result.name} </b></p>
           <p>ID: {result.id}</p>
           
-          <p style={{color:'purple'}}><b>{result.name} </b></p>
+          
           <p>Released Date: {result.released}</p>
         </div>
                 </div>

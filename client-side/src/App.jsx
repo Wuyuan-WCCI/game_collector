@@ -12,6 +12,7 @@ import GameDetail from './pages/GameDetails';
 import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';
 import SearchResultsPage from './components/SearchResultsPage';
+import GameVideo from './pages/GameVideo';
 function App() {
   return (
     <Layout>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/wish-list" element ={<WishList/>}/>;
         <Route path="/owned-list" element ={<OwnedList/>}/>;
         <Route path="/search-results" element ={<SearchResultsPage/>}/>;
+        <Route path='/game/video' element={<GameVideo/>}/>;
       </Routes>
       </Layout>
   );

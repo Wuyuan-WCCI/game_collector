@@ -3,17 +3,19 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    
   }
 
   .result-item-content {
     display: flex; /* Display its children in a row */
     align-items: center; /* Center items vertically */
+
   }
   
   .search-bar {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .search-bar input {
@@ -42,16 +44,18 @@
   .search-results-list {
     list-style: none;
     padding: 0;
+    
   }
   
   .search-result-item{
     background: #e2e6ad;
-    border: 1px solid #dfe1e5;
+    border: #dae567 solid 2px;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;
     background-color: #f0f0f0;
     transition: background-color 0.3s;
+    
   }
 
   .search-result-item:hover {
@@ -63,10 +67,10 @@
   }
   
   .result-img {
-    max-width: 100px;
-    height: 110px;
+    max-width: 130px;
+    height: 75px;
     display: block;
-    margin-top: 10px;
+    margin-top: 1px;
   }
 
   .result-text {
