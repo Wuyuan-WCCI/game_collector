@@ -116,7 +116,10 @@ function NewReleases() {
               <div >
                 <h2 className="carousel-name">{game.name}</h2>
               </div>
-              <h4>Released Date: {game.released}</h4>
+              <div style={{color:'skyblue'}}>
+                <h4>Released Date: {game.released}</h4>
+              </div>
+              
               {/* ... Other content ... */}
             </div>
           </div>

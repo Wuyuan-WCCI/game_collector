@@ -14,7 +14,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div >
     <div className='container-home-page'>
       <div className="search-bar">
       <SearchBar onSearch={handleSearch} /> 

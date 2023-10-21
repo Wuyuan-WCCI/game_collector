@@ -1,12 +1,13 @@
 /* GameVideo.css */
-.body-video {
-    width: 100%;
+/* .body-video {
+    width: 50%;
     height: 100%;
     background-color:rgba(240, 240, 240, 0);
     
+    
   }
-  
-  .container-video {
+   */
+  /* .container-video {
     display: grid;
     grid-template-areas:
       'video-1 video-1 video-1'
@@ -20,29 +21,29 @@
     margin-top: 10px;
     width: auto;
     
-  }
-  
+  } */
+/*   
   .video-item {
     padding: 1rem;
     border: 1px solid gold;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 1200px;
+    width: 1000px;
     
     
-  }
+  } */
   
   /* Define the grid areas for each video */
-  .video-1 {
+  /* .video-1 {
     grid-area: video-1;
     width: 890px;
     height: 450px;
     margin: auto;
     margin-right: 570px;
     padding: 0%;
-  }
+  } */
   
-  .video-2 {
+  /* .video-2 {
     grid-area: video-2;
     width: 180px;
     height: 100px;
@@ -71,7 +72,7 @@
     width: 180px;
     height: 100px;
   }
-  
+   */
   
 
   

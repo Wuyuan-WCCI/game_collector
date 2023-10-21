@@ -1,7 +1,4 @@
-.body{
-    width: 100%;
-    height: auto;
-}
+
 
 
 .container-home-page {
@@ -17,15 +14,14 @@
     gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
     align-content: center;
-    margin: 140px;
-    margin-top: 100px;
+    
     
   }
 
   .video-1 {
     grid-area: video-1;
-    width: 750px;
-    height: 455px;
+    width: 100%;
+    
     padding: 0;
     align-content: center;
    
@@ -46,5 +42,16 @@
 
   .home-search-bar{
     grid-area: search-bar;
-    margin-top: 1000px;
+    
   }
+
+  @media (max-width: 768px) {
+    .container-home-page {
+        grid-template-columns: repeat(1, 1fr); /* Change to a single column for smaller screens */
+        padding: 1rem;
+    }
+
+    .video-1 {
+        width: 100%; /* Adjust to your design needs */
+    }
+}

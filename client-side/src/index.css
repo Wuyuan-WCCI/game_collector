@@ -27,6 +27,8 @@ body {
 
   /* Make the background cover the entire viewport */
   background-size: cover;
+  
+  
 }
 
 * {
@@ -438,6 +440,7 @@ padding: 10px 10px;
   gap: inherit;
   background-color: rgba(0,0,0,.9);
   border: #feffb5 solid 1px;
+  margin: auto;
  
 }
 
@@ -462,7 +465,7 @@ padding: 10px 10px;
 }
 
 /* Media for device size, etc.. */
-/* @media (max-width: 850px) {
+ @media (max-width: 850px) {
   .container-game-details {
     grid-template-areas:
       "box-1"
@@ -470,7 +473,7 @@ padding: 10px 10px;
       "box-3"
       "box-4";
   }
-} */
+} 
 
 .game-details {
   display: flex;
