@@ -308,12 +308,12 @@ GAME DETAILS  */
 /* Grid Layout For Details Page */
 .container-game-details {
   display: grid;
-grid-template-areas:
-  "box-1 box-2 "
-  "box-3 box-3 "
-  "box-4 box-4";
-gap: 1.5rem;
-/* display: grid;
+  grid-template-areas:
+    "box-1 box-2 "
+    "box-3 box-3 "
+    "box-4 box-4";
+  gap: 1.5rem;
+  /* display: grid;
   Two columns
   grid-template-columns: repeat(2, 1fr); 
   Gap between grid items
@@ -326,7 +326,6 @@ gap: 1.5rem;
 .box-4 {
   /* border: 1px #ccc solid; */
   padding: 0.5 rem;
-  
 }
 
 .box-1 {
@@ -342,7 +341,7 @@ gap: 1.5rem;
 } */
 
 .box-1 img {
-  height:500px;
+  height: 500px;
   width: auto;
   border-radius: 5px;
   border: #feffb5 solid 1px;
@@ -353,14 +352,13 @@ gap: 1.5rem;
   color: #feffb5;
   height: 500px;
   width: 100%;
-padding: 10px 20px;
-  background-color: rgba(0,0,0,.9);
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 5px;
   border: rgb(254, 255, 181) solid 1px;
   box-shadow: -5px -5px 8px #87194c, -10px -10px 8px rgb(25, 135, 84);
 }
 .box-2 h1 {
-
   color: #87194c;
   text-shadow: #fff;
   font-size: 36px;
@@ -372,7 +370,6 @@ padding: 10px 20px;
 }
 .box-2 h3 {
   color: white;
-  
 }
 
 .button-container-2 {
@@ -381,7 +378,7 @@ padding: 10px 20px;
 }
 
 .button-container-2 button {
-  background-color: rgba(254,255,181,.9);
+  background-color: rgba(254, 255, 181, 0.9);
   color: black;
   border: 2px solid #87194c;
   padding: 8px 8px;
@@ -398,7 +395,7 @@ padding: 10px 20px;
 }
 
 .box-3 {
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
   border: #feffb5 solid 1px;
   grid-area: box-3;
@@ -407,17 +404,15 @@ padding: 10px 20px;
   /* display: flex; */
   height: auto;
   width: 100%;
-
 }
 /* .box-3 h1 {
 } */
 .box-3 p {
-color: #feffb5;
+  color: #feffb5;
   font-size: 20px;
 }
 
 .box-4 {
-
   grid-area: box-4;
   display: flex;
   height: auto;
@@ -428,11 +423,10 @@ color: #feffb5;
 }
 
 .box-4 img {
-  height:250px;
+  height: 250px;
   width: 400px;
   border-radius: 5px;
   border: #feffb5 solid 1px;
-
 }
 
 .video-container {
@@ -459,7 +453,6 @@ color: #feffb5;
       "box-4";
   }
 } */
-
 
 .game-details {
   display: flex;
@@ -488,21 +481,21 @@ color: #feffb5;
 }
 
 .game-details-box-2 {
-    grid-area: box-2;
-    /* display: inline; */
-    color: #feffb5;
-    height: auto;
-    width: 100%;
+  grid-area: box-2;
+  /* display: inline; */
+  color: #feffb5;
+  height: auto;
+  width: 100%;
   padding: 10px 20px;
-    background-color: rgba(0,0,0,.9);
-    border-radius: 5px;
-    border: rgb(254, 255, 181) solid 1px;
-    box-shadow: -5px -5px 8px #87194c, -10px -10px 8px rgb(25, 135, 84);
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+  border: rgb(254, 255, 181) solid 1px;
+  box-shadow: -5px -5px 8px #87194c, -10px -10px 8px rgb(25, 135, 84);
 }
 
 .read-button {
   color: blue;
-  background-color: rgba(245,245,245,0);
+  background-color: rgba(245, 245, 245, 0);
   border: 0;
 }
 
@@ -548,33 +541,53 @@ color: #feffb5;
   border-radius: 5px;
 }
 
+.logo-img {
+  float: left;
+  height: 80px;
+  width: 80px;
+  transform: rotate(-20deg);
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+.dropbtn {
+  background-color: black;
+  color: white;
+  padding: 14px 16px;
+  border: none;
+  cursor: pointer;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: black;
+  width: 135px;
+  left: 0;
+  transform: translateX(-12%);
+  text-align: center;
   z-index: 1;
+  margin-top: 10px;
+}
+
+.dropdown-content a {
+  padding: 10px 16px;
+  display: block;
+  text-align: start;
+  white-space: nowrap;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown-content a {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  color: #000;
-}
-
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #87194c;
 }
 
 /* Style the rest of your navigation menu as needed. */
