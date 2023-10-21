@@ -68,10 +68,12 @@ header {
     }
 
     nav {
-        max-width: 1000px;
-        margin: auto;
-        display: flex;
-        flex-wrap: wrap;
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      height: 50px;
+      justify-content: space-evenly;
     }
 
         nav a {
