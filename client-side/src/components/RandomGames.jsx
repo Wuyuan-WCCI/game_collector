@@ -1,12 +1,52 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick'; // Import the Slider component
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './Carousel.css'; 
+import PropTypes from 'prop-types';
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-right`}
+      style={{ ...style, display: "block"}}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} carousel-arrow-left`}
+      style={{ ...style, display:"block" }}
+      onClick={onClick}
+    />
+    
+  );
+}
+
+SamplePrevArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
+SampleNextArrow.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object, // Validate style as an object
+  onClick: PropTypes.func, // Validate onClick as a function
+};
+
 
 function RandomGames() {
   const [randomGames, setRandomGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const MAX_RETRIES = 3; // Maximum number of retries for fetching a game
+  const MAX_RETRIES = 5; // Maximum number of retries for fetching a game
 
   useEffect(() => {
     // Define the URL of your backend API to fetch random games
@@ -49,7 +89,7 @@ function RandomGames() {
     // Fetch details for each random gameId
     const fetchGames = async () => {
       try {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
           const randomGameId = getRandomGameId();
           await fetchGameWithRetry(randomGameId, MAX_RETRIES);
         }
@@ -64,6 +104,21 @@ function RandomGames() {
     fetchGames();
   }, []);
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 1000,
+    slidesToShow: 5, // Number of games to show at once
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    
+    
+    
+  
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow /> 
+  };
+
   if (loading) {
     return <p>Loading...</p>; // You can show a loading indicator here
   }
@@ -74,27 +129,30 @@ function RandomGames() {
 
   return (
     <div>
-      <h1 style={{color: 'gold'}}>Random Games</h1>
-      <div className="container">
-        {randomGames.map((game) => (
+      
+      <div  className="carousel-container">
+      <div>
+      <h2 style={{color: 'gold'}}>Random Games</h2>
+      </div>
+      <Slider {...settings}>
+      {randomGames.map((game) => (
           <Link to={`/game-detail/${game.id}`} key={game.id}>
-          <div className="box" key={game.id}>
-          <div className='box-discover-name'>
-            <h3>{game.name}</h3>
+          <div>
+          <div style={{display: 'block', padding: '20px'}}>
+          
+          <div>
+                <img src={game.background_image} alt={game.name} className="carousel-item-img" />
+              </div>
+            <div>
+            <h2 className="carousel-name">{game.name}</h2>
             </div>
-          <div className='box-discover-image'>
-          <img
-              src={game.background_image}
-              alt={`Image ${game.name}`}
-            /></div>
-
-            {/* <div className='box-discover-description'>
-            <h5>Description:</h5>
-            <div dangerouslySetInnerHTML={{ __html: game.description }} />
-            </div> */}
           </div>
+          </div>
+         
           </Link>
         ))}
+      </Slider>
+       
       </div>
     </div>
   );

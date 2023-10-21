@@ -2,13 +2,14 @@
 /* Styling for the container of each game item in the carousel */
 .carousel-container {
     max-width: 55%;
-    margin: auto;
+    margin: auto ;
     align-items: center;
+
+  
+   
+    height: 350PX;
     padding: 10px 10px;
-    border: 1px solid white;
-    background: linear-gradient(327deg, gold 0%, #198754 74%);
-    border-radius: 5px;
-    height: 280px;
+    
   }
   
   /* Styling for the game image container */
@@ -19,8 +20,9 @@
   /* Styling for the game image */
   .carousel-item-img {
     max-width: 180px;
-    height: 165px;
-    border: 2px solid #000;
+    height: 125px;
+    border: 2px solid gold;
+
     border-radius: 10px;
     box-shadow: ;
   }
