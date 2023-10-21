@@ -13,6 +13,7 @@ import RandomGames from './components/RandomGames';
 import NewReleases from './components/NewReleases';
 import SearchResultsPage from './components/SearchResultsPage';
 import GameVideo from './pages/GameVideo';
+import DevelopersPage from './pages/DevelopersPage';
 function App() {
   return (
     <Layout>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/owned-list" element ={<OwnedList/>}/>;
         <Route path="/search-results" element ={<SearchResultsPage/>}/>;
         <Route path='/game/video' element={<GameVideo/>}/>;
+        <Route path="/developers" element={<DevelopersPage/>} />
       </Routes>
       </Layout>
   );
