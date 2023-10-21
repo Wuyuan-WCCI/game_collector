@@ -52,52 +52,53 @@
   margin-left: 0.5rem;
 } */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC');
-
-
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display+SC");
 
 header {
-    background: #000;
-    color: #fafafa;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    /* border-bottom: 1px solid white; */
+  background: #000;
+  color: #fafafa;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  /* border-bottom: 1px solid white; */
 }
-    h1{
-        font: normal 3em 'Playfair Display SC', serif;
-        text-align:center;
-    }
+h1 {
+  font: normal 3em "Playfair Display SC", serif;
+  text-align: center;
+}
 
-    nav {
-      max-width: 1000px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      height: 50px;
-      justify-content: space-evenly;
-    }
+nav {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  justify-content: space-evenly;
+}
 
-        nav a {
-            color: #fafafa;
-            text-decoration: none;
-            flex-grow: 1;
-            text-align: center;
-            padding: 1em;
-            position: relative;
-        }
+nav a {
+  color: #fafafa;
+  text-decoration: none;
+  flex-grow: 1;
+  text-align: center;
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
 
-        /* animation */
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right:0;
-            height: 2px;
-            transform: scaleX(0);
-            background: #87194C;
-            transition: 0.7s transform cubic-bezier(0.06, 0.9, 0.28, 1);
-        }
+/* animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 130px;
+  height: 2px;
+  transform: scaleX(0);
+  background: #87194c;
+  transform-origin: center left;
+  transition: 0.3s transform cubic-bezier(0.06, 0.9, 0.28, 1);
+}
 
-        nav a:hover::after{
-            transform: scaleX(1)
-        }
+nav a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}

@@ -27,8 +27,6 @@ body {
 
   /* Make the background cover the entire viewport */
   background-size: cover;
-  
-  
 }
 
 * {
@@ -343,8 +341,7 @@ GAME DETAILS  */
 } */
 
 .box-1 img {
-
-  height:500px;
+  height: 500px;
   width: 875px;
 
   border-radius: 5px;
@@ -357,8 +354,8 @@ GAME DETAILS  */
   height: 500px;
   width: 100%;
 
-padding: 10px 10px;
-  background-color: rgba(0,0,0,.9);
+  padding: 10px 10px;
+  background-color: rgba(0, 0, 0, 0.9);
 
   border-radius: 5px;
   border: rgb(254, 255, 181) solid 1px;
@@ -395,7 +392,7 @@ padding: 10px 10px;
   margin-top: 20px;
 }
 
-.box-button-added{
+.box-button-added {
   background-color: rgba(242, 200, 32, 0.9);
   color: black;
   border: 2px solid #87194c;
@@ -405,7 +402,7 @@ padding: 10px 10px;
   height: auto;
   width: 100px;
   margin-top: 20px;
- align-items: center;
+  align-items: center;
 }
 /* Add hover effect to buttons */
 .button-container-2 button:hover {
@@ -438,10 +435,9 @@ padding: 10px 10px;
   height: auto;
   width: 100%;
   gap: inherit;
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(0, 0, 0, 0.9);
   border: #feffb5 solid 1px;
   margin: auto;
- 
 }
 
 .box-4 img {
@@ -461,11 +457,10 @@ padding: 10px 10px;
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
-  
 }
 
 /* Media for device size, etc.. */
- @media (max-width: 850px) {
+@media (max-width: 850px) {
   .container-game-details {
     grid-template-areas:
       "box-1"
@@ -473,7 +468,7 @@ padding: 10px 10px;
       "box-3"
       "box-4";
   }
-} 
+}
 
 .game-details {
   display: flex;
@@ -519,7 +514,6 @@ padding: 10px 10px;
   background-color: rgba(245, 245, 245, 0);
   border: 0;
 }
-
 
 .developers-page {
   display: flex;
@@ -611,5 +605,3 @@ padding: 10px 10px;
 .dropdown-content a:hover {
   background-color: #87194c;
 }
-
-
