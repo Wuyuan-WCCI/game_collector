@@ -2,6 +2,7 @@
 
 import style from "./Nav.module.css";
 import LogoutButton from "../LogoutButton";
+import logo from "./gc-logo.png";
 
 const Nav = () => {
   const userName = localStorage.getItem("userName");
@@ -16,7 +17,7 @@ const Nav = () => {
           alignItems: "center",
         }}
       >
-        <img className="logo-img" src="src/img/gc-logo.png"></img>
+        <img className="logo-img" src={logo}></img>
         <h1 style={{ color: "gold" }}>GAME COLLECTION APP</h1>
       </div>
       <nav>
