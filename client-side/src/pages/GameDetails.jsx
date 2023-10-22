@@ -22,7 +22,7 @@ function GameInfoDetails() {
     const gameAPI = `http://localhost:7098/game/detail/${gameId}`;
     const videoAPI = `http://localhost:7098/game/video/${gameId}`;
     console.log('user id:' + userId + "game id: " + gameId + "authToken: " + authToken)
-    const fetchGameWithRetry = async (retries) => {
+    const fetchGameWithRetry = async () => {
       try {
         const response = await fetch(gameAPI);
         if (!response.ok) {
@@ -36,14 +36,10 @@ function GameInfoDetails() {
           throw new Error(`Unexpected API response for gameId ${gameId}`);
         }
       } catch (error) {
-        if (retries > 0) {
-          const newGameId = Math.floor(Math.random() * 1000) + 1;
-          console.warn(`Retrying with a new random gameId: ${newGameId}`);
-          fetchGameWithRetry(retries - 1);
-        } else {
+        
           setError(error);
           setLoading(false);
-        }
+       
       }
     };
 

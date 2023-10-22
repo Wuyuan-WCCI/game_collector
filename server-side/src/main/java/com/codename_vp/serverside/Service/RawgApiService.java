@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class RawgApiService {
     private final String apiUrl = "https://api.rawg.io/api/";
-    private final String apiKey = "e2f8a419b56946b08d0b3b532c972af5";
+    private final String apiKey = "1901610f1cec450d8b9ff6e0306f934a";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -47,9 +47,13 @@ public class RawgApiService {
     @Autowired
     private GameRepo gameRepo;
 
+    @Autowired
+    private GameService gameService;
+
     public ResponseEntity<String> getGameDetailById(Long game_id) {
 
         String url = apiUrl + "/games/" + game_id + "?key=" + apiKey;
+
         return restTemplate.getForEntity(url, String.class);
     }
 
@@ -82,14 +86,32 @@ public class RawgApiService {
         return restTemplate.getForEntity(url, String.class);
     }
 
-    public OwnedList addToOwnedList(Long gameId, int userId) {
+    public OwnedList addToOwnedList(Long gameId, Long userId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
-
-        wishListService.removeFromWishList(gameId);
 
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
+            if (ownedListService.isGameInOwnedList(userId, gameId)) {
+                System.out.println("The game is already in your OwnedList.");
+                return null; // You might want to return an error response here.
+            } else if (wishListService.isGameInWishList(userId, gameId)) {
+                Long wishListId = wishListService.getWishListIdByGame(userId, gameId);
+                if (wishListId != null) {
+                    Game game = gameService.getGameById(gameId);
+                    User user = userService.getUserById(userId);
+                    OwnedList ownedList = new OwnedList(user, game);
 
+                    this.ownedListService.addToOwnedList(ownedList);
+                    System.out.println("You added game " + game.getName() + " to owned list ");
+                    user.getOwnedLists().add(ownedList);
+                    System.out.println("The game is in your Owned List now");
+                    userService.removeFromWishList(userId, wishListId);
+
+                    return ownedList;
+
+                }
+
+            }
             try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 JsonNode jsonNode = objectMapper.readTree(responseBody);
@@ -145,10 +167,17 @@ public class RawgApiService {
         }
     }
 
-    public WishList addToWishList(Long gameId, int userId) {
+    public WishList addToWishList(Long gameId, Long userId) {
         ResponseEntity<String> response = getGameDetailById(gameId);
         if (response.getStatusCode().is2xxSuccessful()) {
             String responseBody = response.getBody();
+            if (wishListService.isGameInWishList(userId, gameId)) {
+                System.out.println("The game is already in your WishList.");
+                return null; // You might want to return an error response here.
+            } else if (ownedListService.isGameInOwnedList(userId, gameId)) {
+                System.out.println("The game is already in your Owned List.");
+                return null;
+            }
 
             try {
                 ObjectMapper objectMapper = new ObjectMapper();

@@ -39,7 +39,7 @@ public class WishListController {
     }
 
     @PostMapping("/wishlist/add/{userId}/{gameId}")
-    public ResponseEntity<WishList> addToWishList(@PathVariable int userId, @PathVariable Long gameId) {
+    public ResponseEntity<WishList> addToWishList(@PathVariable Long userId, @PathVariable Long gameId) {
         User user = userService.getUserById(userId);
         Game game = gameService.getGameById(gameId);
 
@@ -53,7 +53,7 @@ public class WishListController {
 
     // Endpoint to remove a game from the wishlist
     @DeleteMapping("wishlist/remove/{wishListId}")
-    public ResponseEntity<Void> removeFromWishList(@PathVariable Long wishListId) {
+    public ResponseEntity<Void> removeFromWishList(@PathVariable Long userId, @PathVariable Long wishListId) {
         wishListService.removeFromWishList(wishListId);
         return ResponseEntity.noContent().build();
     }

@@ -33,7 +33,7 @@ public class OwnedListService {
     }
 
     @Transactional
-    public void removeFromOwnedList(int id) {
+    public void removeFromOwnedList(Long id) {
         this.ownedListRepo.deleteById(id);
     }
 
@@ -43,6 +43,13 @@ public class OwnedListService {
 
     public List<OwnedList> getOwnedListByUserId(Long userId) {
         return ownedListRepo.findByUser_Id(userId);
+    }
+
+    public boolean isGameInOwnedList(Long userId, Long gameId) {
+        // Check if the game with the specified gameId exists in the user's OwnedList
+        // You can implement this by querying your repository or data store
+        // Return true if the game exists, otherwise return false
+        return ownedListRepo.existsByUserIdAndGameId(userId, gameId);
     }
 
 }
