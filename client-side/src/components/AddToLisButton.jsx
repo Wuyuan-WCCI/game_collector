@@ -1,13 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-function AddToListButton({ gameId, userId,authToken, actionType }) {
+function AddToListButton({ gameId, userId, authToken, actionType }) {
   const [isAdded, setIsAdded] = useState(false);
   const baseUrl = 'http://localhost:7098';
+  const [isInOwnedList, setIsInOwnedList] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
+  
+
+  useEffect(() => {
+    // Check if the game is already in the owned list
+    if (actionType === 'addToOwnedList') {
+      axios
+        .get(`${baseUrl}/user/check-in-lists/${gameId}?userId=${userId}`, {
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+          },
+        })
+        .then((response) => {
+          setIsInOwnedList(response.data.isInOwnedList);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [gameId, userId, authToken, actionType]);
 
   const handleAction = () => {
-    console.log('user id:' + userId + "game id: " + gameId + "authToken: " + authToken)
+    if (isInOwnedList) {
+      setNotificationMessage('This game is already in your Owned List.');
+      setShowNotification(true);
+      return;
+    }
+
     const endpoint =
       actionType === 'addToWishList'
         ? `${baseUrl}/user/add-to-wish-list/${gameId}?userId=${userId}`
@@ -15,7 +43,7 @@ function AddToListButton({ gameId, userId,authToken, actionType }) {
 
     // Make an API request to add the game to the corresponding list
     axios
-    .post(endpoint, {}, {
+      .post(endpoint, {}, {
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
@@ -34,6 +62,7 @@ function AddToListButton({ gameId, userId,authToken, actionType }) {
 
   return (
     <div>
+      {showNotification && <div className='notification'>{notificationMessage}</div>}
       {isAdded ? (
         <div className='box-button-added'>Added to {actionType === 'addToWishList' ? 'WishList' : 'OwnedList'}</div>
       ) : (

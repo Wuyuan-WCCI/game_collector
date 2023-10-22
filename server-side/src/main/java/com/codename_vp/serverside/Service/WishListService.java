@@ -1,6 +1,7 @@
 package com.codename_vp.serverside.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,30 @@ public class WishListService {
         return wishList;
     }
 
+    @Transactional
     public void removeFromWishList(Long wishListId) {
         wishListRepo.deleteById(wishListId);
+    }
+
+    public boolean isGameInWishList(Long userId, Long gameId) {
+        // Check if the game with the specified gameId exists in the user's WishList
+        // You can implement this by querying your repository or data store
+        // Return true if the game exists, otherwise return false
+        return wishListRepo.existsByUserIdAndGameId(userId, gameId);
+    }
+
+    public Long getWishListIdByGame(Long userId, Long gameId) {
+        // Query the wish list repository to find the wish list entry by userId and
+        // gameId
+        Optional<WishList> wishListEntry = wishListRepo.findByUserIdAndGameId(userId, gameId);
+
+        if (wishListEntry.isPresent()) {
+            // If a matching entry is found, return its ID
+            return wishListEntry.get().getId();
+        } else {
+            // If no matching entry is found, return null
+            return null;
+        }
     }
 
 }

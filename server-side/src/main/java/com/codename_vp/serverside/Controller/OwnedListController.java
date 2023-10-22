@@ -43,7 +43,7 @@ public class OwnedListController {
     }
 
     @PostMapping("/user/{userId}/ownedlist/add/{gameId}")
-    public ResponseEntity<OwnedList> addToOwnedList(@PathVariable int userId, @PathVariable Long gameId) {
+    public ResponseEntity<OwnedList> addToOwnedList(@PathVariable Long userId, @PathVariable Long gameId) {
         User user = userService.getUserById(userId);
         Game game = gameService.getGameById(gameId);
 
@@ -56,7 +56,7 @@ public class OwnedListController {
     }
 
     @DeleteMapping("owned-list/delete/{id}")
-    public void removeFromOwnedList(@PathVariable int id) {
+    public void removeFromOwnedList(@PathVariable Long id) {
         this.ownedListService.removeFromOwnedList(id);
     }
 

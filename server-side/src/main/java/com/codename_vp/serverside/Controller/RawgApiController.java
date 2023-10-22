@@ -51,7 +51,7 @@ public class RawgApiController {
     }
 
     @PostMapping("user/add-to-wish-list/{gameId}")
-    public ResponseEntity<WishList> addToWishList(@PathVariable Long gameId, @RequestParam int userId) {
+    public ResponseEntity<WishList> addToWishList(@PathVariable Long gameId, @RequestParam Long userId) {
         WishList wishList = rawgService.addToWishList(gameId, userId);
         if (wishList != null) {
             System.out.println("Added game to Wish List");
@@ -64,7 +64,7 @@ public class RawgApiController {
     }
 
     @PostMapping("/user/add-to-owned-list/{gameId}")
-    public ResponseEntity<OwnedList> addToOwnList(@PathVariable Long gameId, @RequestParam int userId) {
+    public ResponseEntity<OwnedList> addToOwnList(@PathVariable Long gameId, @RequestParam Long userId) {
         OwnedList ownedList = rawgService.addToOwnedList(gameId, userId);
         if (ownedList != null) {
             System.out.println("Added game to Owned List");
