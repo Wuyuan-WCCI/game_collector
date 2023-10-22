@@ -69,7 +69,7 @@ public class UserController {
         return userService.moveFromWishListToOwnedList(userId, wishListId);
     }
 
-    @GetMapping("/user/check-in-lists/{gameId}/{userId}")
+    @GetMapping("/user/check-in-lists/{userId}/{gameId}")
     public ResponseEntity<Map<String, Boolean>> checkGameInLists(
             @PathVariable Long gameId, @PathVariable Long userId) {
         boolean isInWishList = wishListService.isGameInWishList(userId, gameId);
