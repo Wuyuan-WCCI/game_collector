@@ -47,7 +47,7 @@
   .carousel-arrow-right::before {
     transform: translateY(-250%);
     transition: transform 0.5s; /* Add a smooth transition effect */
-    color: rgb(231, 144, 29);
+    color: rgb(252, 252, 251);
   }
   
     .carousel-arrow {
