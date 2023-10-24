@@ -7,7 +7,6 @@ const Foot = () => {
       <small>&copy;2023 <strong>WCCI Bootcamp</strong>, Codename VP</small>
       <nav className="footer-nav">
         <a href="#">Back to Top</a>
-        <a href="http://localhost:5173/developers"><b>Developers</b></a>
         <a href="#">Privacy</a>
       </nav>
     </div>

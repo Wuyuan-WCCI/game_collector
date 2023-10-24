@@ -31,6 +31,7 @@ const Nav = () => {
             <a href="http://localhost:5173/owned-list">Owned Games</a>
             <a href="http://localhost:5173/wish-list">Wish List</a>
           </div>
+          
         </div>
         {authToken ? (
           <>
@@ -46,6 +47,7 @@ const Nav = () => {
             <b>Login/SignUp</b>
           </a>
         )}
+        <a href="http://localhost:5173/developers"><b>About Us</b></a>
       </nav>
     </header>
 
