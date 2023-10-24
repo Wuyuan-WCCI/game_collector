@@ -29,11 +29,11 @@
   
   /* Styling for the game name */
   .carousel-name {
-    margin: 5px;
+    margin: auto;
     font-size: 18px;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     text-decoration: underline gold;
   }
   
@@ -47,6 +47,7 @@
   .carousel-arrow-right::before {
     transform: translateY(-250%);
     transition: transform 0.5s; /* Add a smooth transition effect */
+    color: rgb(231, 144, 29);
   }
   
     .carousel-arrow {
@@ -72,7 +73,7 @@
     @media (max-width: 768px) {
       /* Adjust the styles for smaller screens */
       .carousel-container {
-          max-width: 75%;
+          max-width: 55%;
       }
   
       .carousel-name {

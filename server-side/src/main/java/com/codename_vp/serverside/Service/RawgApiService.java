@@ -187,7 +187,7 @@ public class RawgApiService {
                 game.setId(jsonNode.get("id").asLong());
                 game.setName(jsonNode.get("name").asText());
                 game.setSlug(jsonNode.get("slug").asText());
-                game.setStatus("Owned");
+                game.setStatus("Wish");
                 game.setOfficialSite(jsonNode.get("website").asText());
                 game.setDescription(jsonNode.get("description").asText());
                 game.setReleased(jsonNode.get("released").asText());

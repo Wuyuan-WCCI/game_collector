@@ -64,8 +64,6 @@ const OwnedList = () => {
             
             <p>Released: {item.game.released}</p>
             </div>
-           
-           
           </div>
           </Link>
         ))}

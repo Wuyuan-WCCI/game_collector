@@ -8,15 +8,19 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: auto;
+    
   }
   
   /* Style for each item box */
   .container-box {
-    
+    position: relative;
     width:calc(25% -2px);
     margin: 2px;
     height: 300px;
     padding: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
    
     text-align: center;
     background-color: rgba(red, green, blue, alpha);
@@ -29,27 +33,40 @@
     height: 180px;
     border: 2px solid gold;
     border-radius: 50px;
+    position: relative;
   }
   
 
 
   /* Style for the released date */
   .container-font {
-    width: 70%;
+    width: 80%;
     font-size: 18px;
     color: #ebf5a9;
     margin: auto;
     text-align: center;
+    overflow: hidden;
+    transition: max-height 0.5s;
    
   }
 
-  .container-font:hover {
+  /* .container-font:hover {
     transform: scale(1.15);
     color: #ff9900;
-  }
+    position: relative;
+  } */
+  
 
   .container-box-img:hover {
     border-color: #ff9900;
     transform: scale(1.15);
+    
+    
   }
-  
+   
+
+   .container-box:hover .container-font {
+    max-height: 100px;
+    padding: auto;
+    
+  }

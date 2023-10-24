@@ -25,22 +25,10 @@ import com.codename_vp.serverside.Service.WishListService;
 public class Populator implements CommandLineRunner {
 
     @Autowired
-    private WishListRepo wishListRepo;
-
-    @Autowired
-    private OwnedListRepo ownedListRepo;
-
-    @Autowired
     private UserRepo userRepo;
 
     @Autowired
     private GameRepo gameRepo;
-
-    @Autowired
-    private GameService gameService;
-
-    @Autowired
-    private WishListService wishListService;
 
     public void run(String... args) throws Exception {
 

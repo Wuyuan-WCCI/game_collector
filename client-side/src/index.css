@@ -510,7 +510,7 @@ GAME DETAILS  */
 }
 
 .read-button {
-  color: blue;
+  color: rgb(220, 236, 143);
   background-color: rgba(245, 245, 245, 0);
   border: 0;
 }

@@ -113,11 +113,13 @@ function NewReleases() {
               <div>
                 <img src={game.background_image} alt={game.name} className="carousel-item-img" />
               </div>
-              <div >
+              <div style={{display: 'block'}}>
                 <h2 className="carousel-name">{game.name}</h2>
               </div>
               <div style={{color:'skyblue'}}>
-                <h4>Released Date: {game.released}</h4>
+                <p >Released Date: <br/> 
+                {game.released}</p> 
+                
               </div>
               
               {/* ... Other content ... */}

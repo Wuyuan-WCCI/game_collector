@@ -49,7 +49,7 @@ const WishList = () => {
         {collection.map((item) => (
           <Link to={`/game-detail/${item.game.id}`} key={item.id}>
           <div  className="container-box" key={item.id}>
-          <div style={{display: 'block', padding: '10px'}}>
+          <div style={{ padding: '1px'}}>
             <div>
             <img
               src={item.game.imgUrl}
