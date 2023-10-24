@@ -9,6 +9,7 @@ const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState([]);
   const [userId, setUserId] = useState(null);
+  const userUrl = `http://localhost:7098/user`;
 
   const onGameRemoved = (wishListId) => {
     
@@ -27,7 +28,7 @@ const UserProfile = () => {
 
     if (authToken) {
       setUserId(localUserId);
-      fetch(`http://localhost:7098/user/id/${localUserId}`, {
+      fetch(`${userUrl}/id/${localUserId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${authToken}`,

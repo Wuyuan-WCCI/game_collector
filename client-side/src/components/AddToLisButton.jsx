@@ -35,6 +35,7 @@ function AddToListButton({ gameId, userId, authToken, actionType }) {
         })
         .then((response) => {
           setIsInWishList(response.data.isInWishList);
+          setIsInOwnedList(response.data.isInOwnedList);
         })
         .catch((error) => {
           console.error(error);
