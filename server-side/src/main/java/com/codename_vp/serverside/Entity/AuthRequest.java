@@ -4,8 +4,6 @@ public class AuthRequest {
     private String username;
     private String password;
 
-    // Constructors (if needed)
-
     public String getUsername() {
         return username;
     }

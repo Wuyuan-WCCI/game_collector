@@ -46,9 +46,7 @@ public class OwnedListService {
     }
 
     public boolean isGameInOwnedList(Long userId, Long gameId) {
-        // Check if the game with the specified gameId exists in the user's OwnedList
-        // You can implement this by querying your repository or data store
-        // Return true if the game exists, otherwise return false
+
         return ownedListRepo.existsByUserIdAndGameId(userId, gameId);
     }
 

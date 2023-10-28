@@ -533,23 +533,7 @@ GAME DETAILS  */
   width: 40%; /* Adjust the card width as needed */
   margin: 0 auto; /* Center the card within the container */
 }
-/* .developers-page {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); 
-  gap: 40px;
-  padding: 5% 5%;
-  width: 50%;
-}
 
-.developer-card {
-  border: 3px solid #87194c;
-  border-radius: 10px;
-  color: black;
-  background-color: #feffb5;
-  padding: 20px;
-  text-align: center;
-
-} */
 
 .developer-card img {
   height: 250px;

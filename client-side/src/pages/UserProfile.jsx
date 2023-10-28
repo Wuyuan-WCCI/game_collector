@@ -147,9 +147,7 @@ const UserProfile = () => {
             <Link to={`/game-detail/${wishListItem.game.id}`} key={wishListItem.game.id}>
               <h4 ><b>{wishListItem.game.name}</b></h4>
               </Link>
-              {/* <p>Slug: {wishListItem.game.slug}</p> */}
-              {/* <p>Status: {wishListItem.game.status}</p> */}
-              {/* <p>Released Date: {wishListItem.game.released}</p> */}
+             
               <p>
                 {expandedDescriptions[index]
                   ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />

@@ -10,7 +10,6 @@ const VideoPage = () => {
 
 <div className="container-game-details">
     <div className="box-4 video-container" style={{width:'85%'}}>
-     
       <a href={gameDetailUrl}>
         <video controls width="800" height="450" loop autoPlay muted>
           <source src={videoUrl} type="video/mp4" />
