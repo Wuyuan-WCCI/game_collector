@@ -24,7 +24,7 @@ const RemoveFromWishlistButton = ({ userId, wishListId, onRemove }) => {
 
 RemoveFromWishlistButton.propTypes = {
    
-    userId: PropTypes.number.isRequired,
+    userId: PropTypes.string.isRequired,
     wishListId: PropTypes.number.isRequired,
     onRemove: PropTypes.func.isRequired,
   };

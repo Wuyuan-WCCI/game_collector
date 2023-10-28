@@ -135,40 +135,4 @@ function DiscoverySearch() {
 
 export default DiscoverySearch;
 
-  // Define your WishList and OwnedList states
-  // const [wishList, setWishList] = useState([]);
-  // const [ownedList, setOwnedList] = useState([]);
-
-  // // Function to handle adding a game to the WishList
-  // const handleButtonAddWishList = (game) => {
-  //   // Check if the game is already in the WishList to avoid duplicates
-  //   if (!wishList.some((item) => item.id === game.id)) {
-  //     // Add the game to the WishList
-  //     setWishList([...wishList, game]);
-  //   }
-  // };
-
-  // // Function to handle adding a game to the OwnedList
-  // const handleButtonAddOwnedList = (game) => {
-  //   // Check if the game is already in the OwnedList to avoid duplicates
-  //   if (!ownedList.some((item) => item.id === game.id)) {
-  //     // Add the game to the OwnedList
-  //     setOwnedList([...ownedList, game]);
-  //   }
-  // };
-
-              {/* <div className="box-release">
-            <p><b>Release Date: </b> {game.released}</p>
-            </div>
-            <div className="box-rating">
-            <p><b>Rating: </b> {game.rating}/5</p>
-            </div>
-            <div className="box-button">
-            <div className="button-container">
-              
-              <button onClick={() => handleButtonAddWishList(game)}>Add to WishList</button>
-
-             
-              <button onClick={() => handleButtonAddOwnedList(game)}>Add to OwnedList</button>
-            </div>
-            </div> */}
+  

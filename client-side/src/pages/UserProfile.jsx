@@ -9,6 +9,7 @@ const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState([]);
   const [userId, setUserId] = useState(null);
+  const userUrl = `http://localhost:7098/user`;
 
   const onGameRemoved = (wishListId) => {
     
@@ -27,7 +28,7 @@ const UserProfile = () => {
 
     if (authToken) {
       setUserId(localUserId);
-      fetch(`http://localhost:7098/user/id/${localUserId}`, {
+      fetch(`${userUrl}/id/${localUserId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${authToken}`,
@@ -146,9 +147,7 @@ const UserProfile = () => {
             <Link to={`/game-detail/${wishListItem.game.id}`} key={wishListItem.game.id}>
               <h4 ><b>{wishListItem.game.name}</b></h4>
               </Link>
-              {/* <p>Slug: {wishListItem.game.slug}</p> */}
-              {/* <p>Status: {wishListItem.game.status}</p> */}
-              {/* <p>Released Date: {wishListItem.game.released}</p> */}
+             
               <p>
                 {expandedDescriptions[index]
                   ? <div dangerouslySetInnerHTML={{ __html: wishListItem.game.description }} />

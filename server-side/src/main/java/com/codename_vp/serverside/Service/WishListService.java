@@ -40,22 +40,17 @@ public class WishListService {
     }
 
     public boolean isGameInWishList(Long userId, Long gameId) {
-        // Check if the game with the specified gameId exists in the user's WishList
-        // You can implement this by querying your repository or data store
-        // Return true if the game exists, otherwise return false
         return wishListRepo.existsByUserIdAndGameId(userId, gameId);
     }
 
     public Long getWishListIdByGame(Long userId, Long gameId) {
-        // Query the wish list repository to find the wish list entry by userId and
-        // gameId
         Optional<WishList> wishListEntry = wishListRepo.findByUserIdAndGameId(userId, gameId);
 
         if (wishListEntry.isPresent()) {
-            // If a matching entry is found, return its ID
+
             return wishListEntry.get().getId();
         } else {
-            // If no matching entry is found, return null
+
             return null;
         }
     }

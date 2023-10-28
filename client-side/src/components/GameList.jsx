@@ -48,11 +48,7 @@ function GameList() {
             <h2>Title: {game.name}</h2>
             <p>Release Date: {game.released}</p>
             <p>Rating: {game.rating}/5</p>
-            {/* Add more game details as needed */}
-            {/* <h3>Title: {item.name}</h3>
-            <p>Slug: {item.slug}</p>
-            <p>Released: {item.release}</p>
-            <p>Description: {item.description}</p> */}
+          
           </li>
         ))}
       </ul>

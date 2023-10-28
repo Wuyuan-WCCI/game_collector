@@ -187,43 +187,4 @@ export default GameInfoDetails;
 
 
 
-  {/* {game.developers.slice(0, 3).map((developer) => (
-    <img
-      key={developer.id} // Use a unique key
-      src={developer.image_background}
-      alt={`Developer Image ${developer.name}`}
-    />
-  ))} */}
-
-          {/* <img src={game.background_image_additional} alt={`Image ${game.name}`} /> */}
-          {/* I can use this map below to grab other images in the file. */}
-          {/* {game.genres.map((name) => (
-            <span key={genre.genre.id}>{platform.platform.name}</span>
-          ))} */}
-  {/* {game.stores.slice(0, 3).map((store) => (
-    <img
-      key={store.store.id} // Use a unique key
-      src={store.store.image_background}
-      alt={`Store Image ${store.store.name}`}
-    />
-  ))} */}
-{
-  /* <h1>{game.name}</h1>
-      <div className="container">
-        <div className="box" key={game.id}>
-
-          <div>
-            <h2>Name: {game.name}</h2>
-          </div>
-          <div className='box-discover-description'>
-            <p>Description: {game.description}</p>
-          </div>
-          <div className='box-discover-rating'>
-            <p>Rating: {game.rating} / {game.rating_top}</p>
-          </div>
-          <div>
-            <img src={game.background_image_additional} alt={`Image ${game.name}`} />
-          </div>
-        </div>
-      </div> */
-}
+  
