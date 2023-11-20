@@ -12,7 +12,6 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    // Make an API request to your Spring Boot backend here
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -35,7 +34,7 @@ const Login = () => {
         
         navigate('/user-detail')
         location.reload();
-       
+      
       } else {
         console.log("Username or password is incorrect.")
         alert("Username or password is incorrect.")
