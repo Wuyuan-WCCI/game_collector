@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./GameVideo.css"; 
+
 
 function GameVideo() {
   const [videoUrls, setVideoUrls] = useState([]);

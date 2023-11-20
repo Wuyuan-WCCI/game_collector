@@ -35,7 +35,7 @@ function GameList() {
 
   return (
     <div>
-    {/* <h2>Game List</h2> */} <br></br>
+    <br></br>
     {loading ? (
       <p>Loading...</p>
     ) : error ? (

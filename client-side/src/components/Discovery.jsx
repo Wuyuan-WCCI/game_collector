@@ -119,7 +119,6 @@ function DiscoverySearch() {
               <div >
                 <h2 className="carousel-name">{game.name}</h2>
               </div>
-              {/* ... Other content ... */}
             </div>
           </div>
           </Link>

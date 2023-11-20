@@ -6,8 +6,7 @@ function useGameDetails(gameId) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Define the URL of your backend API to fetch game details
-    const apiUrl = `http://localhost:7098/game-detail/${gameId}`; // Adjust the API endpoint as needed
+    const apiUrl = `http://localhost:7098/game-detail/${gameId}`;
 
     // Function to fetch game details
     const fetchGameDetails = async () => {
